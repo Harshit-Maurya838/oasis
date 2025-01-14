@@ -33,6 +33,7 @@
   --bPrimary: #FFFFFF;
   --bSecondary: #F8F7FB;
   --bTertiary: #686A74;
+  --transitionDuration:.3s;
 }
 
 .display-01 {
@@ -271,6 +272,15 @@
 
 .text-16-medium {
   font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0%;
+  text-decoration: none;
+  line-height: auto;
+  font-style: unset;
+}
+
+.text-16-semibold {
+  font-weight: 600;
   font-size: 16px;
   letter-spacing: 0%;
   text-decoration: none;

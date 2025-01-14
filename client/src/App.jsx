@@ -1,6 +1,8 @@
 import Navbar from './components/ui/navbar.ui.component'
 import './App.css'
 import HeroSection from './components/ui/hero.ui.component'
+import oasisLogo from '/Oasis.svg'
+import Footer from './components/ui/footer.ui.component'
 
 function App() {
 
@@ -10,6 +12,7 @@ function App() {
         <section id="main-body">
             <HeroSection />
         </section>
+        <Footer />
     </>
   )
 }

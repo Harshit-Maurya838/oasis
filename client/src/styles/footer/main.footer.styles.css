@@ -1,0 +1,117 @@
+footer {
+  width: 100vw;
+  height: 410px;
+  background-color: var(--bgTertiaryBlack);
+  padding: 80px;
+}
+
+.FootTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+.ScrollUpDiv {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  background-color: var(--bgPrimary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transitionDuration);
+  border: 1px solid var(--bgPrimary);
+  overflow: hidden;
+}
+
+.ScrollUpDiv:hover {
+  background-color: transparent;
+  border: 1px solid var(--bgPrimary);
+}
+
+.ScrollUpDivSvg {
+  transition: var(--transitionDuration);
+}
+
+.ScrollUpDivSvg:nth-child(1) {
+  transform: translateY(13px);
+}
+
+.ScrollUpDiv:hover .ScrollUpDivSvg {
+  fill: var(--bgPrimary) !important;
+}
+
+.ScrollUpDivSvg:nth-child(2) {
+  transform: translateY(50px);
+}
+
+.ScrollUpDiv:hover .ScrollUpDivSvg:nth-child(2) {
+  transform: translateY(-10px);
+}
+
+.ScrollUpDiv:hover .ScrollUpDivSvg:nth-child(1) {
+  transform: translateY(-28px);
+}
+
+.OasisLogo {
+  fill: var(--bgPrimary) !important;
+}
+
+.FootBottom {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: last baseline;
+  justify-content: space-between;
+  gap: 54px;
+  padding: 24px;
+}
+
+.FotCard {
+  width: calc(100%4);
+}
+
+.nav span {
+  color: var(--heading-secondary);
+}
+
+.ContactUs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  align-items: baseline;
+
+}
+
+.ContactUs div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ContactUs div span {
+  color: var(--heading-secondary);
+}
+
+.Add-Time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  align-items: baseline;
+}
+
+.Add-Time div span {
+  color: var(--heading-secondary);
+}
+
+.subHeading{
+  color: var(--g700);
+}
