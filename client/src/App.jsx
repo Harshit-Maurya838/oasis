@@ -1,12 +1,15 @@
 import Navbar from './components/ui/navbar.ui.component'
-import oasisLogo from '/Oasis.svg'
-// import './App.css'
+import './App.css'
+import HeroSection from './components/ui/hero.ui.component'
 
 function App() {
 
   return (
     <>
         <Navbar />
+        <section id="main-body">
+            <HeroSection />
+        </section>
     </>
   )
 }

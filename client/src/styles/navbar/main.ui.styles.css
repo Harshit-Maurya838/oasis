@@ -56,3 +56,9 @@
     border-radius: 24px !important;
     height: 56px !important;
 }
+
+@media (max-width: 911px) {
+    #navbar{
+        padding: 0 42px 0 42px;
+    }
+}

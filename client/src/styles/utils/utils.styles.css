@@ -181,7 +181,7 @@
 
 .text-20-regular {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.25rem;
   letter-spacing: 0%;
   text-decoration: none;
   line-height: auto;
@@ -226,7 +226,7 @@
 
 .text-18-semibold {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.125rem;
   letter-spacing: 0%;
   text-decoration: none;
   line-height: auto;

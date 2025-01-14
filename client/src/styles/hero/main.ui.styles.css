@@ -1,0 +1,41 @@
+#hero{
+    width: auto;
+    height: 760px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.hero_text{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 834px) {
+    .heading-02{
+        font-size: 49px;
+    }
+}
+
+@media (max-width: 393px) {
+    .heading-02{
+        font-weight: 600;
+        font-size: 25px;
+    }
+}
