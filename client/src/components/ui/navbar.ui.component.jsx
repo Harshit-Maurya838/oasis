@@ -1,6 +1,7 @@
 import React from 'react'
 import oasisLogo from "/img/Oasis.svg";
-import "../../styles/navbar/main.ui.styles.css";
+import "../../styles/navbar/main.navbar.styles.css";
+import '../../styles/utils/utils.styles.css'
 import CartButton from '../utils/cardButton.utils.component';
 import Button from '../utils/button.utils.component';
 import ArrowRightIcon from "../icons/arrowRight.icon.component.jsx";
@@ -19,7 +20,7 @@ const Navbar = () => {
         </div>
         <div className="right">
             <CartButton cartItem={0} />
-            <Button variant='contained'>Get Started <ArrowRightIcon width={24} fill={"white"} /></Button>
+            <Button variant='contained'><p className='text-16-semibold' >Get Started</p> </Button>
         </div>
     </nav>
   )

@@ -8,21 +8,23 @@
     border: none;
     border-radius: 56px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 12px;
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Variants */
 .custom-button.contained {
     color: white;
     background-color: var(--p800);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    /* box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
         0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-        0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+        0px 1px 5px 0px rgba(0, 0, 0, 0.12); */
 }
 
 .custom-button.contained:hover {
@@ -91,4 +93,33 @@
     color: rgba(0, 0, 0, 0.26);
     box-shadow: none;
     cursor: not-allowed;
+}
+
+
+.custom-button div{
+    width: max-content;
+    transition: var(--transitionDuration);
+}
+
+.custom-button-arrow{
+    transition: var(--transitionDuration);
+    fill: var(--heading-secondary) !important;
+
+}
+
+.custom-button-arrow:nth-child(1){
+    transform: translateX(-50px);
+    position:absolute;
+}
+
+.custom-button:hover div {
+    transform: translateX(25px);
+}
+
+.custom-button:hover .custom-button-arrow:nth-child(1){
+    transform: translateX(-3px);
+}
+
+.custom-button:hover .arrow{
+    transform: translateX(50px);
 }
