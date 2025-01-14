@@ -111,3 +111,7 @@ footer {
 .Add-Time div span {
   color: var(--heading-secondary);
 }
+
+.subHeading{
+  color: var(--g700);
+}

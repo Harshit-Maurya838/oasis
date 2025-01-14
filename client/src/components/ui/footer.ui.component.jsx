@@ -20,21 +20,21 @@ function Footer() {
         </div>
         <div className="FotCard ContactUs">
           <div>
-            <p className='text-13-regular' >Contact Us</p>
+            <p className='text-13-regular subHeading' >Contact Us</p>
             <span className='text-20-regular' >+1 999-888-76-54</span>
           </div>
           <div>
-            <p className='text-13-regular' >Email</p>
+            <p className='text-13-regular subHeading' >Email</p>
             <span className='text-14-regular' >support@oasis.com</span>
           </div>
         </div>
         <div className="FotCard Add-Time">
           <div>
-            <p className='text-13-regular' >ADDRESS</p>
+            <p className='text-13-regular subHeading' >ADDRESS</p>
             <span className='text-14-regular' >2118 Thornridge Cir. Syracuse, Connecticut 35624</span>
           </div>
           <div>
-            <p className='text-13-regular' >OPENING HOURS</p>
+            <p className='text-13-regular subHeading' >OPENING HOURS</p>
             <span className='text-20-regular' >9am—6pm</span>
           </div>
         </div>
