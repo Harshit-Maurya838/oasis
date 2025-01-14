@@ -1,6 +1,6 @@
 import React from 'react'
 import oasisLogo from "/img/Oasis.svg";
-import "../styles/navbar.ui.styles.css";
+import "../../styles/navbar/main.ui.styles.css";
 import CartButton from '../utils/cardButton.utils.component';
 import Button from '../utils/button.utils.component';
 import ArrowRightIcon from "../icons/arrowRight.icon.component.jsx";

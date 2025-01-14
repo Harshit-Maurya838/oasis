@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles/utlis.styles.css'
-import '../styles/button.utils.styles.css'
+import '../../styles/utils/utils.styles.css'
+import '../../styles/utils/button.utils.styles.css'
 
 const Button = ({ variant = "contained", onClick, disabled, children }) => {
     const className = `custom-button ${variant} ${disabled ? "disabled" : ""}`;
