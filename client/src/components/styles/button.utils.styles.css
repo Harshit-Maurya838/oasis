@@ -1,0 +1,94 @@
+/* Base button styles */
+.custom-button {
+    height: 56px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 10px 20px 10px 20px;
+    border: none;
+    border-radius: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Variants */
+.custom-button.contained {
+    color: white;
+    background-color: var(--p800);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+        0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.custom-button.contained:hover {
+    background-color: var(--p700);
+}
+
+.custom-button.outlined {
+    color: var(--heading-main);
+    font-weight: 600;
+    background-color: transparent;
+    border: 1px solid var(--bTertiary);
+}
+
+.custom-button.outlined:hover {
+    background-color: rgba(25, 118, 210, 0.08);
+}
+
+.custom-button.text {
+    color: var(--heading-main);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.custom-button.text:hover {
+    background-color: rgba(25, 118, 210, 0.08);
+}
+
+/* Colors */
+/* .custom-button.primary {
+    background-color: var(--p800);
+    color: white;
+}
+
+.custom-button.primary:hover {
+    background-color: var(--p700);
+}
+
+.custom-button.secondary {
+    background-color: #dc004e;
+    color: white;
+}
+
+.custom-button.secondary:hover {
+    background-color: #9a0036;
+} */
+
+/* Sizes */
+/* .custom-button.small {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.custom-button.medium {
+    padding: 6px 16px;
+    font-size: 14px;
+}
+
+.custom-button.large {
+    padding: 8px 24px;
+    font-size: 16px;
+} */
+
+/* Disabled state */
+.custom-button.disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.26);
+    box-shadow: none;
+    cursor: not-allowed;
+}

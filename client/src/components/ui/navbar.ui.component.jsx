@@ -1,9 +1,9 @@
 import React from 'react'
 import oasisLogo from "/img/Oasis.svg";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import "../styles/navbar.ui.styles.css";
-import { Button } from '@mui/material';
 import CartButton from '../utils/cardButton.utils.component';
+import Button from '../utils/button.utils.component';
+import ArrowRightIcon from "../icons/arrowRight.icon.component.jsx";
 
 const Navbar = () => {
   return (
@@ -19,7 +19,7 @@ const Navbar = () => {
         </div>
         <div className="right">
             <CartButton cartItem={0} />
-            <Button variant="contained" className='get_started'> Get Started <ArrowForwardIcon /></Button>
+            <Button variant='contained'>Get Started <ArrowRightIcon width={24} fill={"white"} /></Button>
         </div>
     </nav>
   )
