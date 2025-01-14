@@ -1,9 +1,9 @@
 import React from 'react'
 import oasisLogo from "/img/Oasis.svg";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import "./navbar.css";
+import "../styles/navbar.ui.styles.css";
 import { Button } from '@mui/material';
-import CartButton from './CartButton';
+import CartButton from '../utils/cardButton.utils.component';
 
 const Navbar = () => {
   return (
@@ -12,9 +12,9 @@ const Navbar = () => {
             <a><img src={oasisLogo} alt="" /></a>
         </div>
         <div className="center">
-            <a href="">Home</a>
-            <a href="">Shop</a>
-            <a href="">Categories</a>
+            <a href="/home">Home</a>
+            <a href="/Shop">Shop</a>
+            <a href="/Categories">Categories</a>
             <a href="">Blog</a>
         </div>
         <div className="right">
