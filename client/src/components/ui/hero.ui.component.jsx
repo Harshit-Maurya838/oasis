@@ -1,7 +1,7 @@
 import React from 'react'
 import heroImg from "/img/hero/hero.png";
 import '../../styles/utils/utils.styles.css';
-import "../../styles/hero/main.ui.styles.css";
+import "../../styles/hero/main.hero.styles.css";
 
 const HeroSection = () => {
   return (
