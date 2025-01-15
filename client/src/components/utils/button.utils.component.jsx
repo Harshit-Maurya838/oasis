@@ -8,11 +8,11 @@ const Button = ({ variant = "contained", onClick, disabled, children, text = '' 
 
   return (
     <button className={className} onClick={onClick} disabled={disabled}>
-      <ArrowRightIcon classname="custom-button-arrow" width={24} />
+      <ArrowRightIcon classname="custom-button-arrow" width={24} fill={variant == 'outlined' ? 'black' : 'white'}/>
       <div>
         {children}
       </div>
-      <ArrowRightIcon classname="custom-button-arrow arrow" width={24} />
+      <ArrowRightIcon classname="custom-button-arrow arrow" width={24} fill={variant == 'outlined' ?'black' : 'white'}/>
     </button>
   )
 }

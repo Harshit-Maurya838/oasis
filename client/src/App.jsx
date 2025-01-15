@@ -3,6 +3,7 @@ import './App.css'
 import HeroSection from './components/ui/hero.ui.component'
 import oasisLogo from '/Oasis.svg'
 import Footer from './components/ui/footer.ui.component'
+import Categories from './components/ui/categories.ui.component'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <Navbar />
         <section id="main-body">
             <HeroSection />
+            <Categories />
         </section>
         <Footer />
     </>

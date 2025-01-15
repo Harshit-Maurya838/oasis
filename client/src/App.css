@@ -5,8 +5,8 @@ html{
 #main-body{
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     align-items: center;
     padding: 80px;
 }

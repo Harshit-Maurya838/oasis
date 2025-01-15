@@ -103,7 +103,7 @@
 
 .custom-button-arrow{
     transition: var(--transitionDuration);
-    fill: var(--heading-secondary) !important;
+    /* fill: var(--heading-secondary) !important;*/  /* this disturbs the fill prop in arrowright and working now after commenting this */
 
 }
 
