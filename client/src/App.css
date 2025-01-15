@@ -10,3 +10,20 @@ html{
     align-items: center;
     padding: 80px;
 }
+
+@media (max-width: 834px) {
+    #main-body{
+        padding: 40px;
+    }
+}
+
+@media (max-width: 695px) {
+    #main-body{
+        padding: 40px;
+    }
+}
+@media (max-width: 540px) {
+    #main-body{
+        padding: 20px;
+    }
+}
