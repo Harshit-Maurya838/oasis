@@ -115,3 +115,13 @@ footer {
 .subHeading{
   color: var(--g700);
 }
+
+.CopyRight{
+  color: var(--g100);
+}
+
+@media only screen and (max-widht:1144px) {
+  .FotCard{
+    transform: scale(0.8);
+  }
+}

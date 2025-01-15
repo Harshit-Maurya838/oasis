@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/utils/utils.styles.css';
 import '../../styles/footer/main.footer.styles.css';
+import '../../styles/footer/responsive.footer.styles.css'
 import OasisLogo from '../icons/oasisLogo.icon.component';
 import ArrowUpIcon from '../icons/arrowUp.icon.component'
 
@@ -38,8 +39,8 @@ function Footer() {
             <span className='text-20-regular' >9am—6pm</span>
           </div>
         </div>
-        <div>
-          <span>© 2023 — Copyright</span>
+        <div className='CopyRight FotCard' >
+          <span className='text-14-regular' >© 2023 — Copyright</span>
         </div>
       </div>
     </footer>

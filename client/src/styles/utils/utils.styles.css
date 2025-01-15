@@ -33,7 +33,7 @@
   --bPrimary: #FFFFFF;
   --bSecondary: #F8F7FB;
   --bTertiary: #686A74;
-  --transitionDuration:.3s;
+  --transitionDuration:.6s cubic-bezier(.74,-0.43,0,1.7);
 }
 
 .display-01 {

@@ -1,0 +1,29 @@
+@media (max-width:1144px) {
+  .FotCard{
+    transform: scale(0.9);
+  }
+  .FootBottom{
+    gap:54px;
+    padding: 24px 0;
+  }
+  footer{
+    padding: 80px 40px;
+  }
+}
+
+@media only screen and (max-width:766px){
+  .FootBottom{
+    flex-direction: column;
+    width: 100%;
+    align-items: baseline;
+    gap: 44px;
+    margin-top: 25px;
+  }
+  .FotCard{
+    transform: scale(1);
+    width: 100%;
+  }
+  footer{
+    height: fit-content;
+  }
+}
