@@ -10,7 +10,11 @@ function Footer() {
     <footer>
       <div className='FootTop' >
         <OasisLogo classname={'OasisLogo'} />
-        <div className='ScrollUpDiv'>
+        <div className='ScrollUpDiv' onClick={() => {
+
+          window.scroll({ top: 0, left: 0, behavior: 'smooth' })
+
+        }} >
           <ArrowUpIcon width={24} classname={'ScrollUpDivSvg'} />
           <ArrowUpIcon width={24} classname={'ScrollUpDivSvg'} />
         </div>
