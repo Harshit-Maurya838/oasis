@@ -56,7 +56,10 @@ const Navbar = () => {
         <div className="center">
           <a href="/home">Home</a>
           <a href="/Shop">Shop</a>
-          <a href="/Categories">Categories</a>
+          <a href="/Categories" onClick={(e)=>{
+            e.preventDefault()
+            document.querySelector('#categories_main').scrollIntoView()
+          }}>Categories</a>
           <a href="">Blog</a>
         </div>
         <div className="right">
