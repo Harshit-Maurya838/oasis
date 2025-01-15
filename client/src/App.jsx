@@ -4,6 +4,7 @@ import HeroSection from './components/ui/hero.ui.component'
 import oasisLogo from '/Oasis.svg'
 import Footer from './components/ui/footer.ui.component'
 import Categories from './components/ui/categories.ui.component'
+import FaQ from './components/ui/faq.ui.component'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <section id="main-body">
             <HeroSection />
             <Categories />
+            <FaQ />
         </section>
         <Footer />
     </>

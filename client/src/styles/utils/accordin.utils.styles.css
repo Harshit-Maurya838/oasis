@@ -1,0 +1,149 @@
+.Accordin {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 96px;
+  padding: 24px 0;
+  width: 100%;
+  border-bottom: 1px solid var(--g200);
+  cursor: pointer;
+  transition: var(--transitionDuration);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: baseline;
+}
+
+.number {
+  color: var(--heading-main);
+}
+
+.question {
+  color: var(--heading-main);
+}
+
+.answer {
+  color: var(--body-sub);
+  align-content: start;
+  display: none;
+}
+
+.actions {
+  background-color: var(--bSecondary);
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  transition: var(--transitionDuration);
+  transform: rotateZ(180deg);
+}
+
+.arrow {
+  fill: var(--bTertiary);
+  transition: var(--transitionDuration);
+}
+
+.arrow path:nth-child(2) {
+  transition: var(--transitionDuration);
+  transform: scaleY(0);
+}
+
+
+/* HOVERS */
+
+.Accordin:hover .arrow path:nth-child(2) {
+  fill: var(--heading-main);
+  width: 0;
+  transform: scaleY(1);
+}
+
+.Accordin:hover .arrow path:nth-child(1) {
+  fill: var(--heading-main);
+}
+
+/* On According Active */
+
+.ContentActive .answer {
+  display: block;
+}
+
+.ArrowActive {
+  transform: rotateZ(0deg);
+}
+
+
+/* Animations */
+
+.slidein {
+  animation-name: slidein;
+  animation-duration: .7s;
+  animation-timing-function: cubic-bezier(.74, -0.43, 0, 1.7);
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+}
+
+.slideout {
+  animation-name: slideout;
+  animation-duration: .7s;
+  animation-timing-function: cubic-bezier(.74, -0.43, 0, 1.7);
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-iteration-count: 1;
+}
+
+.delay {
+  animation: delay;
+  animation-duration: .7s;
+  animation-delay: .6s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  display: block;
+}
+
+/* Keyframes */
+
+@keyframes slidein {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes slideout {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+}
+
+@keyframes delay {
+  100% {
+    opacity: 0;
+    /* transform: translateY(20px); */
+    display: none;
+  }
+
+  0% {
+    opacity: 1;
+    display: block;
+  }
+}
