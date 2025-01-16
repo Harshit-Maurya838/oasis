@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/utils/utils.styles.css'
 import '../../styles/utils/button.utils.styles.css'
-import ArrowRightIcon from '../icons/arrowRight.icon.component'
+import ArrowRightIcon from '../icons/arrowRight.icon.component.jsx'
 
 const Button = ({ variant = "contained", onClick, disabled, children, text = '' }) => {
   const className = `custom-button ${variant} ${disabled ? "disabled" : ""}`;

@@ -1,7 +1,7 @@
 import React from 'react'
-import "../../styles/utils/categoryCard.utils.styles.css";
 import Button from './button.utils.component';
 import '../../styles/utils/utils.styles.css';
+import "../../styles/utils/categoryCard.utils.styles.css";
 
 const CategoryCard = ({ imageSrc, title, buttonVisibility = true }) => {
   return (
