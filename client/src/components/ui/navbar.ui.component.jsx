@@ -65,7 +65,7 @@ const Navbar = () => {
         <div className="right">
           <CartButton cartItem={0} />
           <Button variant="contained">
-            <p className="text-16-semibold">Get Started</p>{" "}
+            <p className="text-16-semibold">Get Started</p>
           </Button>
         </div>
       </div>

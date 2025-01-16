@@ -7,7 +7,19 @@ const Categories = () => {
   return (
     <section id="categories_main">
         <h1 className='heading-04'>Categories</h1>
-        <CategoryCard imageSrc="/img/hero/hero.png" title="Sitting Room" buttonText="Shop Now"/>
+        <div className="category_container">
+        <CategoryCard imageSrc="/img/categories/sitting_room.png" title="Sitting Room"/>
+        <div className="row">
+            <div className="col">
+                <CategoryCard imageSrc="/img/categories/plant_pot.png" title="Accessories"/>
+            </div>
+            <div className="col">
+                <CategoryCard imageSrc="/img/categories/kettle.png" title="Kitchen"/>
+            </div>
+        </div>
+        <CategoryCard imageSrc="/img/categories/bedroom.png" title="Bedroom"/>
+        </div>
+
     </section>
   )
 }

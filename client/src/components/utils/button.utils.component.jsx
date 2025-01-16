@@ -12,7 +12,7 @@ const Button = ({ variant = "contained", onClick, disabled, children, text = '' 
       <div>
         {children}
       </div>
-      <ArrowRightIcon classname="custom-button-arrow arrow" width={24} fill={variant == 'outlined' ?'black' : 'white'}/>
+      <ArrowRightIcon classname="custom-button-arrow arrow" width={24} fill={variant == 'outlined' ? 'black' : 'white'}/>
     </button>
   )
 }
