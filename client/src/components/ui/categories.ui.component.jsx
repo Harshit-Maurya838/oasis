@@ -4,6 +4,7 @@ import '../../styles/utils/utils.styles.css';
 import CategoryCard from '../utils/categoryCard.utils.component';
 
 const Categories = () => {
+
   return (
     <section id="categories_main">
         <h1 className='heading-04'>Categories</h1>

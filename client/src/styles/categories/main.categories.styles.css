@@ -19,3 +19,13 @@
 .col{
     width: 50%;
 }
+
+@media (max-width: 571px){
+    .row{
+        flex-direction: column;
+    }
+    .col{
+        width: 100%;
+    }
+
+}

@@ -14,7 +14,7 @@ function App() {
         <section id="main-body">
             <HeroSection />
             <Categories />
-            <FaQ />
+            {/* <FaQ /> */}
         </section>
         <Footer />
     </>
