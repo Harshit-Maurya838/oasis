@@ -1,7 +1,8 @@
 import React from 'react';
 import Accordin from '../utils/according.utils.component';
-import '../../styles/utils/utils.styles.css'
-import '../../styles/faq/main.faq.styles.css'
+import '../../styles/utils/utils.styles.css';
+import '../../styles/faq/main.faq.styles.css';
+import '../../styles/faq/responsive.faq.styles.css';
 
 function FaQ() {
   return (

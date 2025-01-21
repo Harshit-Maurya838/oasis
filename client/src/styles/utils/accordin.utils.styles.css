@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  gap: 96px;
+  gap: 16px;
   padding: 24px 0;
   width: 100%;
   border-bottom: 1px solid var(--g200);
@@ -13,6 +13,7 @@
 
 .content {
   display: flex;
+  flex:1;
   flex-direction: column;
   gap: 24px;
   align-items: baseline;

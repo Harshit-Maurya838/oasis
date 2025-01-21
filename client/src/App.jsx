@@ -13,7 +13,7 @@ function App() {
         <Navbar />
         <section id="main-body">
             <HeroSection />
-            <Categories />
+            {/* <Categories /> */}
             <FaQ />
         </section>
         <Footer />
