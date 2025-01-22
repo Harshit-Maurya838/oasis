@@ -15,6 +15,15 @@
     animation-duration:0.5s;
     transform-origin: top;
 }
+.swipeup{
+    animation-name: swipedown;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-direction: reverse;
+    animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
+    animation-duration:0.5s;
+    transform-origin: top;
+}
 
 @keyframes fadein {
     0%{

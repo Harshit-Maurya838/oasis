@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useRef } from "react";
 import "../../styles/utils/utils.styles.css";
 import "../../styles/utils/dropdown.utils.styles.css";
 import "../../components/utils/dropdown.utils.component";
@@ -7,10 +7,20 @@ import ChevronDown from "../../components/icons/chevronDown.icon.component";
 
 function DropDown({ items }) {
   const [isOpen, setIsOpen] = useState(false);
+  const DropItems = useRef(null);
 
   return (
     <div
       onClick={() => {
+
+        // isOpen ? ()=>{
+        //   DropItems.current.classList.remove('swipedown');        
+        //   DropItems.current.classList.add('swipeup');        
+        // } : ()=>{
+        //   DropItems.current.classList.remove('swipeup');
+        //   DropItems.current.classList.add('swipedown');
+        // }
+
         setIsOpen(!isOpen);
       }}
       className={`maindom ${isOpen ? "active" : ""}`}
@@ -22,7 +32,7 @@ function DropDown({ items }) {
           classname={`${isOpen ? "activechevron" : ""} dropchevron`}
         />
       </div>
-      <div className="dropitems swipedown">
+      <div className="dropitems swipedown " ref={DropItems}>
         <div className="item fadein">items</div>
         <div className="item fadein">items</div>
         <div className="item fadein">items</div>
