@@ -62,3 +62,25 @@ const handleCardClick = () => {
 }
 
 export default CategoryCard
+
+
+// data = {
+//   'title':'',
+//   'category':"",
+//   'tags':'',
+//   "desc":"",
+//   'basePrice':"",
+//   'rating':'',
+//   'variants':[{
+//     "var_name":"name of the variant",
+//     'var_url':"endpoints of the url",
+//     'var_gallery':['array of image gallery'],
+//     'var_color':"",
+//     'discount':"40%",
+//   }],
+// } 
+
+// furni1 = [
+//   '3d model', //base model
+// ]
+

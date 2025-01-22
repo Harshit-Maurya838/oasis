@@ -1,0 +1,35 @@
+.fadein{
+    animation-name: fadein;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
+    animation-duration:1s;
+}
+.swipedown{
+    animation-name: swipedown;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
+    animation-duration:0.5s;
+    transform-origin: top;
+}
+
+@keyframes fadein {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes swipedown {
+    0%{
+        transform: scaleY(0);
+    }
+    100%{
+        transform: scaleY(1);
+        opacity:1;
+    }
+}
