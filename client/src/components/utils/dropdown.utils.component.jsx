@@ -7,7 +7,12 @@ import ChevronDown from "../../components/icons/chevronDown.icon.component";
 
 function DropDown({ items }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedState , setSelectedState] = useState(items[0].itemname);
   const DropItems = useRef(null);
+
+  const itemClick = (e)=>{
+    setSelectedState(e.target.innerHTML);
+  }
 
   return (
     <div
@@ -26,19 +31,23 @@ function DropDown({ items }) {
       className={`maindom ${isOpen ? "active" : ""}`}
     >
       <div className="dropdom">
-        <span>Highest Price</span>
+        <span>{selectedState}</span>
         <ChevronDown
           width={20}
           classname={`${isOpen ? "activechevron" : ""} dropchevron`}
         />
       </div>
       <div className="dropitems swipedown " ref={DropItems}>
-        <div className="item fadein">items</div>
-        <div className="item fadein">items</div>
-        <div className="item fadein">items</div>
-        <div className="item fadein">items</div>
-        <div className="item fadein">items</div>
-        <div className="item fadein">items</div>
+        {
+          items.map((item,index)=>{
+            return(
+              <div onClick={(e)=>{
+                itemClick(e);
+                item.itemcallback()
+              }} key={index} className="item fadein">{item.itemname}</div>
+            )
+          })
+        }
       </div>
     </div>
   );

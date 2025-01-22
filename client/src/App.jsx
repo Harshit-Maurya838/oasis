@@ -16,7 +16,20 @@ function App() {
             <HeroSection />
             <Categories />
             <FaQ />
-            <DropDown />
+            <DropDown items={[
+              {
+                'itemname':'Higher to lower',
+                'itemcallback':()=>{return(null)},
+              },
+              {
+                'itemname':'Lower to higher',
+                'itemcallback':()=>{return(null)},
+              },
+              {
+                'itemname':'Recently added',
+                'itemcallback':()=>{return(null)},
+              }
+            ]} />
         </section>
         <Footer />
     </>
