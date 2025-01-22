@@ -1,8 +1,14 @@
-html{
+html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #a3a3a3 #f7f7f7;
 }
 
-#main-body{
+body {
+    scrollbar-gutter: stable both-edges;
+}
+
+#main-body {
     width: 100%;
     min-height: 100vh;
     /* display: flex;
@@ -11,19 +17,50 @@ html{
     padding: 80px;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+    /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f7f7f7;
+    /* Light gray track */
+    border-radius: 10px;
+    /* Rounded edges for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #cfcfcf, #a3a3a3);
+    /* Gradient for thumb */
+    border-radius: 10px;
+    /* Rounded edges for thumb */
+    border: 2px solid #f7f7f7;
+    /* Creates spacing around thumb */
+    transition: background 0.3s ease;
+    /* Smooth hover effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #b3b3b3, #7a7a7a);
+    /* Darker gradient on hover */
+    cursor: pointer;
+    /* Indicates interactivity */
+}
+
 @media (max-width: 834px) {
-    #main-body{
+    #main-body {
         padding: 40px;
     }
 }
 
 @media (max-width: 695px) {
-    #main-body{
+    #main-body {
         padding: 40px;
     }
 }
+
 @media (max-width: 540px) {
-    #main-body{
+    #main-body {
         padding: 20px;
     }
 }
