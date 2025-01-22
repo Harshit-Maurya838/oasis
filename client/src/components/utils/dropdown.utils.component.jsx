@@ -35,9 +35,3 @@ function DropDown({ items }) {
 }
 
 export default DropDown;
-
-// Items expected array format
-// items = [{
-//     'itemname':"",
-//     'itemcallback':""
-// }]
