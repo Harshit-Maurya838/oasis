@@ -1,5 +1,99 @@
 .variant_circle{
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border-radius: 100%;
+}
+
+.cardDom{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    overflow: hidden;
+    max-width: 296px;
+    max-height: 383px;
+    gap: 8px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.cardDom img{
+    width: 100%;
+}
+
+.cardImgDom{
+    width: 100%;
+    height: 313px;
+    overflow: hidden;
+    position: relative;
+}
+
+.rating{
+    position: absolute;
+    top: 10px;
+    right: -68px;
+    background-color:var(--bSecondary);
+    padding: 4px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid var(--g100);
+    border-radius: 300px;
+    gap: 4px;
+    transition: var(--transitionDuration);
+}
+
+.rating span{
+    color: var(--g500);
+}
+
+.button{
+    position: absolute;
+    left: -160px;
+    bottom: 20px;
+    transition: var(--transitionDuration);
+    width: fit-content;
+}
+
+.cardDom:hover .button{
+    left: 10px;
+}
+
+.cardDom:hover .rating{
+    right:10px;
+}
+
+.product_desc{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product_desc p{
+    width: 100%;
+    text-overflow: ellipsis;
+    height:22px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.product_desc span{
+    padding: 8px 14px;
+    background-color: var(--bSecondary);
+    color: var(--heading-main);
+    border-radius: 300px;
+}
+
+.variants{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 0px 5px 5px 5px;
+}
+
+.active{
+    outline:solid 2px var(--body-sub);
+    outline-offset: 2px;
 }
