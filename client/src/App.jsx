@@ -6,8 +6,11 @@ import Footer from './components/ui/footer.ui.component'
 import Categories from './components/ui/categories.ui.component'
 import FaQ from './components/ui/faq.ui.component'
 import DropDown from './components/utils/dropdown.utils.component'
+import Product from './components/utils/productCard.utils.component'
+import StarRating from './components/utils/rating.utils.component'
 
 function App() {
+
 
   return (
     <>
@@ -30,6 +33,8 @@ function App() {
                 'itemcallback':()=>{return(null)},
               }
             ]} />
+            {/* <Product /> */}
+            <StarRating rating={3.5} />
         </section>
         <Footer />
     </>
