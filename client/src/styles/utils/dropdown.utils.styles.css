@@ -7,7 +7,7 @@
     height: max-content;
     border-radius: 24px;
     cursor: pointer;
-    transition: var(--transitionDuration);
+    transition: .3s cubic-bezier(.74,-0.43,0,1.7);
 }
 
 .dropdom{
@@ -33,7 +33,7 @@
     border-top:0;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
-    transition: var(--transitionDuration);
+    transition: .4s cubic-bezier(.74,-0.43,0,1.7);
 }
 
 .dropdom span{
@@ -53,7 +53,6 @@
 
 .active .dropitems{
     display: flex;
-    animation-delay: .1s;
     opacity: 0;
 }
 
