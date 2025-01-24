@@ -8,6 +8,7 @@ import FaQ from "./components/ui/faq.ui.component";
 import DropDown from "./components/utils/dropdown.utils.component";
 import Product from "./components/utils/productCard.utils.component";
 import StarRating from "./components/utils/rating.utils.component";
+import ProductDetail from "./components/ui/productDetail.ui.component";
 
 function App() {
   let data = {
@@ -39,32 +40,7 @@ function App() {
     <>
       <Navbar />
       <section id="main-body">
-        <HeroSection />
-        <Categories />
-        <FaQ />
-        {/* <DropDown items={[
-              {
-                'itemname':'Higher to lower',
-                'itemcallback':()=>{return(null)},
-              },
-              {
-                'itemname':'Lower to higher',
-                'itemcallback':()=>{return(null)},
-              },
-              {
-                'itemname':'Recently added',
-                'itemcallback':()=>{return(null)},
-              }
-            ]} /> */}
-        <Product
-          imgSrc={"./img/samples/sample-image.png"}
-          productName={data.title}
-          price={data.basePrice}
-          variants={data.variants}
-          rating={data.rating}
-        />
-
-        {/* <StarRating rating={3.5} /> */}
+        <ProductDetail />
       </section>
       <Footer />
     </>

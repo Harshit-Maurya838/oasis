@@ -48,7 +48,7 @@
 
 .button{
     position: absolute;
-    left: -160px;
+    left: -165px;
     bottom: 20px;
     transition: var(--transitionDuration);
     width: fit-content;

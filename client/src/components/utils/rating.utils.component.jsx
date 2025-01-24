@@ -16,7 +16,7 @@ const StarRating = ({ rating }) => {
           key={`filled-${index}`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          fill="#FFD700"
+          fill="#F0B556"
           width="24"
           height="24"
         >
@@ -42,7 +42,7 @@ const StarRating = ({ rating }) => {
             {/* Full star clipped to the fractional part */}
             <path
               d="M12 .587l3.668 7.431 8.2 1.196-5.934 5.782 1.4 8.164L12 18.896l-7.334 3.864 1.4-8.164L.133 9.214l8.2-1.196z"
-              fill="#FFD700"
+              fill="#F0B556"
               clipPath="url(#fraction-clip)"
             />
             {/* Empty star outline */}
