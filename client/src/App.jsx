@@ -9,6 +9,8 @@ import DropDown from "./components/utils/dropdown.utils.component";
 import Product from "./components/utils/productCard.utils.component";
 import StarRating from "./components/utils/rating.utils.component";
 
+import Panel from "./components/ui/panel.ui.component";
+
 function App() {
   let data = {
     title: "Faux Leather Sofa Couch new premium",
@@ -56,13 +58,15 @@ function App() {
                 'itemcallback':()=>{return(null)},
               }
             ]} /> */}
-        <Product
+        {/* <Product
           imgSrc={"./img/samples/sample-image.png"}
           productName={data.title}
           price={data.basePrice}
           variants={data.variants}
           rating={data.rating}
-        />
+        /> */}
+
+          <Panel />
 
         {/* <StarRating rating={3.5} /> */}
       </section>

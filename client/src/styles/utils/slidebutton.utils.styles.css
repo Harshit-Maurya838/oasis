@@ -1,0 +1,29 @@
+
+.inverted{
+    transform: rotateZ(180deg);
+}
+
+.slideDom{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--bTertiary);
+    border-radius: 300px;
+    overflow: hidden;
+    padding: 10px 20px;
+    margin: 10px 0;
+}
+
+.icon{
+    width: 14px;
+    height: 14px;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
