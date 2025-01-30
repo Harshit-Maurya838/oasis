@@ -1,20 +1,25 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PanelPage from "../utils/panelpage.utils.component";
 import "../../styles/panel/main.panel.styles.css";
 import SildeButton from "../utils/slidebutton.utils.component";
 
 function Panel({ pages = 4, children }) {
   const [currentSlide, setCurrentSlide] = useState(1);
-  const panelDom = useRef(null)
-  console.log('initial value',currentSlide);
+  const panelDom = useRef(null);
+
   const slide = (value) => {
-    console.log('called value',value)
-    setCurrentSlide((val)=>{
-      return value
-    });
-    console.log(currentSlide)
-    panelDom.current.children[currentSlide].scrollIntoView();
+    setCurrentSlide(value);
   };
+
+  useEffect(() => {
+    if (panelDom.current) {
+      panelDom.current.children[currentSlide - 1]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start",
+      });
+    }
+  }, [currentSlide]);
 
   return (
     <div>
@@ -24,7 +29,7 @@ function Panel({ pages = 4, children }) {
         })}
       </div>
       <div className="navigation">
-        <SildeButton initial={currentSlide} changer={slide} total={pages} />
+        <SildeButton currentSlide={currentSlide} changer={slide} total={pages} />
       </div>
     </div>
   );

@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     padding: 0 16px 0 32px;
-    gap: 32px;
+    gap: 8px;
 }
 
 .right_sec h1 {
@@ -30,6 +30,7 @@
     display: flex;
     gap: 6px;
     align-items: center;
+    margin: 16px 0;
 }
 
 .price_sec .disc_price {
@@ -57,6 +58,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    margin: 24px 0;
 }
 
 .variant {
@@ -141,12 +143,21 @@
     height: 64px;
     width: 100%;
     border-radius: 45px;
-    background-color: var(--heading-brand);
+    background-color: var(--p800);
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-
+.buyBtn:hover{
+    background-color: var(--p700);
+}
+.detailxy{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+}
 .detailxy p img{
     display: inline-block;
 }

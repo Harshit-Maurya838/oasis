@@ -2,14 +2,13 @@ import React from "react";
 import "../../styles/utils/slidebutton.utils.styles.css";
 import ChevronRight from "../icons/chevronRight.icon.component";
 
-function SildeButton({ total = 2, text = "slide", initial, changer }) {
+function SildeButton({ total = 2, text = "slide", currentSlide, changer }) {
   const handlePrev = () => {
-    initial > 1 ? changer(initial - 1) : changer(initial);
+    currentSlide > 1 ? changer(currentSlide - 1) : null;
   };
 
   const handleNext = () => {
-    console.log(total);
-    initial < total ? changer(initial + 1) : changer(initial);
+    currentSlide < total ? changer(currentSlide + 1) : null;
   };
 
   return (
@@ -19,7 +18,7 @@ function SildeButton({ total = 2, text = "slide", initial, changer }) {
         <p className="text-14-regular">Previous</p>
       </div>
       <div className="text">
-        <p className="text-16-semibold">{text}</p>
+        <p className="text-16-semibold">{text} {currentSlide}</p>
       </div>
       <div className="next nav" onClick={handleNext}>
         <p className="text-14-regular">Next</p>
