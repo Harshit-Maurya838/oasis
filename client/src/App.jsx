@@ -10,6 +10,7 @@ import Product from "./components/utils/productCard.utils.component";
 import StarRating from "./components/utils/rating.utils.component";
 
 import Panel from "./components/ui/panel.ui.component";
+import ProductDetail from "./components/ui/productDetail.ui.component";
 
 function App() {
   let data = {
@@ -58,16 +59,14 @@ function App() {
                 'itemcallback':()=>{return(null)},
               }
             ]} /> */}
-        {/* <Product
+        <Product
           imgSrc={"./img/samples/sample-image.png"}
           productName={data.title}
           price={data.basePrice}
           variants={data.variants}
           rating={data.rating}
-        /> */}
-
-          <Panel />
-
+        />
+        <Panel />
         {/* <StarRating rating={3.5} /> */}
       </section>
       <Footer />

@@ -1,15 +1,15 @@
 import React from "react";
 import "../../styles/utils/slidebutton.utils.styles.css";
 import ChevronRight from "../icons/chevronRight.icon.component";
+
 function SildeButton({ total = 2, text = "slide", initial, changer }) {
-    console.log(initial)
   const handlePrev = () => {
-    initial > 0 ? changer(initial - 1) : changer(initial);
+    initial > 1 ? changer(initial - 1) : changer(initial);
   };
 
   const handleNext = () => {
-    changer(initial + 1);
-    initial += 1
+    console.log(total);
+    initial < total ? changer(initial + 1) : changer(initial);
   };
 
   return (
