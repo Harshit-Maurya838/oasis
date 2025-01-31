@@ -242,6 +242,14 @@
   line-height: auto;
   font-style: unset;
 }
+.text-18-medium {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0%;
+  text-decoration: none;
+  line-height: auto;
+  font-style: unset;
+}
 
 .text-18-bold {
   font-weight: 800;

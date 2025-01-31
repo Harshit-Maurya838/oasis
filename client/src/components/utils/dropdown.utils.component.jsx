@@ -28,7 +28,7 @@ function DropDown({ items }) {
 
         setIsOpen(!isOpen);
       }}
-      className={`maindom ${isOpen ? "active" : ""}`}
+      className={`maindom ${isOpen ? "active_d" : ""}`}
     >
       <div className="dropdom">
         <span>{selectedState}</span>
