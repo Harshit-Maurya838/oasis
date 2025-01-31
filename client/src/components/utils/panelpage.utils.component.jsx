@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../styles/utils/panelpage.utils.styles.css';
 
-function PanelPage() {
+function PanelPage({children}) {
   return (
-    <div className='panelPage' >PanelPage</div>
+    <div className='panelPage' >{children}</div>
   )
 }
 

@@ -5,7 +5,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 1px solid red;
     padding: 5px 0;
     overflow-x:hidden;
     align-items: center;
@@ -17,4 +16,17 @@
 
 .navigation{
     width: 100%;
+}
+
+.headder{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+}
+
+.panelCard{
+    margin: 20px 0;
 }

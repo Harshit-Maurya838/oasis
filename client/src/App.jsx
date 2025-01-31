@@ -1,5 +1,6 @@
 import Navbar from "./components/ui/navbar.ui.component";
 import "./App.css";
+import './styles/utils/utils.styles.css'
 import HeroSection from "./components/ui/hero.ui.component";
 import oasisLogo from "/Oasis.svg";
 import Footer from "./components/ui/footer.ui.component";
@@ -59,14 +60,33 @@ function App() {
                 'itemcallback':()=>{return(null)},
               }
             ]} /> */}
-        <Product
-          imgSrc={"./img/samples/sample-image.png"}
-          productName={data.title}
-          price={data.basePrice}
-          variants={data.variants}
-          rating={data.rating}
-        />
-        <Panel />
+        <Panel>
+          <div className="headder " >
+            <p className="text-26-semibold">Top Items</p>
+            <DropDown
+              items={[
+                {
+                  itemname: "Higher to lower",
+                  itemcallback: () => {
+                    return null;
+                  },
+                },
+                {
+                  itemname: "Lower to higher",
+                  itemcallback: () => {
+                    return null;
+                  },
+                },
+                {
+                  itemname: "Recently added",
+                  itemcallback: () => {
+                    return null;
+                  },
+                },
+              ]}
+            />
+          </div>
+        </Panel>
         {/* <StarRating rating={3.5} /> */}
       </section>
       <Footer />

@@ -3,9 +3,9 @@ import "../../styles/utils/productCard.utils.styles.css";
 import "../../styles/utils/utils.styles.css";
 import Button from "./button.utils.component";
 
-const Product = ({ productName, price, imgSrc, variants , rating = 5 }) => {
+const Product = ({extraClass, productName, price, imgSrc, variants , rating = 5 }) => {
   return (
-    <div className="cardDom">
+    <div className={`cardDom ${extraClass}`} >
       <div className="cardImgDom">
         <img src={imgSrc} alt="Product" />
         <div className="button">
