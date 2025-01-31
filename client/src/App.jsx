@@ -61,7 +61,7 @@ function App() {
               }
             ]} /> */}
         <Panel>
-          <div className="headder " >
+          <div className="header " >
             <p className="text-26-semibold">Top Items</p>
             <DropDown
               items={[
