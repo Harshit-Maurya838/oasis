@@ -4,6 +4,7 @@ import "../../styles/navbar/main.navbar.styles.css";
 import "../../styles/utils/utils.styles.css";
 import CartButton from "../utils/cardButton.utils.component";
 import Button from "../utils/button.utils.component";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -54,13 +55,10 @@ const Navbar = () => {
         }}
       >
         <div className="center">
-          <a href="/home">Home</a>
-          <a href="/Shop">Shop</a>
-          <a href="/Categories" onClick={(e)=>{
-            e.preventDefault()
-            document.querySelector('#categories_main').scrollIntoView()
-          }}>Categories</a>
-          <a href="">Blog</a>
+          <Link href="/">Home</Link>
+          <Link href="/Shop">Shop</Link>
+          <Link href="/Categories" >Categories</Link>
+          <Link href="">Blog</Link>
         </div>
         <div className="right">
           <CartButton cartItem={0} />

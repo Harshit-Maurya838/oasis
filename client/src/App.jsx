@@ -1,6 +1,7 @@
 import Navbar from "./components/ui/navbar.ui.component";
 import "./App.css";
 import './styles/utils/utils.styles.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeroSection from "./components/ui/hero.ui.component";
 import oasisLogo from "/Oasis.svg";
 import Footer from "./components/ui/footer.ui.component";
@@ -41,55 +42,19 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <section id="main-body">
-        <HeroSection />
-        <Categories />
-        <FaQ />
-        {/* <DropDown items={[
-              {
-                'itemname':'Higher to lower',
-                'itemcallback':()=>{return(null)},
-              },
-              {
-                'itemname':'Lower to higher',
-                'itemcallback':()=>{return(null)},
-              },
-              {
-                'itemname':'Recently added',
-                'itemcallback':()=>{return(null)},
-              }
-            ]} /> */}
-        <Panel>
-          <div className="headder " >
-            <p className="text-26-semibold">Top Items</p>
-            <DropDown
-              items={[
-                {
-                  itemname: "Higher to lower",
-                  itemcallback: () => {
-                    return null;
-                  },
-                },
-                {
-                  itemname: "Lower to higher",
-                  itemcallback: () => {
-                    return null;
-                  },
-                },
-                {
-                  itemname: "Recently added",
-                  itemcallback: () => {
-                    return null;
-                  },
-                },
-              ]}
-            />
-          </div>
-        </Panel>
-        {/* <StarRating rating={3.5} /> */}
-      </section>
-      <Footer />
+      <Router>
+        <Navbar />
+        <section id="main-body">
+          <Routes>
+            <Route path="/" element={<HeroSection />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/faq" element={<FaQ />} />
+            <Route path="/panel" element={<Panel />} />
+            <Route path="/product" element={<ProductDetail data={data} />} />
+          </Routes> 
+        </section>
+        <Footer />
+      </Router>
     </>
   );
 }

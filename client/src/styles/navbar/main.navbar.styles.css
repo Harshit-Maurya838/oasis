@@ -21,7 +21,7 @@
     display: flex;
     gap: 40px;
 }
-.center > a{
+.center > Link{
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
