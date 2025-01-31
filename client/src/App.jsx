@@ -55,6 +55,34 @@ function App() {
         </section>
         <Footer />
       </Router>
+        <Panel>
+          <div className="header " >
+            <p className="text-26-semibold">Top Items</p>
+            <DropDown
+              items={[
+                {
+                  itemname: "Higher to lower",
+                  itemcallback: () => {
+                    return null;
+                  },
+                },
+                {
+                  itemname: "Lower to higher",
+                  itemcallback: () => {
+                    return null;
+                  },
+                },
+                {
+                  itemname: "Recently added",
+                  itemcallback: () => {
+                    return null;
+                  },
+                },
+              ]}
+            />
+          </div>
+        </Panel>
+        {/* <StarRating rating={3.5} /> */}
     </>
   );
 }

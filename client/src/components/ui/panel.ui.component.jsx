@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import PanelPage from "../utils/panelpage.utils.component";
 import "../../styles/panel/main.panel.styles.css";
+import "../../styles/panel/responsive.panel.styles.css";
 import SildeButton from "../utils/slidebutton.utils.component";
 import Product from "../utils/productCard.utils.component";
 
