@@ -6,8 +6,10 @@ import Img3 from "/img/productDetail(temp)/PD_3.png";
 import Img4 from "/img/productDetail(temp)/PD_4.png";
 import StarRating from "../utils/rating.utils.component";
 import "../../styles/utils/utils.styles.css";
+import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
+    let { id } = useParams();
     let imgArray = [Img1, Img2, Img3, Img4];
     let data = {
         title: "Luxe Armchair - Left Arm Chute",
@@ -64,10 +66,10 @@ const ProductDetail = () => {
                         })}
                     </div>
                     <div className="cart_desc">
-                        <div class="quantity-box">
-                            <div class="btn minus">-</div>
+                        <div className="quantity-box">
+                            <div className="btn minus">-</div>
                             <span>1</span>
-                            <div class="btn plus">+</div>
+                            <div className="btn plus">+</div>
                         </div>
                     </div>
                 </div>

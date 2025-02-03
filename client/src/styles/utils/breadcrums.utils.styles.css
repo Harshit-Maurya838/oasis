@@ -1,0 +1,18 @@
+.breadcum{
+    color: grey;
+    font-size: small;
+    margin-top: 8px;
+}
+
+.breadcum a{
+    text-decoration: none;
+    color: black;
+}
+.breadcum a:hover{
+    text-decoration: underline;
+    color: rgb(0, 55, 255);
+}
+
+.bnav-item{
+    margin: 0 4px;
+}
