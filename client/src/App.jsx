@@ -3,16 +3,14 @@ import "./App.css";
 import './styles/utils/utils.styles.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeroSection from "./components/ui/hero.ui.component";
-import oasisLogo from "/Oasis.svg";
 import Footer from "./components/ui/footer.ui.component";
 import Categories from "./components/ui/categories.ui.component";
 import FaQ from "./components/ui/faq.ui.component";
 import DropDown from "./components/utils/dropdown.utils.component";
-import Product from "./components/utils/productCard.utils.component";
-import StarRating from "./components/utils/rating.utils.component";
+import SidePanel from "./components/ui/sidepanel.ui.component";
+import LoginPage from "./components/ui/loginPage.ui.component";
 
 import Panel from "./components/ui/panel.ui.component";
-import ProductDetail from "./components/ui/productDetail.ui.component";
 
 function App() {
   let data = {
@@ -42,19 +40,28 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Navbar />
-        <section id="main-body">
-          <Routes>
-            <Route path="/" element={<HeroSection />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/faq" element={<FaQ />} />
-            <Route path="/panel" element={<Panel />} />
-            <Route path="/product" element={<ProductDetail data={data} />} />
-          </Routes> 
-        </section>
-        <Footer />
-      </Router>
+      <Navbar />
+      <section id="main-body">
+        <SidePanel panelHeading={"Login"}>
+          <LoginPage />
+        </SidePanel>
+        <HeroSection />
+        <Categories />
+        <FaQ />
+        {/* <DropDown items={[
+              {
+                'itemname':'Higher to lower',
+                'itemcallback':()=>{return(null)},
+              },
+              {
+                'itemname':'Lower to higher',
+                'itemcallback':()=>{return(null)},
+              },
+              {
+                'itemname':'Recently added',
+                'itemcallback':()=>{return(null)},
+              }
+            ]} /> */}
         <Panel>
           <div className="header " >
             <p className="text-26-semibold">Top Items</p>

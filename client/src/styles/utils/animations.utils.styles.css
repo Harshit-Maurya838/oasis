@@ -6,7 +6,7 @@
     animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
     animation-duration:1s;
 }
-.swipedown{
+.swipeDown{
     animation-name: swipedown;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
@@ -15,14 +15,38 @@
     animation-duration:0.5s;
     transform-origin: top;
 }
-.swipeup{
-    animation-name: swipedown;
+.swipeUp{
+    animation-name: swipeup;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
-    animation-direction: reverse;
+    animation-direction: normal;
     animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
     animation-duration:0.5s;
     transform-origin: top;
+}
+
+.slideRight{
+    animation-name: slideRight;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
+}
+
+.displayOut{
+    animation-name: displayout;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+.fadeOut{
+    animation-name: fadeout;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-direction: normal;
 }
 
 @keyframes fadein {
@@ -41,4 +65,49 @@
         transform: scaleY(1);
         opacity:1;
     }
+}
+
+@keyframes swipeup {
+    0%{
+        transform: scaleY(1);
+    }
+    99%{
+        transform: scaleY(0);
+        opacity:0;
+    }
+    100%{
+        display: none;
+    }
+}
+
+@keyframes displayout {
+    100%{
+        display: none;
+    }
+}
+
+@keyframes slideRight {
+    0%{
+        opacity: 1;
+    }
+    99%{
+        transform: translateX(20rem);
+        opacity: 0;
+    }
+    100%{
+        display: none;
+    }
+}
+
+@keyframes fadeout{
+    0%{
+        opacity: 1;
+    }
+    99%{
+        opacity: 0;
+    }
+    100%{
+        display: none;
+    }
+
 }
