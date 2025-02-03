@@ -37,7 +37,9 @@ function DropDown({ items }) {
           classname={`${isOpen ? "activechevron" : ""} dropchevron`}
         />
       </div>
-      <div className="dropitems swipedown " ref={DropItems}>
+      <div className={`dropitems ${
+        isOpen ? "swipeDown" : "swipeUp"
+      }`} ref={DropItems}>
         {
           items.map((item,index)=>{
             return(

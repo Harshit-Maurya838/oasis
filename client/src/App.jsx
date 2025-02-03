@@ -2,16 +2,14 @@ import Navbar from "./components/ui/navbar.ui.component";
 import "./App.css";
 import './styles/utils/utils.styles.css'
 import HeroSection from "./components/ui/hero.ui.component";
-import oasisLogo from "/Oasis.svg";
 import Footer from "./components/ui/footer.ui.component";
 import Categories from "./components/ui/categories.ui.component";
 import FaQ from "./components/ui/faq.ui.component";
 import DropDown from "./components/utils/dropdown.utils.component";
-import Product from "./components/utils/productCard.utils.component";
-import StarRating from "./components/utils/rating.utils.component";
+import SidePanel from "./components/ui/sidepanel.ui.component";
+import LoginPage from "./components/ui/loginPage.ui.component";
 
 import Panel from "./components/ui/panel.ui.component";
-import ProductDetail from "./components/ui/productDetail.ui.component";
 
 function App() {
   let data = {
@@ -43,6 +41,9 @@ function App() {
     <>
       <Navbar />
       <section id="main-body">
+        <SidePanel panelHeading={"Login"}>
+          <LoginPage />
+        </SidePanel>
         <HeroSection />
         <Categories />
         <FaQ />

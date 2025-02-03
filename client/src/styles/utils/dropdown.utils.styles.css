@@ -9,6 +9,7 @@
     cursor: pointer;
     transition: .3s cubic-bezier(.74,-0.43,0,1.7);
     z-index: 2;
+    transition-delay: .12s;
 }
 
 .dropdom{
@@ -21,7 +22,7 @@
 }
 
 .dropitems{
-    display: none;
+    /* display: none; */
     flex-direction:column;
     gap: 10px;
     position: absolute;
@@ -51,6 +52,7 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom:0;
+    transition-delay: 0s;
 }
 
 .active_d .dropitems{

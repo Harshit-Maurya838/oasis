@@ -1,8 +1,8 @@
 import React from 'react'
 
-function GoogleLogo({ width, height = width, boxFill }) {
+function GoogleLogo({ classname ,width, height = width, boxFill }) {
   return (
-    <svg width={width} height={height} viewBox="0 0 24 24" fill={boxFill} xmlns="http://www.w3.org/2000/svg">
+    <svg className={`${classname}`} width={width} height={height} viewBox="0 0 24 24" fill={boxFill} xmlns="http://www.w3.org/2000/svg">
       <g id="google_logo">
         <path id="Vector" d="M22.56 12.25C22.56 11.47 22.49 10.72 22.36 10H12V14.255H17.92C17.665 15.63 16.89 16.795 15.725 17.575V20.335H19.28C21.36 18.42 22.56 15.6 22.56 12.25Z" fill="#4285F4" />
         <path id="Vector_2" d="M11.9999 23C14.9699 23 17.4599 22.015 19.2799 20.335L15.7249 17.575C14.7399 18.235 13.4799 18.625 11.9999 18.625C9.13492 18.625 6.70992 16.69 5.84492 14.09H2.16992V16.94C3.97992 20.535 7.69992 23 11.9999 23Z" fill="#34A853" />

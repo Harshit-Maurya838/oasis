@@ -1,0 +1,117 @@
+.loginDom{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 32px 0;
+    gap:50px;  
+}
+
+.loginBody{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 24px;
+    padding: 24px 0;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 24px ;
+}
+
+.loginInputDom input{
+    font-size: 16px;
+    font-weight: "500";
+}
+
+.loginHeaderImg{
+    width: 35%;
+}
+
+.loginHeaderImg img{
+    width: 100%;
+}
+
+.loginInputDom{
+    border-radius: 21px !important;
+}
+
+.loginForgotPassword{
+    width: 100%;
+}
+
+.loginForgotPassword span{
+    color: var(--heading-brand);
+    float: right;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.loginForgotPassword span::after{
+    content:"";
+    position: absolute;
+    top: 0;
+    left:0;
+    width:0;
+    height: 100%;
+    border-bottom: 2px solid var(--heading-brand);
+    transition:all .3s ease;
+    z-index: 2;
+}
+
+.loginForgotPassword span:hover::after{
+    width: 100%;
+}
+
+.loginButton{
+    width: 100%;
+    background: var(--heading-brand);
+    border-radius: 300px;
+    padding: 12px 20px;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    transition: transform .3s ease , background-color .5s ease;
+    border: 2px solid var(--heading-brand);
+}
+
+.loginButton span{
+    float: center;
+    color: var(--heading-secondary);
+    user-select:none;
+}
+
+.loginButton:hover{
+    transform: scale(0.98);
+    background-color: var(--background);
+}
+
+.loginButton:hover span{
+    color: var(--heading-brand);
+}
+
+.orDom{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.orDom hr{
+    width: 100%;
+}
+
+.orDom p{
+    color: var(--body-sub);
+}

@@ -349,3 +349,7 @@
   line-height: auto;
   font-style: unset;
 }
+
+body{
+  overflow-x: hidden;
+}
