@@ -39,6 +39,10 @@ function LoginPage() {
         </div>
         <ProviderButton icon={<GoogleLogo />} title={"Continue With Google"} />
         <ProviderButton icon={<AppleLogoIcon />} title={"Continue With Apple"} />
+        <div className="createAccount">
+            <span className="text-16-regular">First time here? </span>
+            <span className="text-16-semibold">Create an Account</span>
+        </div>
       </div>
     </div>
   );
