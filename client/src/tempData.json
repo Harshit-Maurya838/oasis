@@ -1,0 +1,302 @@
+[
+    {
+        "title": "Faux Leather Sofa Couch new premium",
+        "category": "Chair",
+        "tags": "",
+        "desc": "AMAZING CHAIR",
+        "basePrice": "500",
+        "rating": "4.2",
+        "variants": [
+            {
+                "var_name": "Classic Red",
+                "var_url": "red-faux-leather",
+                "var_gallery": [
+                    "red1.jpg",
+                    "red2.jpg"
+                ],
+                "var_color": "red",
+                "discount": "40%"
+            },
+            {
+                "var_name": "Elegant Blue",
+                "var_url": "blue-faux-leather",
+                "var_gallery": [
+                    "blue1.jpg",
+                    "blue2.jpg"
+                ],
+                "var_color": "blue",
+                "discount": "40%"
+            }
+        ]
+    },
+    {
+        "title": "Modern Recliner Lounge Chair",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Ultimate comfort and style",
+        "basePrice": "650",
+        "rating": "4.5",
+        "variants": [
+            {
+                "var_name": "Black Edition",
+                "var_url": "black-recliner",
+                "var_gallery": [
+                    "black1.jpg",
+                    "black2.jpg"
+                ],
+                "var_color": "black",
+                "discount": "35%"
+            },
+            {
+                "var_name": "Grey Comfort",
+                "var_url": "grey-recliner",
+                "var_gallery": [
+                    "grey1.jpg",
+                    "grey2.jpg"
+                ],
+                "var_color": "grey",
+                "discount": "30%"
+            }
+        ]
+    },
+    {
+        "title": "Velvet Armchair with Wooden Legs",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Luxury and durability combined",
+        "basePrice": "400",
+        "rating": "4.3",
+        "variants": [
+            {
+                "var_name": "Royal Green",
+                "var_url": "green-velvet-armchair",
+                "var_gallery": [
+                    "green1.jpg",
+                    "green2.jpg"
+                ],
+                "var_color": "green",
+                "discount": "25%"
+            },
+            {
+                "var_name": "Deep Navy",
+                "var_url": "navy-velvet-armchair",
+                "var_gallery": [
+                    "navy1.jpg",
+                    "navy2.jpg"
+                ],
+                "var_color": "navy",
+                "discount": "20%"
+            }
+        ]
+    },
+    {
+        "title": "Minimalist Dining Chair Set",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Perfect for modern dining spaces",
+        "basePrice": "300",
+        "rating": "4.0",
+        "variants": [
+            {
+                "var_name": "White Elegance",
+                "var_url": "white-dining-chair",
+                "var_gallery": [
+                    "white1.jpg",
+                    "white2.jpg"
+                ],
+                "var_color": "white",
+                "discount": "15%"
+            },
+            {
+                "var_name": "Charcoal Black",
+                "var_url": "black-dining-chair",
+                "var_gallery": [
+                    "black1.jpg",
+                    "black2.jpg"
+                ],
+                "var_color": "black",
+                "discount": "10%"
+            }
+        ]
+    },
+    {
+        "title": "Premium Leather Executive Chair",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Perfect for office comfort",
+        "basePrice": "700",
+        "rating": "4.8",
+        "variants": [
+            {
+                "var_name": "Brown Classic",
+                "var_url": "brown-leather-executive",
+                "var_gallery": [
+                    "brown1.jpg",
+                    "brown2.jpg"
+                ],
+                "var_color": "brown",
+                "discount": "20%"
+            },
+            {
+                "var_name": "Black Prestige",
+                "var_url": "black-leather-executive",
+                "var_gallery": [
+                    "black1.jpg",
+                    "black2.jpg"
+                ],
+                "var_color": "black",
+                "discount": "25%"
+            }
+        ]
+    },
+    {
+        "title": "Ergonomic Mesh Office Chair",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Designed for long hours of work",
+        "basePrice": "350",
+        "rating": "4.6",
+        "variants": [
+            {
+                "var_name": "Black Mesh",
+                "var_url": "black-mesh-chair",
+                "var_gallery": [
+                    "black1.jpg",
+                    "black2.jpg"
+                ],
+                "var_color": "black",
+                "discount": "18%"
+            },
+            {
+                "var_name": "Grey Mesh",
+                "var_url": "grey-mesh-chair",
+                "var_gallery": [
+                    "grey1.jpg",
+                    "grey2.jpg"
+                ],
+                "var_color": "grey",
+                "discount": "15%"
+            }
+        ]
+    },
+    {
+        "title": "Scandinavian Wooden Chair",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Stylish and modern wooden design",
+        "basePrice": "450",
+        "rating": "4.4",
+        "variants": [
+            {
+                "var_name": "Oak Finish",
+                "var_url": "oak-wood-chair",
+                "var_gallery": [
+                    "oak1.jpg",
+                    "oak2.jpg"
+                ],
+                "var_color": "wood",
+                "discount": "12%"
+            },
+            {
+                "var_name": "Walnut Finish",
+                "var_url": "walnut-wood-chair",
+                "var_gallery": [
+                    "walnut1.jpg",
+                    "walnut2.jpg"
+                ],
+                "var_color": "brown",
+                "discount": "15%"
+            }
+        ]
+    },
+    {
+        "title": "Luxury Upholstered Accent Chair",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Perfect for cozy corners",
+        "basePrice": "500",
+        "rating": "4.7",
+        "variants": [
+            {
+                "var_name": "Velvet Rose",
+                "var_url": "velvet-rose-chair",
+                "var_gallery": [
+                    "rose1.jpg",
+                    "rose2.jpg"
+                ],
+                "var_color": "pink",
+                "discount": "30%"
+            },
+            {
+                "var_name": "Navy Blue",
+                "var_url": "navy-blue-chair",
+                "var_gallery": [
+                    "navy1.jpg",
+                    "navy2.jpg"
+                ],
+                "var_color": "navy",
+                "discount": "25%"
+            }
+        ]
+    },
+    {
+        "title": "Industrial Metal Dining Chair",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Durable and stylish",
+        "basePrice": "280",
+        "rating": "4.1",
+        "variants": [
+            {
+                "var_name": "Matte Black",
+                "var_url": "black-metal-chair",
+                "var_gallery": [
+                    "black1.jpg",
+                    "black2.jpg"
+                ],
+                "var_color": "black",
+                "discount": "10%"
+            },
+            {
+                "var_name": "Gunmetal Grey",
+                "var_url": "grey-metal-chair",
+                "var_gallery": [
+                    "grey1.jpg",
+                    "grey2.jpg"
+                ],
+                "var_color": "grey",
+                "discount": "12%"
+            }
+        ]
+    },
+    {
+        "title": "Folding Wooden Deck Chair",
+        "category": "Chair",
+        "tags": "",
+        "desc": "Perfect for patios and gardens",
+        "basePrice": "320",
+        "rating": "4.3",
+        "variants": [
+            {
+                "var_name": "Teak Finish",
+                "var_url": "teak-deck-chair",
+                "var_gallery": [
+                    "teak1.jpg",
+                    "teak2.jpg"
+                ],
+                "var_color": "brown",
+                "discount": "15%"
+            },
+            {
+                "var_name": "Bamboo Natural",
+                "var_url": "bamboo-deck-chair",
+                "var_gallery": [
+                    "bamboo1.jpg",
+                    "bamboo2.jpg"
+                ],
+                "var_color": "beige",
+                "discount": "18%"
+            }
+        ]
+    }
+]

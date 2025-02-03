@@ -4,7 +4,7 @@ import "../../styles/navbar/main.navbar.styles.css";
 import "../../styles/utils/utils.styles.css";
 import CartButton from "../utils/cardButton.utils.component";
 import Button from "../utils/button.utils.component";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -47,18 +47,20 @@ const Navbar = () => {
       <div
         className="menu"
         style={{
-            ...(isMobileView ? {transform: isChecked ? "translateY(20px)" : "translateY(-20px)",
-                opacity: isChecked ? "1" : "0",
-                transition: "transform 0.3s ease, opacity 0.3s ease"} : {opacity : 1})
+          ...(isMobileView ? {
+            transform: isChecked ? "translateY(20px)" : "translateY(-20px)",
+            opacity: isChecked ? "1" : "0",
+            transition: "transform 0.3s ease, opacity 0.3s ease"
+          } : { opacity: 1 })
           ,
           ...(!isMobileView ? { display: "flex" } : { display: "flex" }),
         }}
       >
         <div className="center">
-          <Link href="/">Home</Link>
-          <Link href="/Shop">Shop</Link>
-          <Link href="/Categories" >Categories</Link>
-          <Link href="">Blog</Link>
+          <NavLink to="/home#hero" className={({isActive}) => isActive ? "active" : null}>Home</NavLink>
+          <NavLink to="/shop" className={({isActive}) => isActive ? "active" : null}>Shop</NavLink>
+          <NavLink to="/categories"  className={({isActive}) => isActive ? "active" : null}>Categories</NavLink>
+          <NavLink to="/blog" className={({isActive}) => isActive ? "active" : null}>Blog</NavLink>
         </div>
         <div className="right">
           <CartButton cartItem={0} />

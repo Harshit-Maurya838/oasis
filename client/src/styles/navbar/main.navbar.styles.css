@@ -21,10 +21,13 @@
     display: flex;
     gap: 40px;
 }
-.center > Link{
+.center > a{
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
+    color: #686a74;
+}
+a.active{
     color: #2E2F33;
 }
 
