@@ -5,11 +5,13 @@ import "../../styles/utils/utils.styles.css";
 import CartButton from "../utils/cardButton.utils.component";
 import Button from "../utils/button.utils.component";
 import { Link, NavLink } from "react-router-dom";
+import { useSidePanel } from "../../SidePanelContext";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 834);
 
+  const { openPanel } = useSidePanel();
   // for hamburger
   const handleToggle = (e) => {
     setIsChecked(e.target.checked);
@@ -64,7 +66,7 @@ const Navbar = () => {
         </div>
         <div className="right">
           <CartButton cartItem={0} />
-          <Button variant="contained">
+          <Button variant="contained" onClick={() => openPanel("login")}>
             <p className="text-16-semibold">Get Started</p>
           </Button>
         </div>
