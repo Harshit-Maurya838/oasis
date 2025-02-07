@@ -1,113 +1,152 @@
-.fadein{
-    animation-name: fadein;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
-    animation-duration:1s;
+.fadein {
+  animation-name: fadein;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: cubic-bezier(0.74, -0.43, 0, 1.7);
+  animation-duration: 1s;
 }
-.swipeDown{
-    animation-name: swipedown;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
-    animation-duration:0.5s;
-    transform-origin: top;
+.swipeDown {
+  animation-name: swipedown;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: cubic-bezier(0.74, -0.43, 0, 1.7);
+  animation-duration: 0.5s;
+  transform-origin: top;
 }
-.swipeUp{
-    animation-name: swipeup;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
-    animation-duration:0.5s;
-    transform-origin: top;
-}
-
-.slideRight{
-    animation-name: slideRight;
-    animation-fill-mode: forwards;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
+.swipeUp {
+  animation-name: swipeup;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: cubic-bezier(0.74, -0.43, 0, 1.7);
+  animation-duration: 0.5s;
+  transform-origin: top;
 }
 
-.displayOut{
-    animation-name: displayout;
-    animation-delay: 1s;
-    animation-fill-mode: forwards;
+.slideRight {
+  animation-name: slideRight;
+  animation-fill-mode: forwards;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: cubic-bezier(0.74, -0.43, 0, 1.7);
 }
 
-.fadeOut{
-    animation-name: fadeout;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    animation-timing-function: ease;
-    animation-direction: normal;
+.displayOut {
+  animation-name: displayout;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+.fadeOut {
+  animation-name: fadeout;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-direction: normal;
+}
+
+.arrowSlideLeft {
+  animation-name: arrowSlideLeft;
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.74, -0.43, 0, 1.7);
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
 }
 
 @keyframes fadein {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
+
 @keyframes swipedown {
-    0%{
-        transform: scaleY(0);
-    }
-    100%{
-        transform: scaleY(1);
-        opacity:1;
-    }
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
 @keyframes swipeup {
-    0%{
-        transform: scaleY(1);
-    }
-    99%{
-        transform: scaleY(0);
-        opacity:0;
-    }
-    100%{
-        display: none;
-    }
+  0% {
+    transform: scaleY(1);
+  }
+  99% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    display: none;
+  }
 }
 
 @keyframes displayout {
-    100%{
-        display: none;
-    }
+  100% {
+    display: none;
+  }
 }
 
 @keyframes slideRight {
-    0%{
-        opacity: 1;
-    }
-    99%{
-        transform: translateX(20rem);
-        opacity: 0;
-    }
-    100%{
-        display: none;
-    }
+  0% {
+    opacity: 1;
+  }
+  99% {
+    transform: translateX(20rem);
+    opacity: 0;
+  }
+  100% {
+    display: none;
+  }
 }
 
-@keyframes fadeout{
-    0%{
-        opacity: 1;
-    }
-    99%{
-        opacity: 0;
-    }
-    100%{
-        display: none;
-    }
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    display: none;
+  }
+}
 
+@keyframes arrowSlideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(40px);
+  }
+  51% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes arrowSlideRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-40px);
+  }
+  51% {
+    transform: translateX(40px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
