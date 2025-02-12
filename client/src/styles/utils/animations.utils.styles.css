@@ -49,14 +49,14 @@
   animation-direction: normal;
 }
 
-.arrowSlideLeft {
+/* .arrowSlideLeft {
   animation-name: arrowSlideLeft;
   animation-duration: 0.3s;
   animation-timing-function: cubic-bezier(0.74, -0.43, 0, 1.7);
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-direction: normal;
-}
+} */
 
 @keyframes fadein {
   0% {

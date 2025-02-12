@@ -15,19 +15,19 @@ function FilterTabs({ enableText = "All", filters = [] }) {
 
     let value = element.currentTarget.children[0].innerHTML;
 
-    if (!element.currentTarget.classList.contains("active")) {
+    if (!element.currentTarget.classList.contains("filActive")) {
       setActiveFilters([...activeFilters, value]);
-      element.currentTarget.classList.add("active");
+      element.currentTarget.classList.add("filActive");
     } else {
       setActiveFilters(activeFilters.filter((item) => item !== value));
-      element.currentTarget.classList.remove("active");
+      element.currentTarget.classList.remove("filActive");
     }
   };
 
   const resetFilter = () => {
     setDisabled(false);
     document.querySelectorAll(".filltabs").forEach((item) => {
-      item.classList.remove("active");
+      item.classList.remove("filActive");
     });
     setActiveFilters([]);
     console.log(activeFilters);
@@ -39,7 +39,7 @@ function FilterTabs({ enableText = "All", filters = [] }) {
         <div
           onClick={resetFilter}
           className={`filterTab 
-                ${!isDisabled ? "active" : ""}
+                ${!isDisabled ? "filActive" : ""}
             `}
         >
           <span className="text-16-medium">{enableText}</span>

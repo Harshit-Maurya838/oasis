@@ -4,7 +4,7 @@ import "../../styles/sidePanel/main.sidepanel.styles.css";
 import "../../styles/utils/animations.utils.styles.css";
 import CancelIcon from "../icons/cancel.icon.component";
 
-function SidePanel({ children, domclass, panelclass, panelHeading, isActive, closePanel }) {
+function SidePanel({ children, domclass, panelclass, panelHeading, isActive = false, closePanel }) {
   // const closeButtonRef = useRef(null);
   // const [isActive, setActive] = useState(true);
   // useEffect(() => {
