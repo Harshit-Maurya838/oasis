@@ -49,6 +49,15 @@
   animation-direction: normal;
 }
 
+.domFadein{
+  animation-name: domFadeIn;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-timing-function: ease;
+}
+
 /* .arrowSlideLeft {
   animation-name: arrowSlideLeft;
   animation-duration: 0.3s;
@@ -147,6 +156,28 @@
     transform: translateX(40px);
   }
   100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes domFadeIn{
+  0%{
+    display: block;
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn{
+  0%{
+    display: block;
+    opacity: 0;
+    transform: translateX(20rem);
+  }
+  100%{
+    opacity: 1;
     transform: translateX(0);
   }
 }

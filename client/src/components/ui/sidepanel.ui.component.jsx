@@ -14,7 +14,7 @@ function SidePanel({ children, domclass, panelclass, panelHeading, isActive = fa
   // }, []);
   return (
     <div className={`screenDom ${domclass} ${isActive ? "active" : "fadeOut"}`}>
-      <div className={`sidePanel ${panelclass} ${isActive ? "active" : "slideRight"}`}>
+      <div className={`sidePanel ${panelclass} ${isActive ? "sidePanelChildActive" : "slideRight"}`}>
         {/* Panel Header with Close Button */}
         <div className="sidePanelHeading">
           <div className="closeDom" onClick={closePanel}>
