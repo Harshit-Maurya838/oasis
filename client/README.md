@@ -9,18 +9,18 @@ Currently, two official plugins are available:
 
 Database Schema:
     data = {
-        'title':'',
+        'name':'',
         'category':"",
         'tags':'',
         "desc":"",
         'basePrice':"",
         'rating':'',
+        'discount':"40%",
         'variants':[{
             "var_name":"name of the variant",
             'var_url':"endpoints of the url",
             'var_gallery':['array of image gallery'],
             'var_color':"",
-            'discount':"40%",
         }],
     }
 

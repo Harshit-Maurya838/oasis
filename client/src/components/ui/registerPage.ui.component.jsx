@@ -2,8 +2,11 @@ import React from 'react';
 import '../../styles/utils/utils.styles.css';
 import "../../styles/registerPage/main.registerpage.styles.css";
 import Input from  "../utils/input.utils.component";
+import { useSidePanel } from '../../SidePanelContext';
 
 function RegisterPage({}) {
+    const { openPanel } = useSidePanel();
+
   return (
     <div className='registerDom'>
         <div className="registerImg">
@@ -20,7 +23,7 @@ function RegisterPage({}) {
             </form>
             <div className="redirectLogin">
                 <span className='text-16-regular' >Already have an account? </span>
-                <a href="/" className='text-16-semibold'>Login</a>
+                <a onClick={(e)=> {openPanel("login"); e.preventDefault();}} className='text-16-semibold'>Login</a>
             </div>
         </div>
     </div>

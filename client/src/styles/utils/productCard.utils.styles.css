@@ -93,7 +93,7 @@
     padding: 0px 5px 5px 5px;
 }
 
-.active{
+.activeCircle{
     outline:solid 2px var(--body-sub);
     outline-offset: 2px;
 }

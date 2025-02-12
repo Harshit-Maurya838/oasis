@@ -8,6 +8,7 @@
   z-index: 5;
   animation-delay: 0.2s;
   overflow: hidden;
+  display: none;
 }
 
 .sidePanel {

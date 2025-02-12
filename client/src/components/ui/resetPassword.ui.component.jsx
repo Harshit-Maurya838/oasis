@@ -2,8 +2,10 @@ import React from "react";
 import "../../styles/utils/utils.styles.css";
 import "../../styles/resetPassword/main.resetpassword.styles.css";
 import Input from "../utils/input.utils.component";
+import { useSidePanel } from "../../SidePanelContext";
 
 function ResetPasswordPage() {
+  const { openPanel } = useSidePanel();
   return (
     <div className="resetPasswordDom">
       <div className="resetPasswordImg">
@@ -20,7 +22,7 @@ function ResetPasswordPage() {
           </div>
           <div className="redirectLogin">
             <span className="text-16-regular">Remember your password? </span>
-            <a className="text-16-semibold" href="/">Back to login</a>
+            <a onClick={(e)=>{ e.preventDefault(); openPanel("login")}} className="text-16-semibold" href="/">Back to login</a>
           </div>
         </form>
       </div>

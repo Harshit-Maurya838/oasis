@@ -5,8 +5,10 @@ import Input from "../../components/utils/input.utils.component";
 import ProviderButton from "../utils/providerButton.utils.component";
 import GoogleLogo from "../icons/googleLogo.icon.component";
 import AppleLogoIcon from "../icons/appleLogo.icon.component"
+import { useSidePanel } from "../../SidePanelContext";
 
 function LoginPage() {
+  const { openPanel } = useSidePanel();
   return (
     <div className="loginDom">
       <div className="loginHeaderImg">
@@ -25,10 +27,10 @@ function LoginPage() {
             placeholder={"Password"}
             type="password"
           />
-          <div className="loginForgotPassword">
+          <div className="loginForgotPassword" onClick={()=>openPanel("resetPass")}>
             <span className="text-16-semibold">Forgot Password?</span>
           </div>
-          <div className="loginButton">
+          <div className="loginButton" onClick={()=>openPanel("login")}>
             <span className="text-16-semibold">Login</span>
           </div>
         </form>
@@ -41,7 +43,7 @@ function LoginPage() {
         <ProviderButton icon={<AppleLogoIcon />} title={"Continue With Apple"} />
         <div className="createAccount">
             <span className="text-16-regular">First time here? </span>
-            <span className="text-16-semibold">Create an Account</span>
+            <span className="text-16-semibold" onClick={()=> openPanel("signup")}>Create an Account</span>
         </div>
       </div>
     </div>
