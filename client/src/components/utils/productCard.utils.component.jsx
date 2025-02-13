@@ -35,7 +35,7 @@ const Product = ({ extraClass, productName, price, imgSrc, variants, rating = 5 
           {variants.map((variant, index) => (
             <div
               key={index}
-              className={`variant_circle ${index == 0 ? "active" : ""}`}
+              className={`variant_circle ${index == 0 ? "activeCircle" : ""}`}
               style={{ backgroundColor: variant.var_color }}
             ></div>
           ))}

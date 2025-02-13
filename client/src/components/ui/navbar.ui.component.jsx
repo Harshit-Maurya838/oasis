@@ -66,7 +66,7 @@ const Navbar = () => {
         </div>
         <div className="right">
           <CartButton cartItem={0} />
-          <Button variant="contained" onClick={() => openPanel("login")}>
+          <Button variant="contained" onClick={() => openPanel("signup")}>
             <p className="text-16-semibold">Get Started</p>
           </Button>
         </div>
