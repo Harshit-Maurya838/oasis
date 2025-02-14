@@ -14,15 +14,13 @@ function SildeButton({ total = 2, text = "slide", currentSlide, changer }) {
   return (
     <div className="slideDom">
       <div className="prev nav" onClick={handlePrev}>
-        <ChevronRight classname="inverted icon" />
-        <p className="text-14-regular">Previous</p>
+        <ChevronRight width={24} classname="inverted icon" />
       </div>
       <div className="text">
         <p className="text-16-semibold">{text} {currentSlide}</p>
       </div>
       <div className="next nav" onClick={handleNext}>
-        <p className="text-14-regular">Next</p>
-        <ChevronRight classname="icon" />
+        <ChevronRight width={24} classname="icon" />
       </div>
     </div>
   );

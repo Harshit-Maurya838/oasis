@@ -26,6 +26,7 @@
 }
 
 .slideRight {
+  display: block;
   animation-name: slideRight;
   animation-fill-mode: forwards;
   animation-duration: 2s;
@@ -49,12 +50,30 @@
   animation-direction: normal;
 }
 
-.arrowSlideLeft {
+.domFadein{
+  animation-name: domFadeIn;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-timing-function: ease;
+}
+
+/* .arrowSlideLeft {
   animation-name: arrowSlideLeft;
   animation-duration: 0.3s;
   animation-timing-function: cubic-bezier(0.74, -0.43, 0, 1.7);
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  animation-direction: normal;
+} */
+
+.spreadIn{
+  animation-name: spreadin;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
   animation-direction: normal;
 }
 
@@ -112,9 +131,11 @@
 @keyframes fadeout {
   0% {
     opacity: 1;
+    display: block;
   }
   99% {
     opacity: 0;
+    display: block;
   }
   100% {
     display: none;
@@ -148,5 +169,39 @@
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes domFadeIn{
+  0%{
+    display: block;
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn{
+  0%{
+    display: block;
+    opacity: 0;
+    transform: translateX(20rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spreadin {
+  0%{
+    opacity: 0;
+    letter-spacing: 1rem;
+  }
+  100%{
+    opacity: 1;
+    letter-spacing: normal;
+    transform: translateY(0rem);
   }
 }

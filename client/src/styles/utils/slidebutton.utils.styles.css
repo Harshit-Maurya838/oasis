@@ -7,17 +7,28 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     border: 1px solid var(--bTertiary);
     border-radius: 300px;
     overflow: hidden;
     padding: 10px 20px;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom:10px;
+    width: max-content;
+    margin: auto;
+    gap: 40px;
+    user-select: none;
 }
 
 .icon{
     width: 14px;
     height: 14px;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.icon:hover{
+    background-color: var(--g50);
 }
 
 .nav{

@@ -2,15 +2,35 @@
     color: grey;
     font-size: small;
     margin-top: 8px;
+    user-select: none;
 }
 
 .breadcum a{
     text-decoration: none;
-    color: black;
+    /* color: black; */
+    color: var(--body-sub);
+    position: relative;
+    transition: .2s ease;
 }
-.breadcum a:hover{
-    text-decoration: underline;
-    color: rgb(0, 55, 255);
+
+.breadcum a::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid var(--heading-main);
+    width: 0;
+    height: 100%;
+    transition: .2s ease-out;
+}
+
+.breadcum a:hover::after{
+    width: 100%;
+}
+
+.breadcum a:hover{  
+    color: var(--heading-main);
+    font-weight: 500;
 }
 
 .bnav-item{

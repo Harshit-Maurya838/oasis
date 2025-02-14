@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/utils/utils.styles.css";
 import "../../styles/utils/filtertabs.utils.styles.css";
 
-function FilterTabs({ enableText = "All", filters = [] }) {
+function FilterTabs({className, enableText = "All", filters = [] }) {
   const [isDisabled, setDisabled] = useState(false);
   const [activeFilters, setActiveFilters] = useState([]);
 
@@ -15,31 +15,31 @@ function FilterTabs({ enableText = "All", filters = [] }) {
 
     let value = element.currentTarget.children[0].innerHTML;
 
-    if (!element.currentTarget.classList.contains("active")) {
+    if (!element.currentTarget.classList.contains("filActive")) {
       setActiveFilters([...activeFilters, value]);
-      element.currentTarget.classList.add("active");
+      element.currentTarget.classList.add("filActive");
     } else {
       setActiveFilters(activeFilters.filter((item) => item !== value));
-      element.currentTarget.classList.remove("active");
+      element.currentTarget.classList.remove("filActive");
     }
   };
 
   const resetFilter = () => {
     setDisabled(false);
     document.querySelectorAll(".filltabs").forEach((item) => {
-      item.classList.remove("active");
+      item.classList.remove("filActive");
     });
     setActiveFilters([]);
     console.log(activeFilters);
   };
 
   return (
-    <div className="filterDom">
+    <div className={`filterDom ${className}`}>
       <div className="filterControl">
         <div
           onClick={resetFilter}
           className={`filterTab 
-                ${!isDisabled ? "active" : ""}
+                ${!isDisabled ? "filActive" : ""}
             `}
         >
           <span className="text-16-medium">{enableText}</span>

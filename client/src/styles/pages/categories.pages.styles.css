@@ -1,0 +1,45 @@
+
+.PageHeader{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding-bottom: 80px;
+}
+
+.PageHeader h1{
+    color:var(--heading-main);
+}
+
+.PageHeader .p{
+    color: var(--body-sub);
+}
+
+.PageHeader .input{
+    width: 642px;
+}
+
+.PageHeader .SearchIcon{
+    fill: var(--heading-main);
+}
+
+.PageBodyFilterTabs{
+    margin: 2rem 0;
+    position: sticky;
+    top: 0px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255,255,255.0.2);
+    z-index: 3;
+    padding: 1.45rem 0;
+}
+
+.cPanelContainer{
+    padding: 48px 0;
+}
+
+.PageSwiper{
+    padding: 48px 0;
+}

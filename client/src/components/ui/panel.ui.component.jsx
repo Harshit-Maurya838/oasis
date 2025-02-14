@@ -5,7 +5,7 @@ import "../../styles/panel/responsive.panel.styles.css";
 import SildeButton from "../utils/slidebutton.utils.component";
 import Product from "../utils/productCard.utils.component";
 
-function Panel({ pages = 4, children }) {
+function Panel({ pages = 4, children , classname }) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const panelDom = useRef(null);
 
@@ -51,7 +51,7 @@ function Panel({ pages = 4, children }) {
     ],
   };
   return (
-    <div>
+    <div className={`panelContainer ${classname}`} >
       {children}
       <div ref={panelDom} className="panelDom">
         {[...Array(pages)].map((_, index) => {

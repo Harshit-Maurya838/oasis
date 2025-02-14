@@ -36,14 +36,14 @@
     width: fit-content;
 }
 
-.active span{
+.filActive span{
     color: var(--heading-secondary);
 }
 
-.active{
+.filActive{
     background-color: var(--heading-brand);
 }
 
-.active:hover{
+.filActive:hover{
     background-color: var(--heading-brand);
 }
