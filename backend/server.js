@@ -1,10 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 require('dotenv').config();
 
 const ProductsRoutes = require("./routers/products/products.js");
-const AdminRoute = require("./routers/admin/admin.js");
+const OrderRoutes = require("./routers/orders/orders.js");
+const AuthRoutes = require("./routers/auth/authRoute.js");
 
 const port = process.env.PORT || 5050;
 
@@ -22,9 +24,14 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+}));
 
 app.use("/products", ProductsRoutes);
-app.use("/admin", AdminRoute);
+app.use("/order", OrderRoutes);
+app.use("/auth", AuthRoutes);
 
 app.get("*",(req,res)=>{
     res.send("404 Page Not Found");
