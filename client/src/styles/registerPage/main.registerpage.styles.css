@@ -74,6 +74,7 @@
 .redirectLogin a{
     color: var(--heading-brand);
     position: relative;
+    cursor: pointer;
 }
 
 .redirectLogin a::after{
