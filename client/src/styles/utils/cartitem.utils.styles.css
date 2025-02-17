@@ -1,0 +1,123 @@
+.CartItemDom {
+  width: 100%;
+  height: 185px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.CartItemImage {
+  width: 178px;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f3f4f7;
+  border-radius: 6px;
+}
+
+.CartItemImage img {
+  width: 100%;
+}
+
+.CartItemContent {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+    align-items: baseline;
+    gap: 16px;
+}
+
+.CartItemInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.CartItemHeader {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: .3s ease;
+  position: relative;
+}
+
+.CartItemHeader::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid var(--heading-main);
+    height: 100%;
+    width: 0%;
+    transition: .2s ease;
+}
+
+.CartItemHeader:hover::after{
+    width: 100%;
+}
+
+.CartItemDesc {
+  height: 37px;
+  /* width: 50px; */
+  line-clamp: 4;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.CartItemDesc span{
+    color: var(--body-sub);
+}
+
+.CartItemPrice span{
+    color:var(--heading-brand);
+}
+
+.CartItemOptions{
+    width: 100%;
+    padding: 0px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CartItemVariants{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.CartItemVariant{
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;    
+}
+
+.CartItemActiveVariant{
+    outline-offset: 1px;
+    outline-width: 1px;
+    outline-color: var(--g400);
+    outline-style: solid;
+}
+
+.CartItemQuantity{
+    background-color: var(--bSecondary);
+    border-radius: 24px;
+    border: 1px solid var(--g100);
+    height: 40px;
+    width: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
