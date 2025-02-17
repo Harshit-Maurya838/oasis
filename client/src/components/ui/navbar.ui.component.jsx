@@ -65,8 +65,10 @@ const Navbar = () => {
           <NavLink to="/blog" className={({isActive}) => isActive ? "active" : null}>Blog</NavLink>
         </div>
         <div className="right">
-          <CartButton cartItem={0} />
-          <Button variant="contained" onClick={() => openPanel("signup")}>
+          <CartButton cartItem={0} onClick={()=>{
+            openPanel('Cart')
+          }} />
+          <Button variant="contained" onClick={() => openPanel("Sign Up")}>
             <p className="text-16-semibold">Get Started</p>
           </Button>
         </div>

@@ -27,7 +27,7 @@ function LoginPage() {
             placeholder={"Password"}
             type="password"
           />
-          <div className="loginForgotPassword" onClick={()=>openPanel("resetPass")}>
+          <div className="loginForgotPassword" onClick={()=>openPanel("Reset Password")}>
             <span className="text-16-semibold">Forgot Password?</span>
           </div>
           <div className="loginButton" onClick={()=>openPanel("login")}>
@@ -43,7 +43,7 @@ function LoginPage() {
         <ProviderButton icon={<AppleLogoIcon />} title={"Continue With Apple"} />
         <div className="createAccount">
             <span className="text-16-regular">First time here? </span>
-            <span className="text-16-semibold" onClick={()=> openPanel("signup")}>Create an Account</span>
+            <span className="text-16-semibold" onClick={()=> openPanel("Sign Up")}>Create an Account</span>
         </div>
       </div>
     </div>

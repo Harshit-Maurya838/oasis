@@ -22,7 +22,7 @@ function ResetPasswordPage() {
           </div>
           <div className="redirectLogin">
             <span className="text-16-regular">Remember your password? </span>
-            <a onClick={(e)=>{ e.preventDefault(); openPanel("login")}} className="text-16-semibold" href="/">Back to login</a>
+            <a onClick={(e)=>{ e.preventDefault(); openPanel("Login")}} className="text-16-semibold" href="/">Back to login</a>
           </div>
         </form>
       </div>

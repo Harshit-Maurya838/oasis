@@ -23,7 +23,7 @@ function RegisterPage({}) {
             </form>
             <div className="redirectLogin">
                 <span className='text-16-regular' >Already have an account? </span>
-                <a onClick={(e)=> {openPanel("login"); e.preventDefault();}} className='text-16-semibold'>Login</a>
+                <a onClick={(e)=> {openPanel("Login"); e.preventDefault();}} className='text-16-semibold'>Login</a>
             </div>
         </div>
     </div>
