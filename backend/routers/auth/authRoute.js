@@ -1,7 +1,8 @@
 const express = require("express");
-const User = require("../../models/user");
-const bcrypt = require("bcrypt");
-const router = require("../orders/orders");
+const User = require("../../models/user.js");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const router = express.Router();
 
 const generateToken = (userId) => {
     return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "1h" });
@@ -16,13 +17,18 @@ router.post("/register", async (req, res) => {
         if (user) return res.status(400).json({ message: "User already exists", success: false });
 
         const hashedPassword = await bcrypt.hash(password, 10);
+        console.log({
+            username: name,
+            email: email,
+            password: hashedPassword,
+        })
 
-        user = new User({
-            name,
-            email,
+        const newUser = new User({
+            username: name,
+            email: email,
             password: hashedPassword,
         });
-        await user.save();
+        await newUser.save();
 
         res.status(201).json({ message: "User registered successfully", success: true });
 
@@ -44,7 +50,7 @@ router.post("/login", async (req, res) => {
 
         const token = generateToken(user._id);
 
-        res.status(200).json({ message: "Login successful", token, user: { name: user.name, email: user.email } });
+        res.status(200).json({ message: "Login successful", token, user: { name: user.username, email: user.email } });
 
     } catch (err) {
         console.error("Error logging in user: ", err);

@@ -23,7 +23,7 @@ router.get('/email/:email', authMiddleware , async (req, res) => {
     try {
         const { email } = req.params;
         const userId = req.user.userId;
-        const orders = await Order.find({ email, user: userId }).sort({ createdAt: -1 }).populate('productIds');
+        const orders = await Order.find({ email, user: userId }).sort({ createdAt: -1 }).populate("productIds");
         
         if (!orders) {
             return res.status(404).json({ message: "Order not found" });
