@@ -6,10 +6,12 @@ import CartButton from "../utils/cardButton.utils.component";
 import Button from "../utils/button.utils.component";
 import { Link, NavLink } from "react-router-dom";
 import { useSidePanel } from "../../SidePanelContext";
+import UserProfile from "../utils/userprofile.utils.component";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 834);
+  const [isLoggedIn , setLoggedIn] = useState(false);
 
   const { openPanel } = useSidePanel();
   // for hamburger
@@ -68,9 +70,12 @@ const Navbar = () => {
           <CartButton cartItem={0} onClick={()=>{
             openPanel('Cart')
           }} />
-          <Button variant="contained" onClick={() => openPanel("Sign Up")}>
+          {
+            isLoggedIn ? <Button variant="contained" onClick={() => openPanel("Sign Up")}>
             <p className="text-16-semibold">Get Started</p>
-          </Button>
+          </Button> :
+          <UserProfile username={"Nikhil Hegde"} />
+            }
         </div>
       </div>
     </nav>
