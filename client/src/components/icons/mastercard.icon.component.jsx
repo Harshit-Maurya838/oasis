@@ -1,8 +1,8 @@
 import React from 'react'
 
-function MastercardIcon({ width, height = width, boxFill }) {
+function MastercardIcon({ classname , width, height = width, boxFill }) {
   return (
-    <svg width={width} height={height} viewBox="0 0 25 24" fill={boxFill} xmlns="http://www.w3.org/2000/svg">
+    <svg className={classname} width={width} height={height} viewBox="0 0 25 24" fill={boxFill} xmlns="http://www.w3.org/2000/svg">
       <g id="Mastercard" clip-path="url(#clip0_2412_13994)">
         <g id="XMLID_328_">
           <path id="rect19" d="M15.5041 6.22922L9.09204 6.11771L9.04217 17.7711L15.4543 17.8826L15.5041 6.22922Z" fill="#FF5F00" />

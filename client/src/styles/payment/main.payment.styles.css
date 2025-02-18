@@ -1,0 +1,112 @@
+.PaymentDom{
+    width: 65%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;   
+}
+
+.PaymentDetailsDom{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.PaymentCardDetails{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.PaymentCheckbox{
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:baseline;
+    width: 100%;
+    gap: 10px;
+}
+
+.PaymentCheckbox label span{
+    color: var(--body-sub);
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: transparent;
+    border: 2px solid var(--heading-brand);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]:checked {
+    position: relative;
+    background-color: #7c71df15;
+  }
+  
+  input[type="checkbox"]:checked::before {
+    content: ""; /* Unicode checkmark */
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    color: var(--heading-brand);
+    font-size: 16px;
+    width:50%;
+    height: 20%;
+    border-bottom: 2px solid var(--heading-brand);
+    border-left:2px solid var(--heading-brand);
+    transform:rotateZ(-45deg);
+}
+
+.PaymentMemory{
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    /* justify-content:baseline; */
+    width: 100%;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.PaymentMemory span{
+    color: var(--body-sub);
+}
+
+.PaymentMemIn label span{
+    color: var(--body-sub);
+}
+
+.PaymentMemIn{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    justify-content: baseline;
+}
+
+.PaymentButton{
+    width: 100%;
+    padding: 10px 24px;
+    background-color: var(--heading-brand);
+    border: 2px solid var(--heading-brand);
+    border-radius: 24px;
+    color: var(--heading-secondary);
+    transition: .3s ease;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    margin: 24px 0;
+}
+
+.PaymentButton:hover{
+    background-color: transparent;
+    color: var(--heading-brand);
+}

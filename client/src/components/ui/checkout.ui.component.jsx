@@ -44,7 +44,11 @@ function CheckOutPage() {
           <Input placeholder={"Country"} />
         </div>
       </div>
-      <div className="CheckOutButton">
+      <div className="CheckOutButton"
+        onClick={()=>{
+          openPanel('Payment')
+        }}
+      >
         <span>Proceed to payment</span>
       </div>
     </div>
