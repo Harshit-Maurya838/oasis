@@ -1,0 +1,65 @@
+.UserProfileDom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: var(--bSecondary);
+    width: max-content;
+    height: 100%;
+    border-radius: 300px;
+    cursor: pointer;
+    position: relative;
+    min-width: 187px;
+}
+
+.UserProfileHeaderDom{
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.UserProfileHeaderDom span{
+    color: var(--nav-links);
+}
+
+.UserProfileBodyDom{
+    display: none;
+}
+
+.UserProfileLogout{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #f650612b;
+    padding: 6px;
+    border: 1px solid var(--cR);
+}
+
+.UserProfileLogout span{
+    color: var(--nav-links);
+}
+
+.UserProfileDom:hover .UserProfileBodyDom{
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 10px 20px;
+    background-color: var(--bSecondary);
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    width: 100%;
+}
+
+.UserProfileDom:hover{
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
