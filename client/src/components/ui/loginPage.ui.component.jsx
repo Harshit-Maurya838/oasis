@@ -10,8 +10,8 @@ import API from "../../axios.config.js";
 import { useAuthContext } from "../../AuthContext.jsx";
 
 function LoginPage() {
-  const { openPanel } = useSidePanel();
-  const { setAuthentication } = useAuthContext();
+  const { openPanel , closePanel} = useSidePanel();
+  const { setAuthentication, setUsername } = useAuthContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,7 +21,14 @@ function LoginPage() {
       password: password,
     })
       .then((response) => {
-        response.token ? setAuthentication(true) : setAuthentication(false);
+        if(response.data.isAuth){
+          setAuthentication(true);
+          setUsername(response.data.user.name);
+          closePanel()
+        }
+        else{
+          setAuthentication(false);
+        }
         alert(response.data.message);
       })
       .catch((err) => alert(err.response.data.message));

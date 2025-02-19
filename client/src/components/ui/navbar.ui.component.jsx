@@ -20,7 +20,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const { openPanel } = useSidePanel();
-  const { authenticated, setAuthentication } = useAuthContext;
+  const { authenticated, username } = useAuthContext();
   // for hamburger
   const handleToggle = (e) => {
     setIsChecked(e.target.checked);
@@ -156,7 +156,7 @@ const Navbar = () => {
               <p className="text-16-semibold">Get Started</p>
             </Button>
           ) : (
-            <UserProfile username={"Nikhil Hegde"} />
+            <UserProfile username={username} />
           )}
         </div>
       </div>
