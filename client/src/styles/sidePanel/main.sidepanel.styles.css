@@ -96,3 +96,10 @@
   -ms-overflow-style: none;
   /* Hide scrollbar in IE/Edge */
 }
+
+@media (max-width: 620px) {
+  .sidePanel {
+    width: 100%;
+    padding: 15px 15px;
+  }
+}
