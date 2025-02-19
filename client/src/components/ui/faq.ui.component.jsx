@@ -6,7 +6,7 @@ import '../../styles/faq/responsive.faq.styles.css';
 
 function FaQ() {
   return (
-    <div className='FaQ' >
+    <div className='FaQ' id='faq'>
       <div className="content">
         <span className='heading-04' >We have got the answers to your questions</span>
         <Accordin

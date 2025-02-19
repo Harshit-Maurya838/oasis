@@ -1,17 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import oasisLogo from "/img/Oasis.svg";
 import "../../styles/navbar/main.navbar.styles.css";
 import "../../styles/utils/utils.styles.css";
 import CartButton from "../utils/cardButton.utils.component";
 import Button from "../utils/button.utils.component";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSidePanel } from "../../SidePanelContext";
 import UserProfile from "../utils/userprofile.utils.component";
+
+const sections = ["hero", "categories_main", "faq"];
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 834);
-  const [isLoggedIn , setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const { openPanel } = useSidePanel();
   // for hamburger
@@ -29,6 +34,37 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleNavigation = (id) => {
+    if (location.pathname !== "/home") {
+      navigate("/home"); // First navigate to the homepage
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 300); // Delay to ensure the page loads before scrolling
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav id="navbar">
@@ -61,21 +97,60 @@ const Navbar = () => {
         }}
       >
         <div className="center">
-          <NavLink to="/home#hero" className={({isActive}) => isActive ? "active" : null}>Home</NavLink>
-          <NavLink to="/shop" className={({isActive}) => isActive ? "active" : null}>Shop</NavLink>
-          <NavLink to="/categories"  className={({isActive}) => isActive ? "active" : null}>Categories</NavLink>
-          <NavLink to="/blog" className={({isActive}) => isActive ? "active" : null}>Blog</NavLink>
+          <NavLink
+            to="/home#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavigation("hero");
+            }}
+            className={activeSection === "hero" ? "active" : ""}
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/home#categories_main"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavigation("categories_main");
+            }}
+            className={activeSection === "categories_main" ? "active" : ""}
+          >
+            Categories
+          </NavLink>
+
+          <NavLink
+            to="/home#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavigation("hero");
+            }}
+            className={activeSection === "hero" ? "active" : ""}
+          >
+            Shop
+          </NavLink>
+
+          <NavLink
+            to="/home#faq"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavigation("faq");
+            }}
+            className={activeSection === "faq" ? "active" : ""}
+          >
+            Faq
+          </NavLink>
         </div>
         <div className="right">
-          <CartButton cartItem={0} onClick={()=>{
+          <CartButton cartItem={0} onClick={() => {
             openPanel('Cart')
           }} />
           {
-            isLoggedIn ? <Button variant="contained" onClick={() => openPanel("Sign Up")}>
-            <p className="text-16-semibold">Get Started</p>
-          </Button> :
-          <UserProfile username={"Nikhil Hegde"} />
-            }
+            !isLoggedIn ? <Button variant="contained" onClick={() => openPanel("Sign Up")}>
+              <p className="text-16-semibold">Get Started</p>
+            </Button> :
+              <UserProfile username={"Nikhil Hegde"} />
+          }
         </div>
       </div>
     </nav>
