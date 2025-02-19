@@ -7,6 +7,7 @@ import Button from "../utils/button.utils.component";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSidePanel } from "../../SidePanelContext";
 import UserProfile from "../utils/userprofile.utils.component";
+import { useAuthContext } from "../../AuthContext";
 
 const sections = ["hero", "categories_main", "faq"];
 
@@ -19,6 +20,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const { openPanel } = useSidePanel();
+  const { authenticated, setAuthentication } = useAuthContext;
   // for hamburger
   const handleToggle = (e) => {
     setIsChecked(e.target.checked);
@@ -87,12 +89,13 @@ const Navbar = () => {
       <div
         className="menu"
         style={{
-          ...(isMobileView ? {
-            transform: isChecked ? "translateY(20px)" : "translateY(-20px)",
-            opacity: isChecked ? "1" : "0",
-            transition: "transform 0.3s ease, opacity 0.3s ease"
-          } : { opacity: 1 })
-          ,
+          ...(isMobileView
+            ? {
+                transform: isChecked ? "translateY(20px)" : "translateY(-20px)",
+                opacity: isChecked ? "1" : "0",
+                transition: "transform 0.3s ease, opacity 0.3s ease",
+              }
+            : { opacity: 1 }),
           ...(!isMobileView ? { display: "flex" } : { display: "flex" }),
         }}
       >
@@ -142,15 +145,19 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className="right">
-          <CartButton cartItem={0} onClick={() => {
-            openPanel('Cart')
-          }} />
-          {
-            !isLoggedIn ? <Button variant="contained" onClick={() => openPanel("Sign Up")}>
+          <CartButton
+            cartItem={0}
+            onClick={() => {
+              openPanel("Cart");
+            }}
+          />
+          {!authenticated ? (
+            <Button variant="contained" onClick={() => openPanel("Sign Up")}>
               <p className="text-16-semibold">Get Started</p>
-            </Button> :
-              <UserProfile username={"Nikhil Hegde"} />
-          }
+            </Button>
+          ) : (
+            <UserProfile username={"Nikhil Hegde"} />
+          )}
         </div>
       </div>
     </nav>
