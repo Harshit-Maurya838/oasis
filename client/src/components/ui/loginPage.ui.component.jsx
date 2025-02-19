@@ -19,10 +19,12 @@ function LoginPage() {
     await API.post("/auth/login", {
       email: email,
       password: password,
-    }).then((response) => {
-      response.token ? setAuthentication(true) : setAuthentication(false);
-      alert(response.message);
-    });
+    })
+      .then((response) => {
+        response.token ? setAuthentication(true) : setAuthentication(false);
+        alert(response.message);
+      })
+      .catch((err) => alert(err));
   };
 
   return (
@@ -45,7 +47,7 @@ function LoginPage() {
             classname={"loginInputDom"}
             placeholder={"Password"}
             type="password"
-            callback={(value)=>{
+            callback={(value) => {
               setPassword(value);
             }}
           />
