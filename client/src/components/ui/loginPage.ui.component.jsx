@@ -22,9 +22,9 @@ function LoginPage() {
     })
       .then((response) => {
         response.token ? setAuthentication(true) : setAuthentication(false);
-        alert(response.message);
+        alert(response.data.message);
       })
-      .catch((err) => alert(err));
+      .catch((err) => alert(err.response.data.message));
   };
 
   return (
