@@ -3,6 +3,7 @@ const User = require("../../models/user.js");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
+const authMiddleware = require('../../middlewares/authMiddleware.js');
 
 const generateToken = (userId) => {
     return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: "1h" });
@@ -63,5 +64,42 @@ router.post("/login", async (req, res) => {
     }
 });
 
+
+router.post('/user',authMiddleware,async(req,res)=>{
+    try{
+        if(req.user){
+            const user = await User.findById(req.user.userId);
+            res.status(200).json({message:"User data fetched successfully",suc:true,isAuth:true,user:{
+                username:user.username,
+                email:user.email
+            }});
+            return '';
+        }
+
+        res.status(400).json({message:"The authentication failed ",suc:false , isAuth:false});
+    }
+    catch(err){
+        console.log('Error in fetching user data',err);
+        res.status(500).json({message:"Failed to fetch user data.",suc:false,isAuth:false,error:err.message});
+    }
+})
+
+router.post('/logout',(req,res)=>{
+    try{
+        const token = req.cookies.token;
+        if(!token){
+            res.status(400).json({message:'Bad request, no tokens provided',suc:false});
+           return 
+        }
+
+        res.clearCookie('token',{httpOnly:true,sameSite:true});
+        res.status(200).json({message:'User logout successfully',isAuth:false,suc:true});
+
+    }
+    catch(err){
+        console.error('Error in performing logout operation: ',err)
+        res.status(500).json({message:"Error in logging out user",isAuth:false,error:err.message});
+    }
+})
 
 module.exports = router;

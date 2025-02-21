@@ -8,6 +8,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSidePanel } from "../../SidePanelContext";
 import UserProfile from "../utils/userprofile.utils.component";
 import { useAuthContext } from "../../AuthContext";
+import API from "../../axios.config.js";
 
 const sections = ["hero", "categories_main", "faq"];
 
@@ -20,7 +21,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const { openPanel } = useSidePanel();
-  const { authenticated, username } = useAuthContext();
+  const { authenticated, username , setAuthentication , setUsername } = useAuthContext();
   // for hamburger
   const handleToggle = (e) => {
     setIsChecked(e.target.checked);
@@ -31,6 +32,20 @@ const Navbar = () => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 834);
     };
+
+    const reqAuth = async()=>{
+      await API.post('/auth/user')
+      .then((response)=>{
+        setAuthentication(response.data.isAuth);
+        setUsername(response.data.user.username)
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    }
+
+    reqAuth();
+
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
