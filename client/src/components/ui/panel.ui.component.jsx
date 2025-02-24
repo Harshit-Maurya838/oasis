@@ -15,14 +15,6 @@ function Panel({ pages = 4, children , classname }) {
 
   useEffect(() => {
     if (panelDom.current) {
-      // panelDom.current.children[currentSlide - 1]?.scrollIntoView({
-      //   behavior: "smooth",
-      //   block: "nearest",
-      //   inline: "center",
-      // });
-
-      // The scrollIntoView was also scrolling in y axis , hence we cannot use it 
-
       panelDom.current.scrollLeft = panelDom.current.children[currentSlide -1 ]?.offsetLeft;
     }
   }, [currentSlide]);
@@ -62,6 +54,7 @@ function Panel({ pages = 4, children , classname }) {
                   <Product
                     extraClass="panelCard"
                     key={index}
+                    productId={data.productId}
                     imgSrc={"./img/samples/sample-image.png"}
                     productName={data.title}
                     price={data.basePrice}

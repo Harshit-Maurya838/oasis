@@ -12,19 +12,22 @@ import ResetPasswordPage from "./components/ui/resetPassword.ui.component.jsx";
 import Cart from "./components/ui/cart.ui.component.jsx";
 import CheckOutPage from "./components/ui/checkout.ui.component.jsx";
 import PaymentPage from "./components/ui/payment.ui.component.jsx";
+import { CartProvider } from "./CartContext.jsx";
 
 const Layout = () => {
   return (
     <>
       <AuthContextProvider>
-        <SidePanelProvider>
-          <Navbar />
-          <section id="main-body">
-            <Outlet />
-          </section>
-          <SidePanelWrapper />
-          <Footer />
-        </SidePanelProvider>
+        <CartProvider>
+          <SidePanelProvider>
+            <Navbar />
+            <section id="main-body">
+              <Outlet />
+            </section>
+            <SidePanelWrapper />
+            <Footer />
+          </SidePanelProvider>
+        </CartProvider>
       </AuthContextProvider>
     </>
   );
