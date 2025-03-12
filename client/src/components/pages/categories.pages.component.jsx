@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageHeader from "../ui/pageHeader.ui.component";
 import "../../styles/pages/categories.pages.styles.css";
 import FilterTabs from "../utils/filtertabs.utils.component";
@@ -7,15 +7,18 @@ import DropDown from "../utils/dropdown.utils.component";
 import Swiper from "../utils/swiper.utils.component";
 import Product from "../utils/productCard.utils.component";
 
-const CategoriesPage = () => {
+const CategoriesPage = ({ pageTitle, pageDesc, pageBaseUrl }) => {
+
+  useEffect(()=>{
+    document.body.scrollTop = 0;
+  },[])
+
   return (
     <div className="PageMain">
       <PageHeader
         classname="PageHeader"
-        Title="Sitting Room"
-        PageDescription={
-          "Transform your sitting room with our elegant and functional seating options,perfect for every modern home."
-        }
+        Title={pageTitle}
+        PageDescription={pageDesc}
       />
       <div className="PageBody">
         <div className="PageProducts">
@@ -38,7 +41,7 @@ const CategoriesPage = () => {
                 items={[
                   {
                     itemname: "High Price",
-                    itemcallback: () => {},
+                    itemcallback: () => { },
                   },
                 ]}
               />
@@ -47,7 +50,7 @@ const CategoriesPage = () => {
         </div>
         <div className="PageSwiper" >
           <Swiper
-          title={'People Also Viewed'}
+            title={'People Also Viewed'}
             children={[...Array(8)].map((item) => {
               return (
                 <Product

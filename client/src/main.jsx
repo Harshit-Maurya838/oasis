@@ -8,11 +8,12 @@ import CategoriesPage from './components/pages/categories.pages.component.jsx';
 import FilterTabs from './components/utils/filtertabs.utils.component.jsx';
 import Swiper from './components/utils/swiper.utils.component.jsx';
 import Product from "./components/utils/productCard.utils.component.jsx";
+import ImageGallery from './components/utils/imgGallery.utils.component.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path='/' element={<Navigate to="/home" replace/>} />
+      <Route path='/' element={<Navigate to="/home" replace />} />
       <Route path="home" element={<HomePage />} />
       {/* <Route path="test" element={<FilterTabs enableText='All' filters={[
         'sofa',
@@ -24,24 +25,25 @@ const router = createBrowserRouter(
         'lamp'
       ]}/>} /> */}
 
-      <Route path='/test' element={<Swiper 
-        title={'People Also Viewed'}
-        children={
-          [...Array(8)].map((item,index)=>{
-            return(
-              <Product key={index}
-              productName={`Item ${index}`}
-              imgSrc={'./img/samples/sample-image.png'}
-              price={224}
-              rating={3.5}
-              variants={['red','pink']}
-            ></Product>
-            )
-          })
-        }
-      />} />
-      
+      <Route path='/test' element={<ImageGallery />} />
+
       <Route path="categories" element={<CategoriesPage />} />
+      <Route path="SittingRoom" element={<CategoriesPage
+        pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
+        pageTitle={"Sitting Room"}
+      />} />
+      <Route path="Bedroom" element={<CategoriesPage
+        pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
+        pageTitle={"Bedroom"}
+      />} />
+      <Route path="Accessories" element={<CategoriesPage
+        pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
+        pageTitle={"Accessories"}
+      />} />
+      <Route path="Kitchen" element={<CategoriesPage
+        pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
+        pageTitle={"Kitchen"}
+      />} />
       <Route path="*" element={<Page404 />} />
     </Route>
   )
@@ -49,6 +51,6 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </StrictMode>,
 )
