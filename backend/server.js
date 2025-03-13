@@ -3,16 +3,19 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const http = require('http');
-const socketIo = require('socket.io');
-const app = express();
 require('dotenv').config();
 
 const ProductsRoutes = require("./routers/products/products.js");
 const OrderRoutes = require("./routers/orders/orders.js");
 const AuthRoutes = require("./routers/auth/authRoute.js");
-const CartRoutes = require("./routers/carts/cart.js")
+const CartRoutes = require("./routers/carts/cart.js");
+const setupSocket = require("./src/config/socket.js");
 
 const port = process.env.PORT || 5050;
+
+const app = express();
+const server = http.createServer(app);
+const io = setupSocket(server); 
 
 //Database Connection
 async function connectDB(){
@@ -25,38 +28,9 @@ async function connectDB(){
 }
 connectDB();
 
-// Socket.io
-const server = http.createServer(app);
-const io = socketIo(server, {
-    cors: {
-        origin: "http://localhost:5173",
-        methods: ["GET", "POST"]
-    }
-});
-
-let onlineUsers = new Map();
-
-io.on("connection", (socket) => {
-    console.log("A user connected:", socket.id);
-
-    socket.on("register", (userId) => {
-        onlineUsers.set(userId, socket.id);
-    });
-
-    socket.on("disconnect", () => {
-        console.log("User disconnected:", socket.id);
-        onlineUsers.forEach((value, key) => {
-            if (value === socket.id) {
-                onlineUsers.delete(key);
-            }
-        });
-    });
-});
-
-// Pass io to routes
-app.set("io", io);
 
 // Middleware
+app.set("io", io);
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors({
@@ -74,6 +48,6 @@ app.get("*",(req,res)=>{
     res.send("404 Page Not Found");
 })
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
 })

@@ -8,7 +8,6 @@ router.post("/add", authMiddleware, async (req, res) => {
     try {
         const userId = req.user.userId;
         const { productId, quantity = 1 } = req.body;
-        const io = req.app.get("io");
 
         let cart = await Cart.findOne({ user: userId }).populate("cartItems.product");
         if (!cart) {
@@ -27,7 +26,7 @@ router.post("/add", authMiddleware, async (req, res) => {
         await cart.save();
 
         // Emit event only to the user who updated their cart
-        io.to(userId.toString()).emit("cartUpdated", cart);
+        req.app.get("io").to(userId.toString()).emit("cartUpdated", cart);
 
         return res.status(200).json({ message: "Cart updated", cart });
     } catch (error) {
@@ -40,7 +39,6 @@ router.delete("/remove", authMiddleware, async (req, res) => {
     try {
         const userId = req.user.userId;
         const { productId } = req.body;
-        const io = req.app.get("io");
 
         let cart = await Cart.findOne({ user: userId }).populate("cartItems.product");
         if (!cart) {
@@ -52,7 +50,7 @@ router.delete("/remove", authMiddleware, async (req, res) => {
         await cart.save();
 
         // Emit event only to the user who updated their cart
-        io.to(userId.toString()).emit("cartUpdated", cart);
+        req.app.get("io").to(userId.toString()).emit("cartUpdated", cart);
 
         return res.status(200).json({ message: "Item removed from cart", cart });
     } catch (error) {
