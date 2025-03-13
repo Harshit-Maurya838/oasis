@@ -5,9 +5,7 @@ import Layout from './Layout.jsx'
 import HomePage from './components/pages/home.pages.component.jsx'
 import Page404 from './components/ui/404.ui.component.jsx'
 import CategoriesPage from './components/pages/categories.pages.component.jsx';
-import FilterTabs from './components/utils/filtertabs.utils.component.jsx';
-import Swiper from './components/utils/swiper.utils.component.jsx';
-import Product from "./components/utils/productCard.utils.component.jsx";
+import ProductDetails from './components/ui/productDetail.ui.component.jsx';
 import ImageGallery from './components/utils/imgGallery.utils.component.jsx'
 
 const router = createBrowserRouter(
@@ -26,6 +24,7 @@ const router = createBrowserRouter(
       ]}/>} /> */}
 
       <Route path='/test' element={<ImageGallery />} />
+      <Route path='/test2' element={<ProductDetails />} />
 
       <Route path="categories" element={<CategoriesPage />} />
       <Route path="SittingRoom" element={<CategoriesPage

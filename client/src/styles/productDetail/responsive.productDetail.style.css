@@ -1,0 +1,15 @@
+
+@media only screen and (max-width: 832px) {
+    .product_detail{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .product_detail .left_sec{
+        width: 100%;
+    }
+
+    .product_detail .right_sec{
+        width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../../styles/utils/imgGallery.utils.styles.css";
 import "../../styles/utils/utils.styles.css";
+import "../../styles/productDetail/responsive.productDetail.style.css";
 import ChevronRight from "../icons/chevronRight.icon.component";
 
 function ImageGallery({

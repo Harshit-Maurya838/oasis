@@ -5,7 +5,7 @@ import "../../styles/utils/animations.utils.styles.css";
 import ArrowRightIcon from "../icons/arrowRight.icon.component";
 import ArrowLeftIcon from "../icons/arrowLeft.icon.component";
 
-export default function Swiper({ title, children }) {
+export default function Swiper({ title, children , className }) {
   const dom = useRef(null);
   const arrowLeft = useState(null);
   const arrowRight = useState(null);
@@ -50,7 +50,7 @@ export default function Swiper({ title, children }) {
   };
 
   return (
-    <div className="swiperDom">
+    <div className={`swiperDom ${className}`} >
       <div className="swiperHeader">
         <div className="swiperTitle">
           {<span className="heading-06">{title}</span>}

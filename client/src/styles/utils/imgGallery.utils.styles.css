@@ -1,6 +1,7 @@
 
 .gDom{
-    max-width: 624px;
+    /* width: 624px; */
+    max-width: 100%;
     aspect-ratio: 1/1;
     overflow: hidden;
     position: relative;
