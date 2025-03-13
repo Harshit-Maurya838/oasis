@@ -11,11 +11,11 @@ const socket = io("http://localhost:8000");
 const AddToCart = ({ productId }) => {
     const { authenticated } = useAuthContext(); 
     const { openPanel } = useSidePanel();
-    const { setCart } = useCart(); 
+    const {cart, setCart } = useCart(); 
 
     const addToCartAPI = async (productId, quantity = 1) => {
         try {
-            const response = await API.post("/cart/add", { productId, quantity }, { withCredentials: true });
+            const response = await API.post("/cart/add", { productId:'67ab224bf027b35747a9ac81', quantity }, { withCredentials: true });
             socket.emit("cartUpdated", response.data);
             setCart(response.data.cart);
             alert("Item added to cart!"); 
