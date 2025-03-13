@@ -2,20 +2,21 @@ import React, { useEffect, useRef, useState } from 'react'
 import Button from './button.utils.component';
 import '../../styles/utils/utils.styles.css';
 import "../../styles/utils/categoryCard.utils.styles.css";
+import { Link } from 'react-router-dom';
 
 const CategoryCard = ({ imageSrc, title, buttonVisibility: initialButtonVisibility = true }) => {
-    const cardRef = useRef(null);
-    const [cardStyle, setCardStyle] = useState("large");
-    const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 834);
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [buttonVisibility, setButtonVisibility] = useState(initialButtonVisibility);
+  const cardRef = useRef(null);
+  const [cardStyle, setCardStyle] = useState("large");
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 834);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [buttonVisibility, setButtonVisibility] = useState(initialButtonVisibility);
 
   const handleResize = () => {
     const cardWidth = cardRef.current.offsetWidth; // Get the card width
 
     if (cardWidth < 353 && buttonVisibility) {
       setCardStyle("small");
-    }else {
+    } else {
       setCardStyle("large");
     }
   };
@@ -30,20 +31,20 @@ const CategoryCard = ({ imageSrc, title, buttonVisibility: initialButtonVisibili
   useEffect(() => {
     window.addEventListener("resize", handleResizeMobile);
     return () => {
-        window.removeEventListener("resize", handleResizeMobile);
+      window.removeEventListener("resize", handleResizeMobile);
     };
-}, []);
+  }, []);
 
-useEffect(() => {
+  useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize(); // Call once on mount to set initial styles
 
     return () => window.removeEventListener("resize", handleResize); // Cleanup
-}, []);
+  }, []);
 
-const handleCardClick = () => {
+  const handleCardClick = () => {
     console.log("Card clicked!");
-};
+  };
 
 
   return (
@@ -51,11 +52,11 @@ const handleCardClick = () => {
       <div className="card-content">
         <h2 className="heading-04">{title}</h2>
         {
-            buttonVisibility && (<Button variant='outlined'>Shop Now</Button>)
+          buttonVisibility && (<Link to={`/${title == "Sitting Room" ? 'SittingRoom' : title}`} className='Link'><Button variant='outlined'>Shop Now</Button></Link>)
         }
       </div>
       <div className="card_container">
-      <img src={imageSrc} alt={title} className="card-image" />
+        <img src={imageSrc} alt={title} className="card-image" />
       </div>
     </div>
   )

@@ -9,7 +9,7 @@ import SearchIcon from '../icons/search.icon.component';
 const PageHeader = ({
   classname,
   Title = "Category Title",
-  PageDescription,
+  PageDescription = "Some description",
 }) => {
   return (
     <section id="page_header" className={classname}>

@@ -53,6 +53,10 @@
 }
 
 
+.Link{
+    text-decoration: none;
+}
+
 @media (max-width: 834px) {
     .card-content .heading-04{
         font-size: 25px !important;
