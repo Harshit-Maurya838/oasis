@@ -77,6 +77,35 @@
   animation-direction: normal;
 }
 
+.slideInTextLtoR{
+  animation-name: slideInLtoR;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.74,-0.43,0,1.7);
+  animation-direction: normal;
+}
+
+.slideInComponentLtoR{
+  animation-name: slideInLtoR;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.48,-0.25,.24,1.12);
+  animation-direction: normal;
+  opacity: 0;
+}
+
+.slideInComponentRtoL{
+  animation-name: slideInRtoL;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.48,-0.25,.24,1.12);
+  animation-direction: normal;
+  opacity: 0;
+}
+
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -203,5 +232,29 @@
     opacity: 1;
     letter-spacing: normal;
     transform: translateY(0rem);
+  }
+}
+
+@keyframes slideInLtoR{
+  0%{
+    display: block;
+    opacity: 0;
+    transform: translateX(-5rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRtoL{
+  0%{
+    display: block;
+    opacity: 0;
+    transform: translateX(5rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
   }
 }
