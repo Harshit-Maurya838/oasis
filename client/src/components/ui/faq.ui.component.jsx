@@ -1,15 +1,20 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import Accordin from "../utils/according.utils.component";
+import SplitText from "../animatedUtils/splitText.animatedUtils.component";
 import "../../styles/utils/utils.styles.css";
 import "../../styles/faq/main.faq.styles.css";
 import "../../styles/faq/responsive.faq.styles.css";
 
 function FaQ() {
+
   return (
     <div className="FaQ" id="faq">
       <div className="content">
         <span className="heading-04">
-          We have got the answers to your questions
+          <SplitText
+            text="We have got the answers to your questions"
+            delay={10}
+          />
         </span>
         <Accordin
           number="01"

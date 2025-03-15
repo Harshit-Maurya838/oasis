@@ -150,7 +150,9 @@
     transition: background-color 0.3s ease;
 }
 .buyBtn:hover{
-    background-color: var(--p700);
+    background-color: transparent;
+    border: 2px solid var(--heading-brand);
+    
 }
 .detailxy{
     display: flex;

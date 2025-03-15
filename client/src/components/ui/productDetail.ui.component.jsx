@@ -42,13 +42,13 @@ const ProductDetail = () => {
   return (
     <>
     <div className="product_detail">
-      <div className="left_sec">
+      <div className="left_sec slideInComponentLtoR">
         {/* {imgArray.map((img, index) => {
                     return <img src={img} alt="product" key={index} />;
                 })} */}
         <ImageGallery />
       </div>
-      <div className="right_sec">
+      <div className="right_sec slideInComponentRtoL">
         <h1 className="heading-05">{data.title}</h1>
         <StarRating rating={data.rating} />
         <div className="price_sec">
