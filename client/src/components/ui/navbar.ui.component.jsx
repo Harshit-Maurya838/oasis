@@ -85,7 +85,7 @@ const Navbar = () => {
 
   return (
     <nav id="navbar">
-      <div className="left">
+      <div className="left slideInTextLtoR">
         <a>
           <img src={oasisLogo} alt="" />
         </a>
@@ -161,13 +161,14 @@ const Navbar = () => {
         </div>
         <div className="right">
           <CartButton
+            className = "slideInComponentRtoL"
             cartItem={0}
             onClick={() => {
               openPanel("Cart");
             }}
           />
           {!authenticated ? (
-            <Button variant="contained" onClick={() => openPanel("Sign Up")}>
+            <Button extendedClass={'slideInComponentRtoL'} variant="contained" onClick={() => openPanel("Sign Up")}>
               <p className="text-16-semibold">Get Started</p>
             </Button>
           ) : (

@@ -9,6 +9,10 @@
   border-bottom: 1px solid var(--g200);
   cursor: pointer;
   transition: var(--transitionDuration);
+  animation-duration: .8s;
+  animation-timing-function: ease-in-out;
+  opacity: 0;
+  animation-delay: .2s;
 }
 
 .content {
