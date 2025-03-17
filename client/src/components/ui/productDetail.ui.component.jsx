@@ -20,20 +20,20 @@ const ProductDetail = () => {
     tags: "",
     desc: "Ultra-functional and elegantly minimalist, our Luxe Armchair Collection draws inspiration from Nordic-style décor. It features a neutral color palette and natural wood accents, highlighted by uniquely designed hexagonal legs. ",
     basePrice: 500,
-    rating: 4.2,
+    rating: 3.5,
     discount: 40,
     variants: [
       {
         var_name: "name of the variant",
         var_url: "endpoints of the url",
         var_gallery: ["array of image gallery"],
-        var_color: "red",
+        var_color: "black",
       },
       {
         var_name: "name of the variant",
         var_url: "endpoints of the url",
         var_gallery: ["array of image gallery"],
-        var_color: "blue",
+        var_color: "pink",
       },
     ],
   };

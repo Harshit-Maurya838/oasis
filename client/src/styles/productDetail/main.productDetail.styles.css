@@ -145,14 +145,15 @@
     border-radius: 45px;
     background-color: var(--p800);
     color: white;
-    border: none;
+    border: 2px solid var(--heading-brand);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 .buyBtn:hover{
     background-color: transparent;
     border: 2px solid var(--heading-brand);
-    
+    color: var(--heading-brand);
+    transition: .3s ease;
 }
 .detailxy{
     display: flex;
