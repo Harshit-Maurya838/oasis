@@ -2,20 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
-const http = require('http');
 require('dotenv').config();
+const { io, app, server } =  require("./src/lib/socket.js")
 
-const ProductsRoutes = require("./routers/products/products.js");
-const OrderRoutes = require("./routers/orders/orders.js");
-const AuthRoutes = require("./routers/auth/authRoute.js");
-const CartRoutes = require("./routers/carts/cart.js");
-const setupSocket = require("./src/config/socket.js");
+const ProductsRoutes = require("./src/routers/products/products.js");
+const OrderRoutes = require("./src/routers/orders/orders.js");
+const AuthRoutes = require("./src/routers/auth/authRoute.js");
+const CartRoutes = require("./src/routers/carts/cart.js");
 
 const port = process.env.PORT || 5050;
-
-const app = express();
-const server = http.createServer(app);
-const io = setupSocket(server); 
 
 //Database Connection
 async function connectDB(){
