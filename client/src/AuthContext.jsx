@@ -6,10 +6,10 @@ export function AuthContextProvider({children}){
     
     const[authenticated , setAuthentication] = useState(false);
     const[username, setUsername] = useState('');
-    const[email,setEmail] = useState('');
+    const[email,setUserEmail] = useState('');
 
     return(
-        <AuthContext.Provider value={{authenticated , username , email , setAuthentication , setUsername , setEmail}} >
+        <AuthContext.Provider value={{authenticated , username , email , setAuthentication , setUsername , setUserEmail}} >
             {children}
         </AuthContext.Provider>
     )
