@@ -21,7 +21,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const { openPanel } = useSidePanel();
-  const { authenticated, username , setAuthentication , setUsername } = useAuthContext();
+  const { authenticated, username , setAuthentication , setUsername, setUserId } = useAuthContext();
   // for hamburger
   const handleToggle = (e) => {
     setIsChecked(e.target.checked);
@@ -37,7 +37,8 @@ const Navbar = () => {
       await API.post('/auth/user')
       .then((response)=>{
         setAuthentication(response.data.isAuth);
-        setUsername(response.data.user.username)
+        setUsername(response.data.user.username);
+        setUserId(response.data.user.userId);
       })
       .catch((err)=>{
         console.log(err);

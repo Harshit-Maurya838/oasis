@@ -4,32 +4,25 @@ import { io } from "socket.io-client";
 import { useCart } from "../../CartContext";
 import { useAuthContext } from "../../AuthContext";
 import { useSidePanel } from "../../SidePanelContext";
-import API from "../../axios.config";
 
-const socket = io("http://localhost:8000");
+const socket = io("http://localhost:8000", { autoConnect: false, withCredentials: true });
 
 const AddToCart = ({ productId }) => {
     const { authenticated } = useAuthContext(); 
     const { openPanel } = useSidePanel();
-    const {cart, setCart } = useCart(); 
-
-    const addToCartAPI = async (productId, quantity = 1) => {
-        try {
-            const response = await API.post("/cart/add", { productId:'67ab224bf027b35747a9ac81', quantity }, { withCredentials: true });
-            socket.emit("cartUpdated", response.data);
-            setCart(response.data.cart);
-            alert("Item added to cart!"); 
-        } catch (error) {
-            console.error("Error adding to cart:", error);
-            alert("Failed to add to cart.");
-        }
-    };
+    const { cart, setCart } = useCart(); 
 
     const handleAddToCart = async () => {
         if (!authenticated) {
             return openPanel("Sign Up");
         }
-        await addToCartAPI(productId);
+
+        socket.emit("addToCart", { productId, quantity: 1 });
+
+        socket.once("cartUpdated", (updatedCart) => {
+            setCart(updatedCart);
+            alert("Item added to cart!"); 
+        });
     };
 
     return <Button onClick={handleAddToCart}>Add to cart</Button>;

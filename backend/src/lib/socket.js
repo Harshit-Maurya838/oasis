@@ -1,6 +1,7 @@
 const { Server } = require("socket.io")
 const http = require("http")
 const express = require("express")
+const { redisClient, updateCart, saveCartToDB } = require("./redis");
 
 const app = express();
 const server = http.createServer(app);
@@ -13,11 +14,36 @@ const io = new Server(server, {
 })
 
 io.on("connection", (socket) => {
-    console.log("A user connected:", socket.id);
+    console.log("User connected:", socket.id);
+
+    const userId = socket.handshake.auth?.userId;
+    console.log("Received userId:", userId);
+    if (!userId) {
+        console.log("User not authenticated, disconnecting...");
+        socket.disconnect();
+        return;
+    }
+
+    socket.join(userId.toString());
+
+    // Handle add to cart event
+    socket.on("addToCart", async (data) => {
+        await updateCart(userId, data, io);
+    });
+
+    // Handle remove from cart event
+    socket.on("removeFromCart", async (data) => {
+        await updateCart(userId, data, io);
+    });
+
+    // Periodically save cart to DB if expired
+    setInterval(async () => {
+        await saveCartToDB(userId);
+    }, 60000); // Every 60 seconds
 
     socket.on("disconnect", () => {
         console.log("User disconnected:", socket.id);
     });
 });
 
-module.exports = { io, app, server }
+module.exports = { io, app, server };

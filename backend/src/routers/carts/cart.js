@@ -1,71 +1,48 @@
 const express = require("express");
 const authMiddleware = require("../../middlewares/authMiddleware");
+const { redisClient, saveCartToDB } = require("../../lib/redis.js");
 const Cart = require("../../models/cart.js");
-const Product = require("../../models/products");
+
 const router = express.Router();
 
-router.post("/add", authMiddleware, async (req, res) => {
-    try {
-        const userId = req.user.userId;
-        const { productId, quantity = 1 } = req.body;
 
-        let cart = await Cart.findOne({ user: userId }).populate("cartItems.product");
-        if (!cart) {
-            cart = new Cart({
-                user: userId,
-                cartItems: [{ product: productId, quantity, price: 0 }],
-            });
-        } else {
-            const itemIndex = cart.cartItems.findIndex(item => item.product._id.toString() === productId);
-            if (itemIndex > -1) {
-                cart.cartItems[itemIndex].quantity = quantity;
-            } else {
-                cart.cartItems.push({ product: productId, quantity, price: 0 });
-            }
-        }
-        await cart.save();
-
-        // Emit event only to the user who updated their cart
-        req.app.get("io").to(userId.toString()).emit("cartUpdated", cart);
-
-        return res.status(200).json({ message: "Cart updated", cart });
-    } catch (error) {
-        console.error("Error adding to cart:", error);
-        return res.status(500).json({ message: "Internal server error" });
-    }
-});
-
-router.delete("/remove", authMiddleware, async (req, res) => {
-    try {
-        const userId = req.user.userId;
-        const { productId } = req.body;
-
-        let cart = await Cart.findOne({ user: userId }).populate("cartItems.product");
-        if (!cart) {
-            return res.status(404).json({ message: "Cart not found" });
-        }
-
-        // Remove the item from cartItems
-        cart.cartItems = cart.cartItems.filter(item => item.product._id.toString() !== productId);
-        await cart.save();
-
-        // Emit event only to the user who updated their cart
-        req.app.get("io").to(userId.toString()).emit("cartUpdated", cart);
-
-        return res.status(200).json({ message: "Item removed from cart", cart });
-    } catch (error) {
-        console.error("Error removing item from cart:", error);
-        return res.status(500).json({ message: "Internal server error" });
-    }
-});
+// Get cart (from Redis first, then DB)
 
 router.get("/", authMiddleware, async (req, res) => {
     try {
         const userId = req.user.userId;
-        const cart = await Cart.findOne({ user: userId }).populate("cartItems.product");
-        return res.status(200).json(cart || { cartItems: [] });
+        const cartKey = `cart:${userId}`;
+
+        let cart = await redisClient.get(cartKey);
+
+        if (!cart) {
+            console.log("Cart not in Redis, fetching from DB...");
+            cart = await Cart.findOne({ user: userId }).populate("cartItems.product");
+            if (!cart) cart = { cartItems: [] };
+
+            // Cache the cart in Redis for future use
+            await redisClient.setEx(cartKey, 60, JSON.stringify(cart));
+        } else {
+            cart = JSON.parse(cart);
+        }
+
+        return res.status(200).json(cart);
     } catch (error) {
         console.error("Error fetching cart:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+
+//  Force save cart from Redis to MongoDB (if needed)
+
+router.post("/sync", authMiddleware, async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        await saveCartToDB(userId);
+        return res.status(200).json({ message: "Cart saved to DB" });
+    } catch (error) {
+        console.error("Error syncing cart:", error);
         return res.status(500).json({ message: "Internal server error" });
     }
 });

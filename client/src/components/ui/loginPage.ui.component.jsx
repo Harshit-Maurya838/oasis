@@ -11,7 +11,7 @@ import { useAuthContext } from "../../AuthContext.jsx";
 
 function LoginPage() {
   const { openPanel, closePanel } = useSidePanel();
-  const { setAuthentication, setUsername, setUserEmail } = useAuthContext();
+  const { setAuthentication, setUsername, setUserEmail, setUserId } = useAuthContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,10 +21,12 @@ function LoginPage() {
       password: password,
     })
       .then((response) => {
+        console.log(response)
         if (response.data.isAuth) {
           setAuthentication(true);
           setUsername(response.data.user.name);
           setUserEmail(response.data.user.email);
+          setUserId(response.data.user.userId);
           closePanel();
         } else {
           setAuthentication(false);
