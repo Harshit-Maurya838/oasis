@@ -22,6 +22,8 @@ const redisClient = createClient();
 //     }
 // })();
 
+redisClient.connect();
+
 const CACHE_EXPIRY = 60; // 60 seconds
 
 // Add to cart
