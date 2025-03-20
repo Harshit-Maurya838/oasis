@@ -10,7 +10,7 @@ import Product from "../utils/productCard.utils.component";
 const CategoriesPage = ({ pageTitle, pageDesc, pageBaseUrl }) => {
 
   useEffect(()=>{
-    document.body.scrollTop = 0;
+    window.scrollTo(0,0);
   },[])
 
   return (

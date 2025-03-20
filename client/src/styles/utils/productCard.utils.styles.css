@@ -27,6 +27,27 @@
     position: relative;
 }
 
+.product_desc a{
+    text-decoration: none;
+    color: var(--heading-main);
+    position:relative;
+}
+
+.product_desc a::after{
+    content: "";
+    width: 0;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid var(--heading-main);
+    transition: .3s ease;
+}
+
+.product_desc a:hover::after{
+    width: 100%;
+}
+
 .rating{
     position: absolute;
     top: 10px;

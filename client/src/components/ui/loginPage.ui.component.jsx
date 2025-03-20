@@ -11,7 +11,7 @@ import { useAuthContext } from "../../AuthContext.jsx";
 
 function LoginPage() {
   const { openPanel, closePanel } = useSidePanel();
-  const { setAuthentication, setUsername, setUserEmail, setUserId } = useAuthContext();
+  const { setAuthentication, setUsername, setUserEmail, setUserId , userId} = useAuthContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,7 +31,7 @@ function LoginPage() {
         } else {
           setAuthentication(false);
         }
-        alert(response.data.message);
+        // alert(response.data.message);
       })
       .catch((err) => alert(err.response.data.message));
   };

@@ -15,8 +15,9 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
+    console.log("Handshake:", socket.handshake);
 
-    const userId = socket.handshake.auth?.userId;
+    const userId = socket.handshake.auth.userId;
     console.log("Received userId:", userId);
     if (!userId) {
         console.log("User not authenticated, disconnecting...");

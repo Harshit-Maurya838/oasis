@@ -24,7 +24,7 @@ const router = createBrowserRouter(
       ]}/>} /> */}
 
       <Route path='/test' element={<ImageGallery />} />
-      <Route path='/test2' element={<ProductDetails />} />
+      <Route path='/product/:id' element={<ProductDetails />} />
 
       <Route path="categories" element={<CategoriesPage />} />
       <Route path="SittingRoom" element={<CategoriesPage

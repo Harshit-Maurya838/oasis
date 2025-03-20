@@ -55,7 +55,6 @@ router.post("/login", async (req, res) => {
             httpOnly:true,
             sameSite:true
         })
-
         res.status(200).json({ message: "Login successful",isAuth:true, user: { name: user.username, email: user.email, userId: user._id } });
 
     } catch (err) {
@@ -68,11 +67,12 @@ router.post("/login", async (req, res) => {
 router.post('/user',authMiddleware,async(req,res)=>{
     try{
         if(req.user){
+            console.log(req.user)
             const user = await User.findById(req.user.userId);
             res.status(200).json({message:"User data fetched successfully",suc:true,isAuth:true,user:{
                 username:user.username,
                 email:user.email,
-                userId:user._id
+                userId:req.user.userId
             }});
             return '';
         }

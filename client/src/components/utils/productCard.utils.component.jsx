@@ -29,7 +29,7 @@ const Product = ({ extraClass, productId, productName, price, imgSrc, variants, 
           </div>
         </div>
         <div className="product_desc">
-          <p className="text-18-medium" >{productName}</p>
+          <p className="text-18-medium" >{<Link to={`/product/${productName}`} >{productName}</Link>}</p>
           <span className="text-13-semibold" >${price}</span>
         </div>
         <div className="variants">

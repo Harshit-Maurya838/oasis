@@ -26,48 +26,46 @@ export const CartProvider = ({ children }) => {
 
   // Initialize socket only once
   useEffect(() => {
-    if (!socketRef.current) {
+    console.log("Current userId:", userId); 
+  
+    if (!socketRef.current && userId) { 
       socketRef.current = io("http://localhost:8000", {
-        autoConnect: false, // Prevents auto-connection before login
+        autoConnect: false,
         withCredentials: true,
         auth: {
-          userId,
-        },
+          userId: userId 
+        }
       });
+      console.log("Socket initialized with userId:", userId);
     }
-
+  
     const socket = socketRef.current;
-
-    if (authenticated && userId) {
+  
+    if (authenticated && userId && socket) {
       if (!isConnected) {
+        socket.auth = { userId }; // Update auth before connecting
         socket.connect();
         setIsConnected(true);
-        console.log("Socket connected");
+        console.log("Socket connected with userId:", userId);
       }
-
-      // Fetch initial cart data
+      
       fetchCart();
-
-      // Listen for real-time cart updates
+  
       const handleCartUpdate = (updatedCart) => {
         console.log("Cart updated via socket:", updatedCart);
         setCart(updatedCart);
       };
-
+  
       socket.on("cartUpdated", handleCartUpdate);
-    } else {
-      if (isConnected) {
-        socket.disconnect();
-        setIsConnected(false);
-        console.log("Socket disconnected");
-      }
+  
+      return () => socket.off("cartUpdated");
+    } else if (isConnected) {
+      socket.disconnect();
+      setIsConnected(false);
+      console.log("Socket disconnected");
     }
-
-    // Cleanup function
-    return () => {
-      socket.off("cartUpdated");
-    };
-  }, [fetchCart, isConnected, authenticated, userId]);
+  }, [fetchCart, authenticated, userId]);
+  
 
   const addToCart = (productId, quantity = 1) => {
     if (socketRef.current) {

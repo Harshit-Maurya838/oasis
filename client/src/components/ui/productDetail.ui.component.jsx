@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import "../../styles/productDetail/main.productDetail.styles.css";
 import Img1 from "/img/productDetail(temp)/PD_1.png";
 import Img2 from "/img/productDetail(temp)/PD_2.png";
@@ -39,6 +39,9 @@ const ProductDetail = () => {
   };
 
   const[quantity, setQuantity] = useState(1);
+
+  useEffect(()=>{ window.scrollTo(0,0) },[])
+
   return (
     <>
     <div className="product_detail">
