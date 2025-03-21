@@ -76,16 +76,20 @@ const saveCartToDB = async (userId) => {
     let cart = await redisClient.get(cartKey);
 
     if (cart) {
+        console.log(cart)
         cart = JSON.parse(cart);
 
-        await Cart.findOneAndUpdate(
-            { user: userId },
-            { cartItems: cart.cartItems },
-            { upsert: true }
-        );
+        if (cart.cartItems.length > 0) {
+            await Cart.findOneAndUpdate(
+                { user: userId },
+                { cartItems: cart.cartItems },
+                { upsert: true, new: true }
+            );
 
-        await redisClient.del(cartKey);
-        console.log(`Cart saved to DB for user ${userId}`);
+            console.log(`Cart saved to DB for user ${userId}`);
+        }
+
+        await redisClient.del(cartKey); // Remove from Redis after saving
     }
 };
 

@@ -19,6 +19,7 @@ function Panel({ pages = 4, children , classname }) {
     }
   }, [currentSlide]);
   let data = {
+    productId: "67ab224bf027b35747a9ac7b",
     title: "Faux Leather Sofa Couch new premium",
     category: "Chair",
     tags: "",

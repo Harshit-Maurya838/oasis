@@ -5,23 +5,26 @@ import { useCart } from "../../CartContext";
 import { useAuthContext } from "../../AuthContext";
 import { useSidePanel } from "../../SidePanelContext";
 
-const socket = io("http://localhost:8000", { autoConnect: false, withCredentials: true });
 
 const AddToCart = ({ productId }) => {
     const { authenticated } = useAuthContext(); 
     const { openPanel } = useSidePanel();
-    const { cart, setCart } = useCart(); 
+    const { cart, setCart, socket } = useCart(); 
 
     const handleAddToCart = async () => {
         if (!authenticated) {
             return openPanel("Sign Up");
         }
-
+        if (!socket.connected) {
+            socket.connect();
+        }
+        console.log("Emitting addToCart for product:", productId);
+    
         socket.emit("addToCart", { productId, quantity: 1 });
-
-        socket.once("cartUpdated", (updatedCart) => {
+    
+        socket.on("cartUpdated", (updatedCart) => {
+            console.log("Cart updated:", updatedCart);
             setCart(updatedCart);
-            alert("Item added to cart!"); 
         });
     };
 

@@ -13,12 +13,12 @@ const io = new Server(server, {
     }
 })
 
+const activeIntervals = new Map();
+
 io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
-    console.log("Handshake:", socket.handshake);
 
     const userId = socket.handshake.auth.userId;
-    console.log("Received userId:", userId);
     if (!userId) {
         console.log("User not authenticated, disconnecting...");
         socket.disconnect();
@@ -27,23 +27,33 @@ io.on("connection", (socket) => {
 
     socket.join(userId.toString());
 
-    // Handle add to cart event
+    if (!activeIntervals.has(userId)) {
+        const intervalId = setInterval(async () => {
+            await saveCartToDB(userId);
+        }, 60000); // Run every 60 sec
+
+        activeIntervals.set(userId, intervalId);
+    }
+    
+    // add to cart
     socket.on("addToCart", async (data) => {
         await updateCart(userId, data, io);
     });
 
-    // Handle remove from cart event
+    // remove from cart
     socket.on("removeFromCart", async (data) => {
         await updateCart(userId, data, io);
     });
 
-    // Periodically save cart to DB if expired
-    setInterval(async () => {
-        await saveCartToDB(userId);
-    }, 60000); // Every 60 seconds
-
     socket.on("disconnect", () => {
         console.log("User disconnected:", socket.id);
+
+        // Clear interval when the user disconnects
+        if (activeIntervals.has(userId)) {
+            clearInterval(activeIntervals.get(userId));
+            activeIntervals.delete(userId);
+        }
+
     });
 });
 
