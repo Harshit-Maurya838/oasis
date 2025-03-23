@@ -13,7 +13,7 @@ router.get("/",async(req,res)=>{
         const products = await Product.find()
         .skip((page - 1)*limit)
         .limit(limit);
-        res.json({status:"success",data:products});
+        res.json({suc:true,data:products});
     } catch (error) {
         res.status(500).json({ message: "Server error", error });
     }

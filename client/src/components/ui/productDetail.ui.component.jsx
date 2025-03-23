@@ -10,9 +10,11 @@ import Swiper from "../utils/swiper.utils.component";
 import Product from "../utils/productCard.utils.component";
 import "../../styles/utils/utils.styles.css";
 import { useParams } from "react-router-dom";
+import { useCart } from "../../CartContext.jsx";
 
 const ProductDetail = () => {
   let { id } = useParams();
+  const { cart , addToCart } = useCart(); 
   let imgArray = [Img1, Img2, Img3, Img4];
   let data = {
     title: "Luxe Armchair - Left Arm Chute",
@@ -99,7 +101,9 @@ const ProductDetail = () => {
             </div>
           </div>
           <div className="buy_sec"> 
-            <button className="buyBtn">
+            <button className="buyBtn" onClick={()=>{
+              addToCart(data,quantity);
+            }} >
               <span className="text-20-semibold">Add to cart</span>
             </button>
             <button className="buyBtn">

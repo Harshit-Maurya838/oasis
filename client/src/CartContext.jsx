@@ -8,7 +8,7 @@ const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useState({});
   const [isConnected, setIsConnected] = useState(false);
   
   const { authenticated, userId } = useAuthContext();
@@ -63,6 +63,8 @@ export const CartProvider = ({ children }) => {
       socket.disconnect();
       setIsConnected(false);
       console.log("Socket disconnected");
+      setCart({});
+      console.log(cart);
     }
   }, [fetchCart, authenticated, userId]);
   
