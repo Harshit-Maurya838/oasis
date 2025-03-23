@@ -70,6 +70,7 @@
     border-radius: 100%;
     z-index: 3;
     transition: .3s ease;
+    cursor: pointer;
 }
 
 .gDots{
@@ -81,7 +82,7 @@
     justify-content: center;
     position: absolute;
     bottom: 2%;
-    gap: 12px;
+    gap: 12px
 }
 
 .gActiveDot{
