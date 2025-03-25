@@ -5,7 +5,7 @@ import Button from "./button.utils.component";
 import { Link } from "react-router-dom";
 import AddToCart from "./addToCart.utils.component";
 
-const Product = ({ extraClass, productId, productName, price, imgSrc, variants, rating = 5 }) => {
+const Product = ({ extraClass, productId, productName, price, imgSrc, variants, rating = 0 }) => {
   return (
     // <Link to={`/product/${product.id}`} key={product.id}>
       <div className={`cardDom ${extraClass}`} >
@@ -29,7 +29,7 @@ const Product = ({ extraClass, productId, productName, price, imgSrc, variants, 
           </div>
         </div>
         <div className="product_desc">
-          <p className="text-18-medium" >{<Link to={`/product/${productName}`} >{productName}</Link>}</p>
+          <p className="text-18-medium" >{<Link to={`/product/${productId}`} >{productName}</Link>}</p>
           <span className="text-13-semibold" >${price}</span>
         </div>
         <div className="variants">

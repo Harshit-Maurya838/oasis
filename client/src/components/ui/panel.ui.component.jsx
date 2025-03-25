@@ -5,9 +5,11 @@ import "../../styles/panel/responsive.panel.styles.css";
 import "../../styles/utils/animations.utils.styles.css";
 import SildeButton from "../utils/slidebutton.utils.component";
 import Product from "../utils/productCard.utils.component";
+import API from "../../axios.config.js";
 
 function Panel({ pages = 4, children , classname }) {
   const [currentSlide, setCurrentSlide] = useState(1);
+  const [totalSlides, setTotalSlides] = useState([]);
   const panelDom = useRef(null);
 
   const slide = (value) => {
@@ -20,6 +22,22 @@ function Panel({ pages = 4, children , classname }) {
     }
   }, [currentSlide]);
 
+  useEffect(()=>{
+    const fetchData = async()=>{
+      const response  = await API.get('/products',{
+        params:{
+          page: currentSlide,
+          limit:12
+        }
+      });
+      if(response.data.suc){
+        setTotalSlides([...response.data.data]);
+        console.log(totalSlides[0].rating)
+      }
+    }
+    fetchData();
+  },[currentSlide])
+  
   useEffect(() => {
     document.querySelectorAll('.panelCard').forEach((item, index) => {
       item.style.animationDelay = `${index * 0.15}s`
@@ -28,31 +46,19 @@ function Panel({ pages = 4, children , classname }) {
     })
   },[])
 
-  let data = {
-    productId: "67ab224bf027b35747a9ac7b",
-    title: "Faux Leather Sofa Couch new premium",
-    category: "Chair",
-    tags: "",
-    desc: "AMAZING CHAIR",
-    basePrice: "500",
-    rating: "4.2",
-    variants: [
-      {
-        var_name: "name of the variant",
-        var_url: "endpoints of the url",
-        var_gallery: ["array of image gallery"],
-        var_color: "red",
-        discount: "40%",
-      },
-      {
-        var_name: "name of the variant",
-        var_url: "endpoints of the url",
-        var_gallery: ["array of image gallery"],
-        var_color: "blue",
-        discount: "40%",
-      },
-    ],
-  };
+  useEffect(()=>{
+    document.addEventListener('HighPrice',()=>{
+      alert('High Price');
+    }
+    );
+
+    return ()=>{
+      document.removeEventListener('HighPrice',()=>{
+        
+      });
+    }
+  },[])
+
   return (
     <div className={`panelContainer ${classname}`} >
       {children}
@@ -60,17 +66,17 @@ function Panel({ pages = 4, children , classname }) {
         {[...Array(pages)].map((_, index) => {
           return (
             <PanelPage key={index}>
-              {[...Array(20)].map((item, index) => {
+              {totalSlides.map((item, index) => {
                 return (
                   <Product
                     extraClass="panelCard slideInComponentBtoT"
                     key={index}
-                    productId={data.productId}
+                    productId={totalSlides[index]._id}
                     imgSrc={"./img/samples/sample-image.png"}
-                    productName={data.title}
-                    price={data.basePrice}
-                    variants={data.variants}
-                    rating={data.rating}
+                    productName={totalSlides[index].name}
+                    price={totalSlides[index].price}
+                    variants={totalSlides[index].variants}
+                    rating={totalSlides[index].rating}
                   />
                 );
               })}

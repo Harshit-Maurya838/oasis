@@ -11,61 +11,66 @@ import Product from "../utils/productCard.utils.component";
 import "../../styles/utils/utils.styles.css";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../CartContext.jsx";
+import API from "../../axios.config.js";
 
 const ProductDetail = () => {
   let { id } = useParams();
   const { cart , addToCart } = useCart(); 
-  let imgArray = [Img1, Img2, Img3, Img4];
-  let data = {
-    title: "Luxe Armchair - Left Arm Chute",
-    category: "Chair",
-    tags: "",
-    desc: "Ultra-functional and elegantly minimalist, our Luxe Armchair Collection draws inspiration from Nordic-style décor. It features a neutral color palette and natural wood accents, highlighted by uniquely designed hexagonal legs. ",
-    basePrice: 500,
-    rating: 3.5,
-    discount: 40,
-    variants: [
-      {
-        var_name: "name of the variant",
-        var_url: "endpoints of the url",
-        var_gallery: ["array of image gallery"],
-        var_color: "black",
-      },
-      {
-        var_name: "name of the variant",
-        var_url: "endpoints of the url",
-        var_gallery: ["array of image gallery"],
-        var_color: "pink",
-      },
-    ],
-  };
 
   const [quantity, setQuantity] = useState(1);
+  const [data, setData] = useState({
+    name: "Product Name",
+    price: 0,
+    discount: 0,
+    rating: 0,
+    description: "Product Description",
+    variants: [
+      {
+        var_color: "red",
+      },
+      {
+        var_color: "blue",
+      },
+    ],
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(()=>{
+    const fetchData = async()=>{
+      const response = await API.get(`/products/${id}`);
+      if(response.data.suc){
+        setData(response.data.data);
+        console.log(data);
+      }
+      else{
+        console.log(response.data.message);
+        alert('Error fetching data');
+      }
+    }
+
+    fetchData();
+  },[data]);
+
   return (
     <>
       <div className="product_detail">
         <div className="left_sec slideInComponentLtoR">
-          {/* {imgArray.map((img, index) => {
-                    return <img src={img} alt="product" key={index} />;
-                })} */}
           <ImageGallery />
         </div>
         <div className="right_sec slideInComponentRtoL">
-          <h1 className="heading-05">{data.title}</h1>
+          <h1 className="heading-05">{data.name}</h1>
           <StarRating rating={data.rating} />
           <div className="price_sec">
             <p className="text-26-semibold disc_price">
-              ${data.basePrice - data.basePrice * (data.discount / 100)}
+              ${(data.price - data.price * (data.discount / 100)).toFixed(2)}
             </p>
-            <span className="base_price">${data.basePrice}</span>
+            <span className="base_price">${data.price}</span>
             <span className="text-16-medium discount">-{data.discount}%</span>
           </div>
-          <p className="text-20-regular">{data.desc}</p>
+          <p className="text-20-regular">{data.description}</p>
           <div className="prod_detail">
             <div className="variant">
               {data.variants.map((variant, index) => {

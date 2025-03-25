@@ -41,7 +41,7 @@ const CategoriesPage = ({ pageTitle, pageDesc, pageBaseUrl }) => {
                 items={[
                   {
                     itemname: "High Price",
-                    itemcallback: () => { },
+                    itemcallback: () => { const event = new CustomEvent('HighPrice') ; document.dispatchEvent(event) },
                   },
                 ]}
               />
