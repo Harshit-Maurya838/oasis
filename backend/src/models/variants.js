@@ -6,10 +6,6 @@ const variantSchema = new Schema({
         type:String,
         required:true
     },
-    var_url:{
-        type:String,
-        required:true
-    },
     var_gallery:{
         type:Array,
         required:true
