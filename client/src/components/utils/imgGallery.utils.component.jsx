@@ -53,6 +53,10 @@ function ImageGallery({
     }
   }, [currentSlide]);
 
+  function clickDotEvent(e) {
+    setCurrentSlide(parseInt(e.target.id.split("_")[1]));
+  }
+
   function removeDotClass() {
     document
       .querySelectorAll(".gDot")
@@ -100,8 +104,8 @@ function ImageGallery({
         </div>
       </div>
       <div className="gDots" ref={dots}>
-        {[...Array(imgset.length)].map((index) => {
-          return <div className="gDot" key={index}></div>;
+        {[...Array(imgset.length)].map((_ , index) => {
+          return <div className="gDot" id={`dot_${index}`} onClick={clickDotEvent} key={index}></div>;
         })}
       </div>
     </div>

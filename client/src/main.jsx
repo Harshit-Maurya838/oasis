@@ -7,6 +7,7 @@ import Page404 from './components/ui/404.ui.component.jsx'
 import CategoriesPage from './components/pages/categories.pages.component.jsx';
 import ProductDetails from './components/ui/productDetail.ui.component.jsx';
 import ImageGallery from './components/utils/imgGallery.utils.component.jsx'
+import UpdatePassword from './components/ui/updatePassword.ui.component.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
         pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
         pageTitle={"Kitchen"}
       />} />
+      <Route path="auth/resetpassword/:userid" element={<UpdatePassword />} />
       <Route path="*" element={<Page404 />} />
     </Route>
   )

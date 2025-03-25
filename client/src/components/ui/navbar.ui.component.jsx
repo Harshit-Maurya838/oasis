@@ -8,6 +8,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSidePanel } from "../../SidePanelContext";
 import UserProfile from "../utils/userprofile.utils.component";
 import { useAuthContext } from "../../AuthContext";
+import { useCart } from "../../CartContext.jsx";
 import API from "../../axios.config.js";
 
 const sections = ["hero", "categories_main", "faq"];
@@ -17,6 +18,8 @@ const Navbar = () => {
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 834);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { cart } = useCart();
+  const [cartItem, setCartItem] = useState(0); 
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -27,6 +30,16 @@ const Navbar = () => {
     setIsChecked(e.target.checked);
   };
 
+  useEffect(() => {
+    try {
+      if(!authenticated) return setCartItem(0);
+      let items = 0;
+      cart.cartItems.forEach((item)=>{items += item.quantity});
+      setCartItem(items);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [cart]);
   // check at every change for mobile view
   useEffect(() => {
     const handleResize = () => {
@@ -163,7 +176,7 @@ const Navbar = () => {
         <div className="right">
           <CartButton
             className = "slideInComponentRtoL"
-            cartItem={0}
+            cartItem={cartItem}
             onClick={() => {
               openPanel("Cart");
             }}

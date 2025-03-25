@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PanelPage from "../utils/panelpage.utils.component";
 import "../../styles/panel/main.panel.styles.css";
 import "../../styles/panel/responsive.panel.styles.css";
+import "../../styles/utils/animations.utils.styles.css";
 import SildeButton from "../utils/slidebutton.utils.component";
 import Product from "../utils/productCard.utils.component";
 
@@ -18,6 +19,15 @@ function Panel({ pages = 4, children , classname }) {
       panelDom.current.scrollLeft = panelDom.current.children[currentSlide -1 ]?.offsetLeft;
     }
   }, [currentSlide]);
+
+  useEffect(() => {
+    document.querySelectorAll('.panelCard').forEach((item, index) => {
+      item.style.animationDelay = `${index * 0.15}s`
+      item.style.animationDuration = '.7s';
+      item.style.animationTimingFunction = 'ease';
+    })
+  },[])
+
   let data = {
     productId: "67ab224bf027b35747a9ac7b",
     title: "Faux Leather Sofa Couch new premium",
@@ -53,7 +63,7 @@ function Panel({ pages = 4, children , classname }) {
               {[...Array(20)].map((item, index) => {
                 return (
                   <Product
-                    extraClass="panelCard"
+                    extraClass="panelCard slideInComponentBtoT"
                     key={index}
                     productId={data.productId}
                     imgSrc={"./img/samples/sample-image.png"}

@@ -13,22 +13,31 @@ import Cart from "./components/ui/cart.ui.component.jsx";
 import CheckOutPage from "./components/ui/checkout.ui.component.jsx";
 import PaymentPage from "./components/ui/payment.ui.component.jsx";
 import { CartProvider } from "./CartContext.jsx";
+import ClickSpark from "./components/animatedUtils/sparkClick.animatedUtils.component.jsx";
 
 const Layout = () => {
   return (
     <>
-      <AuthContextProvider>
-        <CartProvider>
-          <SidePanelProvider>
-            <Navbar />
-            <section id="main-body">
-              <Outlet />
-            </section>
-            <SidePanelWrapper />
-            <Footer />
-          </SidePanelProvider>
-        </CartProvider>
-      </AuthContextProvider>
+      <ClickSpark
+        sparkColor="#000"
+        sparkSize={8}
+        sparkRadius={15}
+        sparkCount={8}
+        duration={400}
+      >
+        <AuthContextProvider>
+          <CartProvider>
+            <SidePanelProvider>
+              <Navbar />
+              <section id="main-body">
+                <Outlet />
+              </section>
+              <SidePanelWrapper />
+              <Footer />
+            </SidePanelProvider>
+          </CartProvider>
+        </AuthContextProvider>
+      </ClickSpark>
     </>
   );
 };
