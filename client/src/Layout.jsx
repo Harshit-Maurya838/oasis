@@ -14,6 +14,7 @@ import CheckOutPage from "./components/ui/checkout.ui.component.jsx";
 import PaymentPage from "./components/ui/payment.ui.component.jsx";
 import { CartProvider } from "./CartContext.jsx";
 import ClickSpark from "./components/animatedUtils/sparkClick.animatedUtils.component.jsx";
+import { ProductContentContext } from "./productContext.jsx";
 
 const Layout = () => {
   return (
@@ -25,18 +26,20 @@ const Layout = () => {
         sparkCount={8}
         duration={400}
       >
-        <AuthContextProvider>
-          <CartProvider>
-            <SidePanelProvider>
-              <Navbar />
-              <section id="main-body">
-                <Outlet />
-              </section>
-              <SidePanelWrapper />
-              <Footer />
-            </SidePanelProvider>
-          </CartProvider>
-        </AuthContextProvider>
+        <ProductContentContext>
+          <AuthContextProvider>
+            <CartProvider>
+              <SidePanelProvider>
+                <Navbar />
+                <section id="main-body">
+                  <Outlet />
+                </section>
+                <SidePanelWrapper />
+                <Footer />
+              </SidePanelProvider>
+            </CartProvider>
+          </AuthContextProvider>
+        </ProductContentContext>
       </ClickSpark>
     </>
   );
