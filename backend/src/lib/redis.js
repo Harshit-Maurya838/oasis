@@ -33,7 +33,7 @@ const updateCart = async (userId, newItem, io) => {
     cart = cart ? JSON.parse(cart) : { user: userId, cartItems: [] };
 
     // Find existing item
-    const existingItem = cart.cartItems.find(item => item.product === newItem.product);
+    const existingItem = cart.cartItems.find(item => item.product === newItem.product || item.product._id === newItem.product);
     if (existingItem) {
         existingItem.quantity += newItem.quantity;
         existingItem.price += newItem.price;
@@ -86,10 +86,11 @@ const saveCartToDB = async (userId) => {
                 { upsert: true, new: true }
             );
 
+            console.log("Redis Cart Data Before Saving:", JSON.stringify(cart, null, 2));
             console.log(`Cart saved to DB for user ${userId}`);
         }
 
-        await redisClient.del(cartKey); // Remove from Redis after saving
+        // await redisClient.del(cartKey); // Remove from Redis after saving
     }
 };
 
