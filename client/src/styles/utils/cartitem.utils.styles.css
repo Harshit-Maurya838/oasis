@@ -45,7 +45,13 @@
   position: relative;
 }
 
-.CartItemHeader::after{
+.CartItemHeader a{
+  text-decoration: none;
+    color: var(--heading-main);
+    position:relative;
+}
+
+.CartItemHeader a::after{
     content: '';
     position: absolute;
     left: 0;
@@ -56,7 +62,7 @@
     transition: .2s ease;
 }
 
-.CartItemHeader:hover::after{
+.CartItemHeader a:hover::after{
     width: 100%;
 }
 

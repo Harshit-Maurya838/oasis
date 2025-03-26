@@ -52,7 +52,7 @@ const ProductDetail = () => {
     }
 
     fetchData();
-  },[data]);
+  },[]);
 
   return (
     <>

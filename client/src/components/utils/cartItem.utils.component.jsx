@@ -1,17 +1,18 @@
 import React from "react";
 import "../../styles/utils/utils.styles.css";
 import "../../styles/utils/cartitem.utils.styles.css";
+import { Link } from "react-router-dom";
 
-function CartItem({ title, price, desc, quantity, variants = ['red' , 'blue' , 'green'] , image}) {
+function CartItem({ title, price, desc, quantity, variants = ['red' , 'blue' , 'green'] , image, productId}) {
   return (
     <div className="CartItemDom">
       <div className="CartItemImage">
-        <img src="/img/productDetail(temp)/PD_1.png" alt="item-image" />
+        <img src={image} alt="item-image" />
       </div>
       <div className="CartItemContent">
         <div className="CartItemInfo">
           <div className="CartItemHeader">
-            <span className="text-16-semibold">{title}</span>
+            <span className="text-16-semibold">{<Link to={`/product/${productId}`} >{title}</Link>}</span>
           </div>
           <div className="CartItemDesc">
             <span className="text-14-regular">{desc}</span>

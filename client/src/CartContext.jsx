@@ -71,7 +71,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (productId, quantity = 1) => {
     if (socketRef.current) {
-      socketRef.current.emit("addToCart", { productId, quantity });
+      socketRef.current.emit("addToCart", { product: productId, quantity });
     }
   };
 

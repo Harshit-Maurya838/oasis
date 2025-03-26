@@ -20,7 +20,7 @@ const AddToCart = ({ productId }) => {
         }
         console.log("Emitting addToCart for product:", productId);
     
-        socket.emit("addToCart", { productId, quantity: 1 });
+        socket.emit("addToCart", { product: productId, quantity: 1 });
     
         socket.on("cartUpdated", (updatedCart) => {
             console.log("Cart updated:", updatedCart);

@@ -2,6 +2,7 @@ const express = require("express");
 const authMiddleware = require("../../middlewares/authMiddleware");
 const { redisClient, saveCartToDB } = require("../../lib/redis.js");
 const Cart = require("../../models/cart.js");
+const Variants = require("../../models/variants.js")
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ router.get("/", authMiddleware, async (req, res) => {
 
         if (!cart) {
             console.log("Cart not in Redis, fetching from DB...");
-            cart = await Cart.findOne({ user: userId }).populate("cartItems.product");
+            cart = await Cart.findOne({ user: userId }).populate("cartItems.product").populate({path: "cartItems.product", populate: { path: "variants" }});
             if (!cart) cart = { cartItems: [] };
 
             // Cache the cart in Redis for future use

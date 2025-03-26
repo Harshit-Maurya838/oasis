@@ -1,7 +1,6 @@
 import React from "react";
 import "../../styles/utils/productCard.utils.styles.css";
 import "../../styles/utils/utils.styles.css";
-import Button from "./button.utils.component";
 import { Link } from "react-router-dom";
 import AddToCart from "./addToCart.utils.component";
 

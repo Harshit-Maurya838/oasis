@@ -32,7 +32,6 @@ function Panel({ pages = 4, children , classname }) {
       });
       if(response.data.suc){
         setTotalSlides([...response.data.data]);
-        console.log(totalSlides[0].rating)
       }
     }
     fetchData();
@@ -72,7 +71,7 @@ function Panel({ pages = 4, children , classname }) {
                     extraClass="panelCard slideInComponentBtoT"
                     key={index}
                     productId={totalSlides[index]._id}
-                    imgSrc={"./img/samples/sample-image.png"}
+                    imgSrc={totalSlides[index].variants[0].var_gallery[0]}
                     productName={totalSlides[index].name}
                     price={totalSlides[index].price}
                     variants={totalSlides[index].variants}
