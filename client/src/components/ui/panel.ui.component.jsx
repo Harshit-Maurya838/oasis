@@ -7,6 +7,7 @@ import SildeButton from "../utils/slidebutton.utils.component";
 import Product from "../utils/productCard.utils.component";
 import API from "../../axios.config.js";
 import { useProductContext } from "../../productContext.jsx";
+import ProductCardSkeleton from "../utils/productCardSkeleton.jsx";
 
 function Panel({id, pages, children , classname , content , url }) {
   const [currentSlide, setCurrentSlide] = useState(1);
@@ -92,6 +93,8 @@ function Panel({id, pages, children , classname , content , url }) {
           return (
             <PanelPage key={index}>
               {
+                isLoading
+                ?[...Array(12)].map((_,index)=>{return (<ProductCardSkeleton key={index} />)}):
                 (() => {
                   try {
                     return product[currentSlide].map((item, index) => {
