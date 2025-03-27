@@ -5,8 +5,9 @@ import "../../styles/productDetail/responsive.productDetail.style.css";
 import ChevronRight from "../icons/chevronRight.icon.component";
 
 function ImageGallery({
+  coverImage,
   imgset = [
-    "/img/productDetail(temp)/PD_1.png",
+    coverImage || "/img/productDetail(temp)/PD_1.png",
     "/img/productDetail(temp)/PD_2.png",
     "/img/productDetail(temp)/PD_3.png",
     "/img/productDetail(temp)/PD_4.png",

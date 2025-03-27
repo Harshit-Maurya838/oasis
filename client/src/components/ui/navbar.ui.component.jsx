@@ -152,10 +152,10 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/home#hero"
+            to="/home#products"
             onClick={(e) => {
               e.preventDefault();
-              handleNavigation("hero");
+              handleNavigation("products");
             }}
             className={activeSection === "hero" ? "active" : ""}
           >

@@ -27,6 +27,9 @@ const ProductDetail = () => {
     variants: [
       {
         var_color: "red",
+        var_gallery:[
+          ''
+        ]
       },
       {
         var_color: "blue",
@@ -58,7 +61,7 @@ const ProductDetail = () => {
     <>
       <div className="product_detail">
         <div className="left_sec slideInComponentLtoR">
-          <ImageGallery />
+          <ImageGallery coverImage={data.variants[0].var_gallery[0]} />
         </div>
         <div className="right_sec slideInComponentRtoL">
           <h1 className="heading-05">{data.name}</h1>

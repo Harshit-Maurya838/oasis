@@ -6,11 +6,17 @@ import "../../styles/utils/animations.utils.styles.css";
 import SildeButton from "../utils/slidebutton.utils.component";
 import Product from "../utils/productCard.utils.component";
 import API from "../../axios.config.js";
+import { useProductContext } from "../../productContext.jsx";
 
-function Panel({ pages = 4, children , classname }) {
+function Panel({id, pages, children , classname , content , url }) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [totalSlides, setTotalSlides] = useState([]);
   const panelDom = useRef(null);
+  const [pageState, setPageState] = useState(pages);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { product , setProduct } = useProductContext();
+
 
   const slide = (value) => {
     setCurrentSlide(value);
@@ -22,20 +28,40 @@ function Panel({ pages = 4, children , classname }) {
     }
   }, [currentSlide]);
 
-  useEffect(()=>{
-    const fetchData = async()=>{
-      const response  = await API.get('/products',{
-        params:{
-          page: currentSlide,
-          limit:12
+  useEffect(() => {
+    try {
+      if (product[currentSlide]?.length > 0) return;
+    } catch (e) {
+      console.log(e);
+    }
+    
+    const fetchData = async () => {
+      setIsLoading(true);
+      if (product[currentSlide]?.length > 0) return;
+      try {
+        console.log(currentSlide);
+        const response = await API.get(url, {
+          params: {
+            page: currentSlide,
+            limit: 12
+          }
+        });
+        
+        if (response.data.suc) {
+          const updatedProduct = {
+            ...product,
+            [currentSlide]: response.data.data
+          };
+          setProduct(updatedProduct);
         }
-      });
-      if(response.data.suc){
-        setTotalSlides([...response.data.data]);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchData();
-  },[currentSlide])
+  }, [currentSlide, url, product])
   
   useEffect(() => {
     document.querySelectorAll('.panelCard').forEach((item, index) => {
@@ -59,26 +85,35 @@ function Panel({ pages = 4, children , classname }) {
   },[])
 
   return (
-    <div className={`panelContainer ${classname}`} >
+    <div id={id} className={`panelContainer ${classname}`} >
       {children}
       <div ref={panelDom} className="panelDom">
         {[...Array(pages)].map((_, index) => {
           return (
             <PanelPage key={index}>
-              {totalSlides.map((item, index) => {
-                return (
-                  <Product
-                    extraClass="panelCard slideInComponentBtoT"
-                    key={index}
-                    productId={totalSlides[index]._id}
-                    imgSrc={totalSlides[index].variants[0].var_gallery[0]}
-                    productName={totalSlides[index].name}
-                    price={totalSlides[index].price}
-                    variants={totalSlides[index].variants}
-                    rating={totalSlides[index].rating}
-                  />
-                );
-              })}
+              {
+                (() => {
+                  try {
+                    return product[currentSlide].map((item, index) => {
+                      return (
+                        <Product
+                          extraClass="panelCard slideInComponentBtoT"
+                          key={index}
+                          productId={item._id}
+                          imgSrc={item.variants[0].var_gallery[0]}
+                          productName={item.name}
+                          price={item.price}
+                          variants={item.variants}
+                          rating={item.rating}
+                        />
+                      );
+                    });
+                  } catch (error) {
+                    console.error(error);
+                    return null;
+                  }
+                })()
+              }
             </PanelPage>
           );
         })}
@@ -87,7 +122,7 @@ function Panel({ pages = 4, children , classname }) {
         <SildeButton
           currentSlide={currentSlide}
           changer={slide}
-          total={pages}
+          total={pageState}
         />
       </div>
     </div>
