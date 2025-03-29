@@ -4,10 +4,12 @@ import "../../styles/cart/main.cart.styles.css";
 import CartItem from "../utils/cartItem.utils.component";
 import { useSidePanel } from "../../SidePanelContext";
 import { useCart } from "../../CartContext";
+import { useAuthContext } from "../../AuthContext";
 
 function Cart({ items = [...Array(4)] }) {
   const { openPanel } = useSidePanel();
   const { cart } = useCart();
+  const { authenticated } = useAuthContext();
   items = cart.cartItems;
   
   useEffect(()=>{
@@ -16,7 +18,7 @@ function Cart({ items = [...Array(4)] }) {
 
   return (
     <div className="CartDom">
-      {items.map((item, index) => {
+      {authenticated && (items.length > 0 ? items.map((item, index) => {
         return (
           <CartItem
             title={item.product.name}
@@ -28,15 +30,16 @@ function Cart({ items = [...Array(4)] }) {
             productId={item.product._id}
           />
         );
-      })}
-      <div
+      }) : <div className="noCartItem">Add any item in Cart</div>) }
+      {!authenticated && <div onClick={()=>{openPanel("Login")}} className="notSignedUp">Sign Up or Login for Cart Items</div>}
+      {authenticated && (items.length > 0 ? (<div
         className="CartDomNavigation"
         onClick={() => {
           openPanel("Check Out");
         }}
       >
         <span className="text-20-regular">Next</span>
-      </div>
+      </div>) : null)}
     </div>
   );
 }

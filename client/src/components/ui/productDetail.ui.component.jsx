@@ -44,8 +44,9 @@ const ProductDetail = () => {
       const response = await API.get(`/products/${id}`);
       if (response.data.suc) {
         setData(response.data.data);
-        console.log(data);
-      } else {
+        console.log(response.data.data);
+      }
+      else{
         console.log(response.data.message);
         alert("Error fetching data");
       }
