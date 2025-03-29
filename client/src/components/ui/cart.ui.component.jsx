@@ -18,7 +18,7 @@ function Cart({ items = [...Array(4)] }) {
 
   return (
     <div className="CartDom">
-      {authenticated && (items ? items.map((item, index) => {
+      {authenticated && (items.length > 0 ? items.map((item, index) => {
         return (
           <CartItem
             title={item.product.name}
@@ -32,14 +32,14 @@ function Cart({ items = [...Array(4)] }) {
         );
       }) : <div className="noCartItem">Add any item in Cart</div>) }
       {!authenticated && <div onClick={()=>{openPanel("Login")}} className="notSignedUp">Sign Up or Login for Cart Items</div>}
-      {authenticated && (items ? <div
+      {authenticated && (items.length > 0 ? (<div
         className="CartDomNavigation"
         onClick={() => {
           openPanel("Check Out");
         }}
       >
         <span className="text-20-regular">Next</span>
-      </div> : null)}
+      </div>) : null)}
     </div>
   );
 }

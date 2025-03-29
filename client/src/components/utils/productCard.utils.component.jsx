@@ -4,14 +4,24 @@ import "../../styles/utils/utils.styles.css";
 import { Link } from "react-router-dom";
 import AddToCart from "./addToCart.utils.component";
 
-const Product = ({ extraClass, productId, productName, price, imgSrc, variants, rating = 0 }) => {
+const Product = ({ extraClass, productId, productName, prodDesc, price, imgSrc, variants, rating = 0 }) => {
+  const product = {
+    _id: productId,
+    name: productName,
+    price: price,
+    rating: rating,
+    discount: 0,
+    description: prodDesc,
+    variants: variants,
+  };
+
   return (
     // <Link to={`/product/${product.id}`} key={product.id}>
       <div className={`cardDom ${extraClass}`} >
         <div className="cardImgDom">
           <img src={imgSrc} alt="Product" />
           <div className="button">
-            <AddToCart productId={productId} />
+            <AddToCart product={product} />
           </div>
           <div className="rating">
             <svg

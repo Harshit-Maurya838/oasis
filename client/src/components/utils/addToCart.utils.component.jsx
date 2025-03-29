@@ -6,10 +6,11 @@ import { useAuthContext } from "../../AuthContext";
 import { useSidePanel } from "../../SidePanelContext";
 
 
-const AddToCart = ({ productId }) => {
+const AddToCart = ({ product }) => {
     const { authenticated } = useAuthContext(); 
     const { openPanel } = useSidePanel();
-    const { cart, setCart, socket } = useCart(); 
+    const { cart, setCart, socket, addToCart } = useCart(); 
+    const quantity = 1; // Default quantity, can be changed later
 
     const handleAddToCart = async () => {
         if (!authenticated) {
@@ -18,14 +19,10 @@ const AddToCart = ({ productId }) => {
         if (!socket.connected) {
             socket.connect();
         }
-        console.log("Emitting addToCart for product:", productId);
-    
-        socket.emit("addToCart", { product: productId, quantity: 1 });
-    
-        socket.on("cartUpdated", (updatedCart) => {
-            console.log("Cart updated:", updatedCart);
-            setCart(updatedCart);
-        });
+        console.log("Emitting addToCart for product:", product);
+        
+        addToCart(product, quantity);
+        
     };
 
     return <Button onClick={handleAddToCart}>Add to cart</Button>;
