@@ -9,7 +9,7 @@ const CartButton = ({ cartItem = 3, onClick, className }) => {
   return (
     <a className={`cart ${className}`} onClick={onClick}>
       <img src={cartImage} alt="" />
-      <div className="frame">{cartItem}</div>
+      <div className="frame"><span>{cartItem}</span></div>
     </a>
   );
 };

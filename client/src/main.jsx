@@ -14,15 +14,6 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route path='/' element={<Navigate to="/home" replace />} />
       <Route path="home" element={<HomePage />} />
-      {/* <Route path="test" element={<FilterTabs enableText='All' filters={[
-        'sofa',
-        'Accent chair',
-        'Lounge chair',
-        'Coffee table',
-        'Center table',
-        'Flower pot',
-        'lamp'
-      ]}/>} /> */}
 
       <Route path='/test' element={<ImageGallery />} />
       <Route path='/product/:id' element={<ProductDetails />} />
@@ -31,18 +22,26 @@ const router = createBrowserRouter(
       <Route path="SittingRoom" element={<CategoriesPage
         pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
         pageTitle={"Sitting Room"}
+        pageBaseUrl={'/products'}
+        pageCategory={["Chairs","Sofas","Tables"]}
       />} />
       <Route path="Bedroom" element={<CategoriesPage
         pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
         pageTitle={"Bedroom"}
+        pageBaseUrl={'/products'}
+        pageCategory={["Tables","Lighting"]}
       />} />
       <Route path="Accessories" element={<CategoriesPage
         pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
         pageTitle={"Accessories"}
+        pageBaseUrl={'/products'}
+        pageCategory={["Lighting","Decor"]}
       />} />
       <Route path="Kitchen" element={<CategoriesPage
         pageDesc={"Transform your sitting room with our elegant and functional seating options,perfect for every modern home."}
         pageTitle={"Kitchen"}
+        pageBaseUrl={'/products'}
+        pageCategory={["Tables","Lighting"]}
       />} />
       <Route path="auth/resetpassword/:userid" element={<UpdatePassword />} />
       <Route path="*" element={<Page404 />} />

@@ -7,7 +7,7 @@ import DropDown from "../utils/dropdown.utils.component";
 import Swiper from "../utils/swiper.utils.component";
 import Product from "../utils/productCard.utils.component";
 
-const CategoriesPage = ({ pageTitle, pageDesc, pageBaseUrl }) => {
+const CategoriesPage = ({ pageTitle, pageDesc, pageBaseUrl , pageCategory}) => {
 
   useEffect(()=>{
     window.scrollTo(0,0);
@@ -34,8 +34,8 @@ const CategoriesPage = ({ pageTitle, pageDesc, pageBaseUrl }) => {
               "Lamp",
             ]}
           />
-          <Panel classname={"cPanelContainer"}>
-            <div className="header">
+          <Panel classname={"cPanelContainer"} category={pageCategory} url={pageBaseUrl}>
+            <div className="header"> 
               <span className="heading-04">Top Products</span>
               <DropDown
                 items={[

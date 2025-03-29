@@ -9,7 +9,7 @@ import API from "../../axios.config.js";
 import { useProductContext } from "../../productContext.jsx";
 import ProductCardSkeleton from "../utils/productCardSkeleton.jsx";
 
-function Panel({id, pages, children , classname , content , url }) {
+function Panel({id, pages, children , classname , category = ["All"] , url }) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [totalSlides, setTotalSlides] = useState([]);
   const panelDom = useRef(null);
@@ -98,6 +98,7 @@ function Panel({id, pages, children , classname , content , url }) {
                 (() => {
                   try {
                     return product[currentSlide].map((item, index) => {
+                      if(!category.includes('All')){if(!category.includes(item.category)) return "";}
                       return (
                         <Product
                           extraClass="panelCard slideInComponentBtoT"

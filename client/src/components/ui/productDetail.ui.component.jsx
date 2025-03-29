@@ -15,7 +15,7 @@ import API from "../../axios.config.js";
 
 const ProductDetail = () => {
   let { id } = useParams();
-  const { cart , addToCart } = useCart(); 
+  const { cart, addToCart } = useCart();
 
   const [quantity, setQuantity] = useState(1);
   const [data, setData] = useState({
@@ -27,9 +27,7 @@ const ProductDetail = () => {
     variants: [
       {
         var_color: "red",
-        var_gallery:[
-          ''
-        ]
+        var_gallery: [""],
       },
       {
         var_color: "blue",
@@ -41,21 +39,20 @@ const ProductDetail = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(()=>{
-    const fetchData = async()=>{
+  useEffect(() => {
+    const fetchData = async () => {
       const response = await API.get(`/products/${id}`);
-      if(response.data.suc){
+      if (response.data.suc) {
         setData(response.data.data);
         console.log(data);
-      }
-      else{
+      } else {
         console.log(response.data.message);
-        alert('Error fetching data');
+        alert("Error fetching data");
       }
-    }
+    };
 
     fetchData();
-  },[]);
+  }, []);
 
   return (
     <>
@@ -108,10 +105,13 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-          <div className="buy_sec"> 
-            <button className="buyBtn" onClick={()=>{
-              addToCart(data,quantity);
-            }} >
+          <div className="buy_sec">
+            <button
+              className="buyBtn"
+              onClick={() => {
+                addToCart(data, quantity);
+              }}
+            >
               <span className="text-20-semibold">Add to cart</span>
             </button>
             <button className="buyBtn">
