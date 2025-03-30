@@ -199,3 +199,16 @@
     align-items: center;
     justify-content: center;
 }
+
+.err-swiper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    height:10rem;
+}
+
+.err-swiper span{
+    color: var(--body-sub);
+}

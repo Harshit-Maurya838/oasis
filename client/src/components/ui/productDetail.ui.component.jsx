@@ -11,12 +11,15 @@ import Product from "../utils/productCard.utils.component";
 import "../../styles/utils/utils.styles.css";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../CartContext.jsx";
+import { useAuthContext } from "../../AuthContext.jsx";
+import { useSidePanel } from "../../SidePanelContext.jsx";
 import API from "../../axios.config.js";
 
 const ProductDetail = () => {
   let { id } = useParams();
   const { cart, addToCart } = useCart();
-
+  const { authenticated } = useAuthContext();
+  const { openPanel } = useSidePanel();
   const [quantity, setQuantity] = useState(1);
   const [data, setData] = useState({
     name: "Product Name",
@@ -37,14 +40,14 @@ const ProductDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    setQuantity(1);
+  }, [id]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await API.get(`/products/${id}`);
       if (response.data.suc) {
         setData(response.data.data);
-        console.log(response.data.data);
       }
       else{
         console.log(response.data.message);
@@ -53,7 +56,7 @@ const ProductDetail = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -110,7 +113,9 @@ const ProductDetail = () => {
             <button
               className="buyBtn"
               onClick={() => {
-                addToCart(data, quantity);
+                authenticated?
+                addToCart(data, quantity):
+                openPanel('Login');
               }}
             >
               <span className="text-20-semibold">Add to cart</span>
@@ -131,9 +136,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-      <Swiper className="productDescSwiper" title={"People also viewed"}>
-        <Product imgSrc={""} variants={["red", "pink"]} />
-      </Swiper>
+      <Swiper className="productDescSwiper" title={"People also viewed"}></Swiper>
     </>
   );
 };
