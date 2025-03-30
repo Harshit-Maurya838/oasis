@@ -6,8 +6,11 @@ import Panel from "../ui/panel.ui.component";
 import DropDown from "../utils/dropdown.utils.component";
 import Swiper from "../utils/swiper.utils.component";
 import Product from "../utils/productCard.utils.component";
+import { useProductContext } from "../../productContext";
 
 const CategoriesPage = ({ pageTitle, pageDesc, pageBaseUrl , pageCategory}) => {
+
+  const { product , setProduct } = useProductContext();
 
   useEffect(()=>{
     window.scrollTo(0,0);
@@ -41,7 +44,16 @@ const CategoriesPage = ({ pageTitle, pageDesc, pageBaseUrl , pageCategory}) => {
                 items={[
                   {
                     itemname: "High Price",
-                    itemcallback: () => { const event = new CustomEvent('HighPrice') ; document.dispatchEvent(event) },
+                    itemcallback: () => { const sortedProduct = Object.keys(product).reduce((acc, key) => {
+                      const sortedArray = [...product[key]].sort((a, b) => b.price - a.price);
+                      return {
+                        ...acc,
+                        [key]: sortedArray
+                      };
+                    }, {});
+                
+                    setProduct(sortedProduct);
+                  },
                   },
                 ]}
               />
