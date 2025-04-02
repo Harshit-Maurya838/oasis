@@ -1,4 +1,4 @@
-
+/* 
 .inverted{
     transform: rotateZ(180deg);
 }
@@ -37,4 +37,52 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+} */
+
+
+.slideDom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: var(--bPrimary);
+    border-radius: 50px;
+    padding: 12px 24px;
+    margin: 12px auto;
+    width: fit-content;
+    gap: 20px;
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--bSecondary);
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.nav:hover {
+    background-color: var(--g50);
+    transform: scale(1.1);
+}
+
+.inverted {
+    transform: rotate(180deg);
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--textPrimary);
+}
+
+.icon:hover {
+    background-color: transparent;
 }
