@@ -127,3 +127,23 @@
     align-items: center;
     justify-content: center;
 }
+
+.removeButton {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #ff4d4d;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.removeButton:hover {
+  background: #cc0000;
+}
+.rightCartDesc{
+  width: auto;
+  gap: 10px;
+  display: flex;
+}

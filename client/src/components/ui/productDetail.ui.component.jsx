@@ -120,7 +120,9 @@ const ProductDetail = () => {
             >
               <span className="text-20-semibold">Add to cart</span>
             </button>
-            <button className="buyBtn">
+            <button onClick={()=>{authenticated?
+                addToCart(data, 1):
+                openPanel('Login');}} className="buyBtn">
               <span className="text-20-semibold">Buy Now</span>
             </button>
           </div>

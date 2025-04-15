@@ -15,7 +15,6 @@ export default function Swiper({ title, children, className }) {
   const [swiperContent, setSwiperContent] = useState([]);
 
   useEffect(() => {
-    console.log(scrollPose);
     if (scrollPose == 0) {
       arrowLeft.current.classList.add("inactive");
       arrowRight.current.classList.remove("inactive");
