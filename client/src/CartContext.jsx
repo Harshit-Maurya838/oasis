@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
     console.log("Current userId:", userId); 
   
     if (!socketRef.current && userId) { 
-      socketRef.current = io("http://localhost:8000", {
+      socketRef.current = io("https://oasis-6gfa.onrender.com", {
         autoConnect: false,
         withCredentials: true,
         auth: {
