@@ -29,7 +29,7 @@ app.set("io", io);
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors({
-    origin: ["http://localhost:5173", "http://192.168.51.219:5173","https://oasis-6gfa.onrender.com"],
+    origin: ["http://localhost:5173", "http://192.168.51.219:5173","https://oasis-livid.vercel.app"],
     credentials: true,
 }));
 app.use(cookieParser());
