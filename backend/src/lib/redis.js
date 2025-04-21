@@ -1,28 +1,26 @@
 const { createClient } = require("redis");
 const Cart = require("../models/cart.js");
 
-const redisClient = createClient();
+const redisClient = createClient(
+    {
+        url: process.env.REDIS_URL || "redis://localhost:6379",
+    }
+);
+redisClient.on("error", (err) => {
+  console.error("❌ Redis Error:", err.message);
+  if (err.code === "ECONNRESET") {
+    console.warn("⚠️ Redis connection was reset. Consider adding retry logic.");
+  }
+});
 
-// param in createClient is an object with the following properties
-// {
-//     url: process.env.REDIS_URL || "redis://localhost:6379",
-//     socket: {
-//         tls: process.env.NODE_ENV === "production", // Enable TLS for cloud Redis
-//     },
-// }
-
-// redisClient.on("error", (err) => console.error("Redis Error:", err));
-
-// (async () => {
-//     try {
-//         await redisClient.connect();
-//         console.log("Redis connected successfully");
-//     } catch (err) {
-//         console.error("Redis connection failed:", err);
-//     }
-// })();
-
-redisClient.connect();
+(async () => {
+    try {
+        await redisClient.connect();
+        console.log("Redis connected successfully");
+    } catch (err) {
+        console.error("Redis connection failed:", err);
+    }
+})();
 
 const CACHE_EXPIRY = 60; // 60 seconds
 
