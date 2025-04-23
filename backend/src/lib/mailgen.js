@@ -18,7 +18,7 @@ const sendForgotPasswordMail = (email , userId)=>{
         to: email, // Recipient address (Yahoo user)
         subject: 'Reset password for you Oasis account', // Subject line
         text: 'Click on this link to reset you password', // Plain text body
-        html: `<a href="http://localhost:5173/auth/resetpassword/${userId}">Reset your password over here</a>` // HTML body
+        html: `<a href="https://oasis-livid.vercel.app/auth/resetpassword/${userId}">Reset your password over here</a>` // HTML body
     };
     
     // Send the email
