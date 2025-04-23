@@ -95,7 +95,7 @@ router.post('/logout',(req,res)=>{
            return 
         }
 
-        res.clearCookie('token',{httpOnly:true,sameSite:true});
+        res.clearCookie('token',{httpOnly:true,sameSite:"none",secure:true});
         res.status(200).json({message:'User logout successfully',isAuth:false,suc:true});
 
     }
