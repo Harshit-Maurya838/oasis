@@ -1,95 +1,117 @@
 const { createClient } = require("redis");
 const Cart = require("../models/cart.js");
 
-const redisClient = createClient(
-    {
-        url: process.env.REDIS_URL || "redis://localhost:6379",
-    }
-);
-redisClient.on("error", (err) => {
-  console.error("❌ Redis Error:", err.message);
-  if (err.code === "ECONNRESET") {
-    console.warn("⚠️ Redis connection was reset. Consider adding retry logic.");
-  }
-});
+// const redisClient = createClient(
+//     {
+//         url: process.env.REDIS_URL || "redis://localhost:6379",
+//     }
+// );
+// redisClient.on("error", (err) => {
+//   console.error("❌ Redis Error:", err.message);
+//   if (err.code === "ECONNRESET") {
+//     console.warn("⚠️ Redis connection was reset. Consider adding retry logic.");
+//   }
+// });
 
-(async () => {
-    try {
-        await redisClient.connect();
-        console.log("Redis connected successfully");
-    } catch (err) {
-        console.error("Redis connection failed:", err);
-    }
-})();
+// (async () => {
+//     try {
+//         await redisClient.connect();
+//         console.log("Redis connected successfully");
+//     } catch (err) {
+//         console.error("Redis connection failed:", err);
+//     }
+// })();
+
+const getRedisClient = async () => {
+  const client = createClient({
+    url: process.env.REDIS_URL || "redis://localhost:6379",
+  });
+
+  client.on("error", (err) => {
+    console.error("❌ Redis Error:", err.message);
+  });
+
+  await client.connect();
+  return client;
+};
 
 const CACHE_EXPIRY = 60; // 60 seconds
 
 // Add to cart
 const updateCart = async (userId, newItem, io) => {
-    const cartKey = `cart:${userId}`;
-    let cart = await redisClient.get(cartKey);
-    cart = cart ? JSON.parse(cart) : { user: userId, cartItems: [] };
+  const redisClient = await getRedisClient();
+  const cartKey = `cart:${userId}`;
 
-    // Find existing item
-    const existingItem = cart.cartItems.find(item => item.product === newItem.product || item.product._id === newItem.product);
-    if (existingItem) {
-        existingItem.quantity += newItem.quantity;
-        existingItem.price += newItem.price;
-    } else {
-        cart.cartItems.push(newItem);
-    }
+  let cart = await redisClient.get(cartKey);
+  cart = cart ? JSON.parse(cart) : { user: userId, cartItems: [] };
 
-    await redisClient.setEx(cartKey, CACHE_EXPIRY, JSON.stringify(cart));
+  const existingItem = cart.cartItems.find(
+    (item) =>
+      item.product === newItem.product || item.product._id === newItem.product
+  );
+  if (existingItem) {
+    existingItem.quantity += newItem.quantity;
+    existingItem.price += newItem.price;
+  } else {
+    cart.cartItems.push(newItem);
+  }
 
-    // Emit update
-    io.to(userId).emit("cartUpdated", cart);
-    console.log(`Cart updated for user ${userId}:`, cart);
+  await redisClient.setEx(cartKey, CACHE_EXPIRY, JSON.stringify(cart));
+  await redisClient.disconnect();
+
+  io.to(userId).emit("cartUpdated", cart);
+  console.log(`Cart updated for user ${userId}:`, cart);
 };
 
 // Remove from cart
 const removeFromCart = async (userId, productId, io) => {
-    const cartKey = `cart:${userId}`;
-    let cart = await redisClient.get(cartKey);
-    if (!cart) return;
+  const redisClient = await getRedisClient();
+  const cartKey = `cart:${userId}`;
 
-    cart = JSON.parse(cart);
+  let cart = await redisClient.get(cartKey);
+  if (!cart) {
+    await redisClient.disconnect();
+    return;
+  }
 
-    // Remove the product
-    cart.cartItems = cart.cartItems.filter(item => item.product !== productId);
+  cart = JSON.parse(cart);
+  cart.cartItems = cart.cartItems.filter((item) => item.product !== productId);
 
-    if (cart.cartItems.length === 0) {
-        await redisClient.del(cartKey);
-    } else {
-        await redisClient.setEx(cartKey, CACHE_EXPIRY, JSON.stringify(cart));
-    }
+  if (cart.cartItems.length === 0) {
+    await redisClient.del(cartKey);
+  } else {
+    await redisClient.setEx(cartKey, CACHE_EXPIRY, JSON.stringify(cart));
+  }
 
-    // Emit update
-    io.to(userId).emit("cartUpdated", cart);
-    console.log(`Removed item from cart for user ${userId}:`, cart);
+  await redisClient.disconnect();
+  io.to(userId).emit("cartUpdated", cart);
+  console.log(`Removed item from cart for user ${userId}:`, cart);
 };
 
 // Save cart to MongoDB
 const saveCartToDB = async (userId) => {
-    const cartKey = `cart:${userId}`;
-    let cart = await redisClient.get(cartKey);
+  const redisClient = await getRedisClient();
+  const cartKey = `cart:${userId}`;
 
-    if (cart) {
-        console.log(cart)
-        cart = JSON.parse(cart);
+  let cart = await redisClient.get(cartKey);
+  await redisClient.disconnect();
 
-        if (cart.cartItems.length > 0) {
-            await Cart.findOneAndUpdate(
-                { user: userId },
-                { cartItems: cart.cartItems },
-                { upsert: true, new: true }
-            );
+  if (cart) {
+    cart = JSON.parse(cart);
 
-            console.log("Redis Cart Data Before Saving:", JSON.stringify(cart, null, 2));
-            console.log(`Cart saved to DB for user ${userId}`);
-        }
-
-        // await redisClient.del(cartKey); // Remove from Redis after saving
+    if (cart.cartItems.length > 0) {
+      await Cart.findOneAndUpdate(
+        { user: userId },
+        { cartItems: cart.cartItems },
+        { upsert: true, new: true }
+      );
+      console.log(
+        "Redis Cart Data Before Saving:",
+        JSON.stringify(cart, null, 2)
+      );
+      console.log(`Cart saved to DB for user ${userId}`);
     }
+  }
 };
 
 module.exports = { redisClient, updateCart, removeFromCart, saveCartToDB };
