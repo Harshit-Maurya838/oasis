@@ -1,6 +1,6 @@
 const express = require("express");
 const authMiddleware = require("../../middlewares/authMiddleware");
-const { redisClient, saveCartToDB } = require("../../lib/redis.js");
+const { getRedisClient, saveCartToDB } = require("../../lib/redis.js");
 const Cart = require("../../models/cart.js");
 const Variants = require("../../models/variants.js")
 
@@ -11,6 +11,7 @@ const router = express.Router();
 
 router.get("/", authMiddleware, async (req, res) => {
     try {
+        const redisClient = await getRedisClient();
         const userId = req.user.userId;
         const cartKey = `cart:${userId}`;
 
@@ -26,7 +27,7 @@ router.get("/", authMiddleware, async (req, res) => {
         } else {
             cart = JSON.parse(cart);
         }
-
+        await redisClient.disconnect();
         return res.status(200).json(cart);
     } catch (error) {
         console.error("Error fetching cart:", error);
@@ -39,8 +40,10 @@ router.get("/", authMiddleware, async (req, res) => {
 
 router.post("/sync", authMiddleware, async (req, res) => {
     try {
+        const redisClient = await getRedisClient();
         const userId = req.user.userId;
         await saveCartToDB(userId);
+        await redisClient.disconnect();
         return res.status(200).json({ message: "Cart saved to DB" });
     } catch (error) {
         console.error("Error syncing cart:", error);
