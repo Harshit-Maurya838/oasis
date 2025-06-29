@@ -114,4 +114,4 @@ const saveCartToDB = async (userId) => {
   }
 };
 
-module.exports = { redisClient, updateCart, removeFromCart, saveCartToDB };
+module.exports = { updateCart, removeFromCart, saveCartToDB };
