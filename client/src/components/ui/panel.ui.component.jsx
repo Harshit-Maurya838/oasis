@@ -44,7 +44,6 @@ function Panel({id, pages, children , classname , category = ["All"] , url }) {
         const response = await API.get(url, {
           params: {
             page: currentSlide,
-            limit: 12
           }
         });
         
@@ -53,6 +52,7 @@ function Panel({id, pages, children , classname , category = ["All"] , url }) {
             ...product,
             [currentSlide]: response.data.data
           };
+          console.log(response.data);
           setProduct(updatedProduct);
         }
       } catch (error) {
