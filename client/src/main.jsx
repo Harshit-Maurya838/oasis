@@ -12,8 +12,8 @@ import UpdatePassword from './components/ui/updatePassword.ui.component.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path='/' element={<Navigate to="/home" replace />} />
-      <Route path="home" element={<HomePage />} />
+      <Route path='/' element={<HomePage />} />
+      {/* <Route path="home" element={<HomePage />} /> */}
 
       <Route path='/test' element={<ImageGallery />} />
       <Route path='/product/:id' element={<ProductDetails />} />
