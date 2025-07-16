@@ -87,8 +87,8 @@ const Navbar = () => {
   }, []);
 
   const handleNavigation = (id) => {
-    if (location.pathname !== "/home") {
-      navigate("/home"); // First navigate to the homepage
+    if (location.pathname !== "/") {
+      navigate("/"); // First navigate to the homepage
       setTimeout(() => {
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }, 300); // Delay to ensure the page loads before scrolling
@@ -130,7 +130,7 @@ const Navbar = () => {
       >
         <div className="center">
           <NavLink
-            to="/home#hero"
+            to="/#hero"
             onClick={(e) => {
               e.preventDefault();
               handleNavigation("hero");
@@ -141,7 +141,7 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/home#categories_main"
+            to="/#categories_main"
             onClick={(e) => {
               e.preventDefault();
               handleNavigation("categories_main");
@@ -152,7 +152,7 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/home#products"
+            to="/#products"
             onClick={(e) => {
               e.preventDefault();
               handleNavigation("products");
@@ -163,7 +163,7 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/home#faq"
+            to="/#faq"
             onClick={(e) => {
               e.preventDefault();
               handleNavigation("faq");

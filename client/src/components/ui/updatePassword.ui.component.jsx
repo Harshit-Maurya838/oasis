@@ -28,7 +28,7 @@ function UpdatePassword() {
         if (reponse) {
           alert(reponse.data.message);
           if(reponse.data.suc){
-            window.location.href = '/home';
+            window.location.href = '/';
           }
         }
       }
